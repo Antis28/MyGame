@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{06C783B8-2821-4A27-9C9B-E078216CF3F8}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>MyGame</RootNamespace>
+        <AssemblyName>MyGame</AssemblyName>
+        <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>9</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="DesperateDevs.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\DesperateDevs.Analytics.0.0.0\lib\net35\DesperateDevs.Analytics.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\DesperateDevs.CodeGeneration.0.0.0\lib\net35\DesperateDevs.CodeGeneration.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\DesperateDevs.CodeGeneration.CodeGenerator.0.0.0\lib\net35\DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.Logging, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\DesperateDevs.Logging.0.0.0\lib\net20\DesperateDevs.Logging.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.Serialization, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\DesperateDevs.Serialization.0.0.0\lib\net35\DesperateDevs.Serialization.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.Utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\DesperateDevs.Utils.0.0.0\lib\net35\DesperateDevs.Utils.dll</HintPath>
+        </Reference>
+        <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Entitas.1.13.0\lib\net35\Entitas.dll</HintPath>
+        </Reference>
+        <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Entitas.CodeGeneration.Attributes.1.13.0\lib\net35\Entitas.CodeGeneration.Attributes.dll</HintPath>
+        </Reference>
+        <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Entitas.CodeGeneration.Plugins.1.13.0\lib\net35\Entitas.CodeGeneration.Plugins.dll</HintPath>
+        </Reference>
+        <Reference Include="mscorlib" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generated\Game\Components\GameDogComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameMoveComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameMovableComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameTestComponent.cs" />
+    <Compile Include="Generated\Game\GameComponentsLookup.cs" />
+    <Compile Include="Generated\Game\GameAttribute.cs" />
+    <Compile Include="Generated\Game\GameContext.cs" />
+    <Compile Include="Generated\Game\GameMatcher.cs" />
+    <Compile Include="Generated\Contexts.cs" />
+    <Compile Include="Generated\Game\GameEntity.cs" />
+    <Compile Include="Generated\Feature.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sources\Components\DogComponent.cs" />
+    <Compile Include="Sources\Components\MoveComponent.cs" />
+    <Compile Include="Sources\Main.cs" />
+    <Compile Include="Sources\Systems\BirdSystem.cs" />
+    <Compile Include="Sources\Systems\CatSystem.cs" />
+    <Compile Include="Sources\Systems\RootSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sources\Components\TestComponent.cs" />
+  </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="any\any\icon.png" />
+      <Content Include="Jenny.properties" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
