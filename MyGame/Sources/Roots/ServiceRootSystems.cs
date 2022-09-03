@@ -5,12 +5,12 @@ using MyGame.Sources.Services;
 
 namespace MyGame.Sources.Systems
 {
-    public class ServiceRegistrationSystems : Feature
+    public class ServiceRootSystems : Feature
     {
-        public ServiceRegistrationSystems(Contexts contexts, Services.Services services)
+        public ServiceRootSystems(Contexts contexts, ServicesRegister servicesRegister)
         {
             // Add(new RegisterViewServiceSystem(contexts, services.View));
-             Add(new RegisterTimeServiceSystem(contexts, services.Time));
+             Add(new RegisterTimeServiceSystem(contexts, servicesRegister.Time));
             // Add(new RegisterApplicationServiceSystem(contexts, services.Application));
             // Add(new RegisterInputServiceSystem(contexts, services.Input));
             // Add(new RegisterAiServiceSystem(contexts, services.Ai));
@@ -18,7 +18,7 @@ namespace MyGame.Sources.Systems
             // Add(new RegisterCameraServiceSystem(contexts, services.Camera));
             // Add(new RegisterPhysicsServiceSystem(contexts, services.Physics));
             // Add(new ServiceRegistrationCompleteSystem(contexts));
-            Add(new RigisterLogServiceSystem(contexts, services.Log));
+            Add(new RigisterLogServiceSystem(contexts, servicesRegister.Log));
         }
     }
 }

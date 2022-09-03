@@ -4,6 +4,7 @@ using MyGame.Sources.Services;
 
 namespace MyGame.Sources.Systems.Logging
 {
+    /// Регистрировать в классе производном от Feature
     public sealed class HandleDebugLogMessageSystem : ReactiveSystem<DebugEntity>
     {
         private readonly ILogService _logService;
@@ -12,7 +13,6 @@ namespace MyGame.Sources.Systems.Logging
         {
             // could be a UnityDebugLogService or a JsonLogService 
             _logService = contexts.meta.logService.instance;
-            
         }
 
         // collector: Debug.Matcher.DebugLog
@@ -29,9 +29,9 @@ namespace MyGame.Sources.Systems.Logging
 
         protected override void Execute(List<DebugEntity> entities)
         {
-            foreach (var e in entities) {
-                _logService.LogMessage(e.debugLog.message);
-                e.isDestroyed = true;
+            foreach (var debugEntity in entities) {
+                _logService.LogMessage(debugEntity.debugLog.message);
+                debugEntity.isDestroyed = true;
             }
         }
     }

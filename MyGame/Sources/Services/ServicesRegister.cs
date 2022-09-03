@@ -3,7 +3,7 @@
 
 namespace MyGame.Sources.Services
 {
-    public class Services
+    public class ServicesRegister
     {
         // public readonly IViewService View;
         // public readonly IApplicationService Application;
@@ -15,7 +15,7 @@ namespace MyGame.Sources.Services
         // public readonly IPhysicsService Physics;
         public readonly ILogService Log;
 
-        public Services(
+        public ServicesRegister(
                         // IViewService view, 
                         // IApplicationService application, 
                         ITimeService time, 
