@@ -130,6 +130,7 @@
     <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
     <Compile Include="Sources\Services\MyTimeService.cs" />
     <Compile Include="Sources\Systems\Debug\DestroyDebugSystem.cs" />
+    <Compile Include="Sources\Systems\Debug\LogAddressInfoSystem.cs" />
     <Compile Include="Sources\Systems\DestroyGameSystem.cs" />
     <Compile Include="Sources\Systems\RistrationServices\RegisterTimeServiceSystem.cs" />
     <Compile Include="Sources\Systems\RistrationServices\RigisterLogServiceSystem.cs" />

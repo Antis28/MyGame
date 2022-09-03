@@ -1,6 +1,4 @@
 ﻿using MyGame.Sources.Systems;
-using MyGame.Sources.Systems.Logging;
-
 public sealed class RootSystem : Feature
 {
     public RootSystem(Contexts contexts)
@@ -16,6 +14,7 @@ public sealed class RootSystem : Feature
         // Events (Generated)
 
         // Cleanup
+        Add(new LogAddressInfoSystem(contexts));
         Add(new HandleDebugLogMessageSystem(contexts));
         Add(new DestroyDebugSystem(contexts));
     }
