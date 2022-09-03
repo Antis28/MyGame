@@ -16,7 +16,6 @@ namespace MyGame.Sources.Systems
         {
             var e = _contexts.game.CreateEntity();
             e.AddAddressInfo(9595,"127.0.0.1");
-            
         }
     }
 }

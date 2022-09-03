@@ -100,32 +100,46 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs" />
     <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
     <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs" />
     <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs" />
+    <Compile Include="Generated\Components\Interfaces\IDestroyedEntity.cs" />
     <Compile Include="Generated\Game\GameComponentsLookup.cs" />
     <Compile Include="Generated\Debug\DebugComponentsLookup.cs" />
+    <Compile Include="Generated\Meta\MetaComponentsLookup.cs" />
     <Compile Include="Generated\Game\GameAttribute.cs" />
     <Compile Include="Generated\Debug\DebugAttribute.cs" />
+    <Compile Include="Generated\Meta\MetaAttribute.cs" />
     <Compile Include="Generated\Game\GameContext.cs" />
     <Compile Include="Generated\Debug\DebugContext.cs" />
+    <Compile Include="Generated\Meta\MetaContext.cs" />
     <Compile Include="Generated\Game\GameMatcher.cs" />
     <Compile Include="Generated\Debug\DebugMatcher.cs" />
+    <Compile Include="Generated\Meta\MetaMatcher.cs" />
     <Compile Include="Generated\Contexts.cs" />
     <Compile Include="Generated\Game\GameEntity.cs" />
     <Compile Include="Generated\Debug\DebugEntity.cs" />
+    <Compile Include="Generated\Meta\MetaEntity.cs" />
     <Compile Include="Generated\Feature.cs" />
+    <Compile Include="Sources\Systems\RistrationServices\RegisterTimeServiceSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sources\Roots\RootSystem.cs" />
+    <Compile Include="Sources\Roots\ServiceRegistrationSystems.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Components\AddressInfoComponent.cs" />
     <Compile Include="Sources\Components\DebugLogComponent .cs" />
+    <Compile Include="Sources\Components\TimeServiceComponent.cs" />
     <Compile Include="Sources\Interfaces\ILogService.cs" />
     <Compile Include="Sources\Main.cs" />
     <Compile Include="Sources\Services\ConsoleDebugLogService.cs" />
     <Compile Include="Sources\Services\JsonLogService.cs" />
+    <Compile Include="Sources\Services\Services.cs" />
     <Compile Include="Sources\Systems\InitServerSystem.cs" />
     <Compile Include="Sources\Systems\Logging\HandleDebugLogMessageSystem.cs" />
-    <Compile Include="Sources\Systems\RootSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Components\DestroyedComponent.cs" />

@@ -8,10 +8,11 @@ namespace MyGame.Sources.Systems.Logging
     {
         private readonly ILogService _logService;
 
-        public HandleDebugLogMessageSystem(Contexts contexts, ILogService logService) : base(contexts.debug)
+        public HandleDebugLogMessageSystem(Contexts contexts) : base(contexts.debug)
         {
             // could be a UnityDebugLogService or a JsonLogService
-            _logService = logService; 
+            //contexts.meta.
+            //_logService = logService; 
         }
 
         // collector: Debug.Matcher.DebugLog
