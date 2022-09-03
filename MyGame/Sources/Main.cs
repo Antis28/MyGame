@@ -30,8 +30,9 @@ namespace MyGame.Sources
         private static ServicesRegister GetServices()
         {
             return new ServicesRegister(
-                log: new ConsoleLogService(),
-                time: new MyTimeService()
+                new MyTimeService(),
+                new ConsoleLogService(),
+                new MultiThreadService()
                 //     new UnityViewService(),        // responsible for creating gameobjects for views
                 //     new UnityApplicationService(), // gives app functionality like .Quit()
                 //     new UnityTimeService(),        // gives .deltaTime, .fixedDeltaTime etc

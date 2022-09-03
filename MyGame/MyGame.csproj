@@ -101,11 +101,13 @@
     </ItemGroup>
   <ItemGroup>
     <Compile Include="Generated\Meta\Components\MetaLogServiceComponent.cs" />
+    <Compile Include="Generated\Meta\Components\MetaThreadServiceComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs" />
     <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
     <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs" />
     <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
     <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs" />
+    <Compile Include="Generated\Meta\Components\MetaDestroyedComponent.cs" />
     <Compile Include="Generated\Components\Interfaces\IDestroyedEntity.cs" />
     <Compile Include="Generated\Meta\MetaComponentsLookup.cs" />
     <Compile Include="Generated\Game\GameComponentsLookup.cs" />
@@ -127,13 +129,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Services\Components\LogServiceComponent.cs" />
+    <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs" />
     <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
     <Compile Include="Sources\Services\MyTimeService.cs" />
+    <Compile Include="Sources\Services\ThreadService.cs" />
     <Compile Include="Sources\Systems\Debug\DestroyDebugSystem.cs" />
     <Compile Include="Sources\Systems\Debug\LogAddressInfoSystem.cs" />
     <Compile Include="Sources\Systems\DestroyGameSystem.cs" />
+    <Compile Include="Sources\Systems\RistrationServices\RegisterMultiThreadServiceSystem.cs" />
     <Compile Include="Sources\Systems\RistrationServices\RegisterTimeServiceSystem.cs" />
-    <Compile Include="Sources\Systems\RistrationServices\RigisterLogServiceSystem.cs" />
+    <Compile Include="Sources\Systems\RistrationServices\RegisterLogServiceSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Roots\RootSystem.cs" />
@@ -161,6 +166,7 @@
     <ItemGroup>
       <Content Include="any\any\icon.png" />
       <Content Include="Jenny.properties" />
+      <Content Include="Sources\Services\Descripton Services.txt" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\ConsoleForNet\ConsoleForNet.csproj">

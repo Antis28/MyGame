@@ -14,6 +14,7 @@ namespace MyGame.Sources.Services
         // public readonly ICameraService Camera;
         // public readonly IPhysicsService Physics;
         public readonly ILogService Log;
+        public readonly IMultiThreadService MultiThread;
 
         public ServicesRegister(
                         // IViewService view, 
@@ -24,7 +25,8 @@ namespace MyGame.Sources.Services
                         // IConfigurationService config, 
                         // ICameraService camera, 
                         // IPhysicsService physics,
-                        ILogService log
+                        ILogService log,
+                        IMultiThreadService multiThread
             )
         {
             // View = view;
@@ -36,6 +38,7 @@ namespace MyGame.Sources.Services
             // Camera = camera;
             // Physics = physics;
             Log = log;
+            MultiThread = multiThread;
         }
     }
 
@@ -58,5 +61,11 @@ namespace MyGame.Sources.Services
     public interface ILogService
     {
         void LogMessage(string message);
+    }
+
+    public interface IMultiThreadService
+    {
+        int MaxThreadsCount { get; }
+        
     }
 }

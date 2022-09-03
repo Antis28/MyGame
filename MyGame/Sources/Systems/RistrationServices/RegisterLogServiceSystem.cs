@@ -5,12 +5,12 @@ using Entitas;
 
 namespace MyGame.Sources.Services
 {
-    public class RigisterLogServiceSystem : IInitializeSystem
+    public class RegisterLogServiceSystem : IInitializeSystem
     {
         private readonly MetaContext _metaContext;
         private readonly ILogService _logService;
 
-        public RigisterLogServiceSystem(Contexts contexts, ILogService logService)
+        public RegisterLogServiceSystem(Contexts contexts, ILogService logService)
         {
             _metaContext = contexts.meta;
             _logService = logService;
