@@ -1,23 +1,24 @@
 ﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 using Entitas;
 
 namespace MyGame.Sources.Services
 {
-    public class RegisterTimeServiceSystem : IInitializeSystem
+    public class RigisterLogServiceSystem : IInitializeSystem
     {
         private readonly MetaContext _metaContext;
-        private readonly ITimeService _timeService;
+        private readonly ILogService _logService;
 
-        public RegisterTimeServiceSystem(Contexts contexts, ITimeService timeService)
+        public RigisterLogServiceSystem(Contexts contexts, ILogService logService)
         {
             _metaContext = contexts.meta;
-            _timeService = timeService;
+            _logService = logService;
         }
 
         public void Initialize()
         {
-            _metaContext.ReplaceTimeService(_timeService);
+            _metaContext.ReplaceLogService(_logService);
         }
     }
 }

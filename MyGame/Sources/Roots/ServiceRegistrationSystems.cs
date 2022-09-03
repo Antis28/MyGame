@@ -18,6 +18,7 @@ namespace MyGame.Sources.Systems
             // Add(new RegisterCameraServiceSystem(contexts, services.Camera));
             // Add(new RegisterPhysicsServiceSystem(contexts, services.Physics));
             // Add(new ServiceRegistrationCompleteSystem(contexts));
+            Add(new RigisterLogServiceSystem(contexts, services.Log));
         }
     }
 }

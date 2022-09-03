@@ -5,25 +5,37 @@ namespace MyGame.Sources.Services
 {
     public class Services
     {
-        public readonly IViewService View;
-        public readonly IApplicationService Application;
+        // public readonly IViewService View;
+        // public readonly IApplicationService Application;
         public readonly ITimeService Time;
-        public readonly IInputService Input;
-        public readonly IAiService Ai;
-        public readonly IConfigurationService Config;
-        public readonly ICameraService Camera;
-        public readonly IPhysicsService Physics;
+        // public readonly IInputService Input;
+        // public readonly IAiService Ai;
+        // public readonly IConfigurationService Config;
+        // public readonly ICameraService Camera;
+        // public readonly IPhysicsService Physics;
+        public readonly ILogService Log;
 
-        public Services(IViewService view, IApplicationService application, ITimeService time, IInputService input, IAiService ai, IConfigurationService config, ICameraService camera, IPhysicsService physics)
+        public Services(
+                        // IViewService view, 
+                        // IApplicationService application, 
+                        ITimeService time, 
+                        // IInputService input, 
+                        // IAiService ai, 
+                        // IConfigurationService config, 
+                        // ICameraService camera, 
+                        // IPhysicsService physics,
+                        ILogService log
+            )
         {
-            View = view;
-            Application = application;
+            // View = view;
+            // Application = application;
             Time = time;
-            Input = input;
-            Ai = ai;
-            Config = config;
-            Camera = camera;
-            Physics = physics;
+            // Input = input;
+            // Ai = ai;
+            // Config = config;
+            // Camera = camera;
+            // Physics = physics;
+            Log = log;
         }
     }
 
@@ -42,4 +54,9 @@ namespace MyGame.Sources.Services
     public interface IApplicationService { }
 
     public interface IViewService { }
+    
+    public interface ILogService
+    {
+        void LogMessage(string message);
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using Entitas;
 using System.Collections.Generic;
-using MyGame.Sources.Interfaces;
+using MyGame.Sources.Services;
 
 namespace MyGame.Sources.Systems.Logging
 {
@@ -10,9 +10,9 @@ namespace MyGame.Sources.Systems.Logging
 
         public HandleDebugLogMessageSystem(Contexts contexts) : base(contexts.debug)
         {
-            // could be a UnityDebugLogService or a JsonLogService
-            //contexts.meta.
-            //_logService = logService; 
+            // could be a UnityDebugLogService or a JsonLogService 
+            _logService = contexts.meta.logService.instance;
+            
         }
 
         // collector: Debug.Matcher.DebugLog

@@ -1,14 +1,20 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using MyGame.Sources.Services;
+using MyGame.Sources.Systems;
+
 namespace MyGame.Sources
 {
     public class Main
     {
         private RootSystem _systems;
+        private ServiceRegistrationSystems _services;
 
         public void Start()
         {
-            // var _services = new Services(
+            var _services = new Services.Services(
+                 log: new ConsoleLogService(),
+                time: new MyTimeService()
             //     new UnityViewService(),        // responsible for creating gameobjects for views
             //     new UnityApplicationService(), // gives app functionality like .Quit()
             //     new UnityTimeService(),        // gives .deltaTime, .fixedDeltaTime etc
@@ -18,12 +24,14 @@ namespace MyGame.Sources
             //     GetComponent<UnityConfigurationService>(), // editor accessable global config
             //     new UnityCameraService(),                  // camera bounds, zoom, fov, orthsize etc
             //     new UnityPhysicsService()                  // raycast, checkcircle, checksphere etc.
-            // );
+            );
             
             var context = Contexts.sharedInstance;
             _systems = new RootSystem(context);
             _systems.Initialize();
 
+            
+            // для unity3D поместить в Update 
             while (true)
             {
                 _systems.Execute(); 
