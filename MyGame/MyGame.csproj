@@ -101,24 +101,34 @@
     </ItemGroup>
   <ItemGroup>
     <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
-    <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
+    <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs" />
+    <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
     <Compile Include="Generated\Game\GameComponentsLookup.cs" />
+    <Compile Include="Generated\Debug\DebugComponentsLookup.cs" />
     <Compile Include="Generated\Game\GameAttribute.cs" />
+    <Compile Include="Generated\Debug\DebugAttribute.cs" />
     <Compile Include="Generated\Game\GameContext.cs" />
+    <Compile Include="Generated\Debug\DebugContext.cs" />
     <Compile Include="Generated\Game\GameMatcher.cs" />
+    <Compile Include="Generated\Debug\DebugMatcher.cs" />
     <Compile Include="Generated\Contexts.cs" />
     <Compile Include="Generated\Game\GameEntity.cs" />
+    <Compile Include="Generated\Debug\DebugEntity.cs" />
     <Compile Include="Generated\Feature.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Components\AddressInfoComponent.cs" />
-    <Compile Include="Sources\Components\ServerComponent.cs" />
+    <Compile Include="Sources\Components\DebugLogComponent .cs" />
+    <Compile Include="Sources\Interfaces\ILogService.cs" />
     <Compile Include="Sources\Main.cs" />
+    <Compile Include="Sources\Services\ConsoleDebugLogService.cs" />
+    <Compile Include="Sources\Services\JsonLogService.cs" />
     <Compile Include="Sources\Systems\InitServerSystem.cs" />
+    <Compile Include="Sources\Systems\Logging\HandleDebugLogMessageSystem.cs" />
     <Compile Include="Sources\Systems\RootSystem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sources\Components\TestComponent.cs" />
+    <Compile Include="Sources\Components\DestroyedComponent.cs" />
   </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs" />
