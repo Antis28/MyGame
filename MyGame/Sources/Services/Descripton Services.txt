@@ -1,0 +1,13 @@
+https://russianblogs.com/article/7030565561/
+Пример создания сервиса на логировании:
+1) создать интерфейс ILogService в файле ServicesRegister
+2) добавить в объявление коструктора класса ServicesRegister параметр ILogService log и назначить его в поле ILogService Log
+3) реализовать интерфейс ILogService например в классе ConsoleLogService
+4) инициализировать создав объект new ConsoleLogService() в классе Main в методе GetServices при создании объекта ServicesRegister
+5) создать компонент  LogServiceComponent : IComponent с полем public ILogService instance; с атрибутом [Meta, Unique]
+6) зарегистрировать создав систему RegisterLogServiceSystem : IInitializeSystem и вызвать в Initialize 
+    метод _metaContext.ReplaceLogService(_logService);
+7) вызвать Add в ServiceRootSystems : Feature и передать вторым параметром servicesRegister.MultiThread
+
+Окончательный результат состоит в том, что мы можем получить доступ к этим экземплярам службы глобально, 
+    через экземпляр Contexts (_context.meta.logService.instance). И мы создаем их только в одном месте.
