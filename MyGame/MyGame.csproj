@@ -33,44 +33,75 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="DesperateDevs.Analytics">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Analytics.dll</HintPath>
+        </Reference>
         <Reference Include="DesperateDevs.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DesperateDevs.Analytics.0.0.0\lib\net35\DesperateDevs.Analytics.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.CodeGeneration">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.dll</HintPath>
         </Reference>
         <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DesperateDevs.CodeGeneration.0.0.0\lib\net35\DesperateDevs.CodeGeneration.dll</HintPath>
         </Reference>
+        <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
+        </Reference>
         <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DesperateDevs.CodeGeneration.CodeGenerator.0.0.0\lib\net35\DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.Logging">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Logging.dll</HintPath>
         </Reference>
         <Reference Include="DesperateDevs.Logging, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DesperateDevs.Logging.0.0.0\lib\net20\DesperateDevs.Logging.dll</HintPath>
         </Reference>
+        <Reference Include="DesperateDevs.Serialization">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Serialization.dll</HintPath>
+        </Reference>
         <Reference Include="DesperateDevs.Serialization, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DesperateDevs.Serialization.0.0.0\lib\net35\DesperateDevs.Serialization.dll</HintPath>
+        </Reference>
+        <Reference Include="DesperateDevs.Utils">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Utils.dll</HintPath>
         </Reference>
         <Reference Include="DesperateDevs.Utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DesperateDevs.Utils.0.0.0\lib\net35\DesperateDevs.Utils.dll</HintPath>
         </Reference>
+        <Reference Include="Entitas">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.dll</HintPath>
+        </Reference>
         <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\Entitas.1.13.0\lib\net35\Entitas.dll</HintPath>
         </Reference>
+        <Reference Include="Entitas.CodeGeneration.Attributes">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.CodeGeneration.Attributes.dll</HintPath>
+        </Reference>
         <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\Entitas.CodeGeneration.Attributes.1.13.0\lib\net35\Entitas.CodeGeneration.Attributes.dll</HintPath>
+        </Reference>
+        <Reference Include="Entitas.CodeGeneration.Plugins">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.CodeGeneration.Plugins.dll</HintPath>
         </Reference>
         <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\Entitas.CodeGeneration.Plugins.1.13.0\lib\net35\Entitas.CodeGeneration.Plugins.dll</HintPath>
         </Reference>
         <Reference Include="mscorlib" />
+        <Reference Include="NSpec">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\NSpec.dll</HintPath>
+        </Reference>
+        <Reference Include="nunit.framework">
+          <HintPath>..\..\..\..\CodeGenerator\Libraries\nunit.framework.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
     </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generated\Game\Components\GameDogComponent.cs" />
-    <Compile Include="Generated\Game\Components\GameMoveComponent.cs" />
-    <Compile Include="Generated\Game\Components\GameMovableComponent.cs" />
-    <Compile Include="Generated\Game\Components\GameTestComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
     <Compile Include="Generated\Game\GameComponentsLookup.cs" />
     <Compile Include="Generated\Game\GameAttribute.cs" />
     <Compile Include="Generated\Game\GameContext.cs" />
@@ -80,11 +111,10 @@
     <Compile Include="Generated\Feature.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sources\Components\DogComponent.cs" />
-    <Compile Include="Sources\Components\MoveComponent.cs" />
+    <Compile Include="Sources\Components\AddressInfoComponent.cs" />
+    <Compile Include="Sources\Components\ServerComponent.cs" />
     <Compile Include="Sources\Main.cs" />
-    <Compile Include="Sources\Systems\BirdSystem.cs" />
-    <Compile Include="Sources\Systems\CatSystem.cs" />
+    <Compile Include="Sources\Systems\InitServerSystem.cs" />
     <Compile Include="Sources\Systems\RootSystem.cs" />
   </ItemGroup>
   <ItemGroup>
