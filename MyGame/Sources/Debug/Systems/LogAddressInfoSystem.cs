@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 namespace MyGame.Sources.Systems
 {
-// Показывать сообщение о создании AddressInfo
+/// <summary>
+/// Создает сущность с сообщением об изменении IP или порта
+/// </summary>
     public sealed class LogAddressInfoSystem : ReactiveSystem<GameEntity>
     {
         private readonly Contexts _contexts;

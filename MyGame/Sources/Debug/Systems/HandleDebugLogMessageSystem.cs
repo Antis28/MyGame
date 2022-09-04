@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using MyGame.Sources.Services;
 
-/// Регистрировать в классе производном от Feature
+/// <summary>
+/// Выводит сообщение в журнал и помечает сущность на уничтожение
+/// </summary>
 public sealed class HandleDebugLogMessageSystem : ReactiveSystem<DebugEntity>
 {
     private readonly ILogService _logService;

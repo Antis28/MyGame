@@ -128,34 +128,32 @@
     <Compile Include="Generated\Feature.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sources\Cleanup\Components\DestroyedComponent.cs" />
+    <Compile Include="Sources\Cleanup\Systems\DestroyDebugSystem.cs" />
+    <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs" />
+    <Compile Include="Sources\Debug\Components\DebugLogComponent .cs" />
+    <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
+    <Compile Include="Sources\Debug\Systems\LogAddressInfoSystem.cs" />
+    <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />
+    <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />
     <Compile Include="Sources\Services\Components\LogServiceComponent.cs" />
     <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs" />
     <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
-    <Compile Include="Sources\Services\MyTimeService.cs" />
-    <Compile Include="Sources\Services\ThreadService.cs" />
-    <Compile Include="Sources\Systems\Debug\DestroyDebugSystem.cs" />
-    <Compile Include="Sources\Systems\Debug\LogAddressInfoSystem.cs" />
-    <Compile Include="Sources\Systems\DestroyGameSystem.cs" />
-    <Compile Include="Sources\Systems\RistrationServices\RegisterMultiThreadServiceSystem.cs" />
-    <Compile Include="Sources\Systems\RistrationServices\RegisterTimeServiceSystem.cs" />
-    <Compile Include="Sources\Systems\RistrationServices\RegisterLogServiceSystem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Sources\Roots\RootSystem.cs" />
-    <Compile Include="Sources\Roots\ServiceRootSystems.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Sources\Components\AddressInfoComponent.cs" />
-    <Compile Include="Sources\Components\DebugLogComponent .cs" />
-    <Compile Include="Sources\Main.cs" />
-    <Compile Include="Sources\Services\ConsoleLogService.cs" />
-    <Compile Include="Sources\Services\JsonLogService.cs" />
+    <Compile Include="Sources\Services\Implements\ConsoleLogService.cs" />
+    <Compile Include="Sources\Services\Implements\JsonLogService.cs" />
+    <Compile Include="Sources\Services\Implements\MyTimeService.cs" />
+    <Compile Include="Sources\Services\Implements\ThreadService.cs" />
     <Compile Include="Sources\Services\ServicesRegister.cs" />
-    <Compile Include="Sources\Systems\InitServerSystem.cs" />
-    <Compile Include="Sources\Systems\Debug\HandleDebugLogMessageSystem.cs" />
+    <Compile Include="Sources\Services\Systems\RegisterLogServiceSystem.cs" />
+    <Compile Include="Sources\Services\Systems\RegisterMultiThreadServiceSystem.cs" />
+    <Compile Include="Sources\Services\Systems\RegisterTimeServiceSystem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sources\Components\DestroyedComponent.cs" />
+    <Compile Include="Sources\_Roots_features\RootSystem.cs" />
+    <Compile Include="Sources\_Roots_features\ServiceRootSystems.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sources\Main.cs" />
   </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs" />

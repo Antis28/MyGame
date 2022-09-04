@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 namespace MyGame.Sources.Systems
 {
-//Регистрировать в классе производном от Feature
+    /// <summary>
+    /// Удалить сущность после вывода сообщения
+    /// </summary>
     public sealed class DestroyDebugSystem : ReactiveSystem<DebugEntity>
     {
         private readonly Contexts _contexts;
@@ -25,10 +27,7 @@ namespace MyGame.Sources.Systems
 
         protected override void Execute(List<DebugEntity> entities)
         {
-            foreach (var entity in entities)
-            {
-                entity.Destroy();
-            }
+            foreach (var entity in entities) { entity.Destroy(); }
         }
     }
 }
