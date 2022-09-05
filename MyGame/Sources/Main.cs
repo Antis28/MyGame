@@ -1,5 +1,4 @@
 ﻿using System.Threading;
-using System.Threading.Tasks;
 using MyGame.Sources.Services;
 using MyGame.Sources.Systems;
 
@@ -12,17 +11,17 @@ namespace MyGame.Sources
         public void Start()
         {
             var context = Contexts.sharedInstance;
-            
+
             var services = new ServiceRootSystems(context, GetServices());
             services.Initialize();
-            
+
             _systems = new RootSystem(context);
             _systems.Initialize();
 
             // для unity3D поместить в Update 
             while (true)
             {
-                _systems.Execute(); 
+                _systems.Execute();
                 Thread.Sleep(100);
             }
         }

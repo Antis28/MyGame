@@ -1,11 +1,11 @@
-﻿using Entitas;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Entitas;
 
 namespace MyGame.Sources.Systems
 {
-/// <summary>
-/// Создает сущность с сообщением об изменении IP или порта
-/// </summary>
+    /// <summary>
+    /// Создает сущность с сообщением об изменении IP или порта
+    /// </summary>
     public sealed class LogAddressInfoSystem : ReactiveSystem<GameEntity>
     {
         private readonly Contexts _contexts;

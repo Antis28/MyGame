@@ -1,5 +1,5 @@
-﻿using Entitas;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Entitas;
 
 namespace MyGame.Sources.Systems
 {

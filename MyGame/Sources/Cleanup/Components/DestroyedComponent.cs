@@ -1,5 +1,3 @@
 ﻿using Entitas;
-[Debug,Game,Meta]
-public sealed class DestroyedComponent : IComponent
-{
-}
+
+[Debug, Game, Meta] public sealed class DestroyedComponent : IComponent { }

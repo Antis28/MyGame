@@ -1,6 +1,4 @@
-﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
-// ReSharper disable once InvalidXmlDocComment
+﻿// ReSharper disable once InvalidXmlDocComment
 /// <summary>
 // https://russianblogs.com/article/7030565561/
 // Создание сервиса на примере сервиса логирования:
@@ -22,17 +20,18 @@ namespace MyGame.Sources.Services
 {
     public class ServicesRegister
     {
-        // public readonly IViewService View;
-        // public readonly IApplicationService Application;
-        public readonly ITimeService Time;
-
         // public readonly IInputService Input;
         // public readonly IAiService Ai;
         // public readonly IConfigurationService Config;
         // public readonly ICameraService Camera;
         // public readonly IPhysicsService Physics;
         public readonly ILogService Log;
+
         public readonly IMultiThreadService MultiThread;
+
+        // public readonly IViewService View;
+        // public readonly IApplicationService Application;
+        public readonly ITimeService Time;
 
         public ServicesRegister(
             // IViewService view, 

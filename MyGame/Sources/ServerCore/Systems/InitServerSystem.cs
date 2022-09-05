@@ -1,5 +1,4 @@
 ﻿using Entitas;
-using System.Collections.Generic;
 
 namespace MyGame.Sources.Systems
 {
@@ -15,7 +14,7 @@ namespace MyGame.Sources.Systems
         public void Initialize()
         {
             var e = _contexts.game.CreateEntity();
-            e.AddAddressInfo(9595,"127.0.0.1");
+            e.AddAddressInfo( "127.0.0.1",9595);
         }
     }
 }

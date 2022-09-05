@@ -1,4 +1,5 @@
 ﻿using MyGame.Sources.Systems;
+
 public sealed class RootSystem : Feature
 {
     public RootSystem(Contexts contexts)

@@ -1,5 +1,5 @@
-﻿using Entitas;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Entitas;
 
 namespace MyGame.Sources.Systems
 {
@@ -25,10 +25,7 @@ namespace MyGame.Sources.Systems
 
         protected override void Execute(List<GameEntity> entities)
         {
-            foreach (var entity in entities)
-            {
-                entity.Destroy();
-            }
+            foreach (var entity in entities) { entity.Destroy(); }
         }
     }
 }
