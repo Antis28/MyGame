@@ -11,5 +11,12 @@
             var debugEntity = _contexts.debug.CreateEntity();
             debugEntity.ReplaceDebugLog(message, sourceClass);
         }
+        public static void CreateEntityMessage(string message)
+        {
+            _contexts ??= Contexts.sharedInstance;
+
+            var debugEntity = _contexts.debug.CreateEntity();
+            debugEntity.ReplaceDebugLog(message, "no");
+        }
     }
 }

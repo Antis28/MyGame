@@ -1,7 +1,9 @@
-﻿using Entitas;
+﻿using System;
+using Entitas;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Net.Sockets;
+using System.Threading;
 using MyGame.Sources.Debug;
 
 namespace MyGame.Sources.Systems
@@ -39,6 +41,13 @@ namespace MyGame.Sources.Systems
 
 
             DebugHelper.CreateEntityMessage("Ожидание соединения... ", nameof(InitServerSystem));
+            
+            
+            int MaxThreadsCount = Environment.ProcessorCount * 4;
+            // Установим максимальное количество рабочих потоков
+            ThreadPool.SetMaxThreads(MaxThreadsCount, MaxThreadsCount);
+            // Установим минимальное количество рабочих потоков
+            ThreadPool.SetMinThreads(2, 2);
         }
     }
 }
