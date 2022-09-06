@@ -88,29 +88,28 @@
           <HintPath>..\packages\Entitas.CodeGeneration.Plugins.1.13.0\lib\net35\Entitas.CodeGeneration.Plugins.dll</HintPath>
         </Reference>
         <Reference Include="mscorlib" />
-        <Reference Include="NSpec">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\NSpec.dll</HintPath>
-        </Reference>
         <Reference Include="nunit.framework">
           <HintPath>..\..\..\..\CodeGenerator\Libraries\nunit.framework.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
         <Reference Include="System.Xml" />
     </ItemGroup>
   <ItemGroup>
     <Compile Include="Generated\Meta\Components\MetaLogServiceComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaThreadServiceComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
     <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
     <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaDestroyedComponent.cs" />
     <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs" />
     <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
     <Compile Include="Generated\Components\Interfaces\IDestroyedEntity.cs" />
-    <Compile Include="Generated\Debug\DebugComponentsLookup.cs" />
     <Compile Include="Generated\Game\GameComponentsLookup.cs" />
+    <Compile Include="Generated\Debug\DebugComponentsLookup.cs" />
     <Compile Include="Generated\Meta\MetaComponentsLookup.cs" />
     <Compile Include="Generated\Game\GameAttribute.cs" />
     <Compile Include="Generated\Debug\DebugAttribute.cs" />
@@ -133,9 +132,15 @@
     <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs" />
     <Compile Include="Sources\Debug\Components\DebugLogComponent .cs" />
     <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
-    <Compile Include="Sources\Debug\Systems\LogAddressInfoSystem.cs" />
+    <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs" />
     <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />
+    <Compile Include="Sources\ServerCore\Components\ServerComponent.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\KeyStates.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\KeyProvider.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\ServerReader.cs" />
+    <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />
     <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />
+    <Compile Include="Sources\ServerCore\Systems\ParallelProcessingSystem.cs" />
     <Compile Include="Sources\Services\Components\LogServiceComponent.cs" />
     <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs" />
     <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
@@ -149,6 +154,7 @@
     <Compile Include="Sources\Services\Systems\RegisterTimeServiceSystem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sources\Utils.cs" />
     <Compile Include="Sources\_Roots_features\RootSystem.cs" />
     <Compile Include="Sources\_Roots_features\ServiceRootSystems.cs" />
   </ItemGroup>
@@ -170,6 +176,10 @@
       <ProjectReference Include="..\ConsoleForNet\ConsoleForNet.csproj">
         <Project>{b8ccbdb6-a50d-49b9-8828-ad991f1859f5}</Project>
         <Name>ConsoleForNet</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\KeyEmul\KeyEmul.csproj">
+        <Project>{6926fc27-658f-422c-8588-9d0f6d52e881}</Project>
+        <Name>KeyEmul</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

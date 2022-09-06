@@ -22,7 +22,8 @@ namespace MyGame.Sources
             while (true)
             {
                 _systems.Execute();
-                Thread.Sleep(100);
+                Thread.Sleep(500);
+                
             }
         }
 

@@ -15,5 +15,10 @@
             // write new contents
             // close file
         }
+
+        public void LogMessage(string message, string sourceName)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

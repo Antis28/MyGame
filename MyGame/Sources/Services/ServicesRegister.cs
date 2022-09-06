@@ -76,7 +76,7 @@ namespace MyGame.Sources.Services
 
     public interface ILogService
     {
-        void LogMessage(string message);
+        void LogMessage(string message, string sourceName);
     }
 
     public interface IMultiThreadService

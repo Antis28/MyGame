@@ -1,20 +1,43 @@
 ﻿using Entitas;
+using System.Collections.Generic;
+using System.IO.Ports;
+using System.Net.Sockets;
 
 namespace MyGame.Sources.Systems
 {
-    public sealed class InitServerSystem : IInitializeSystem
+//Регистрировать в классе производном от Feature
+    public sealed class InitServerSystem : ReactiveSystem<GameEntity>
     {
         private readonly Contexts _contexts;
 
-        public InitServerSystem(Contexts contexts)
+        public InitServerSystem(Contexts contexts) : base(contexts.game)
         {
             _contexts = contexts;
         }
 
-        public void Initialize()
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            var e = _contexts.game.CreateEntity();
-            e.AddAddressInfo( "127.0.0.1",9595);
+            return context.CreateCollector(GameMatcher.AddressInfo);
+        }
+
+        protected override bool Filter(GameEntity entity)
+        {
+            return entity.hasAddressInfo;
+        }
+
+        protected override void Execute(List<GameEntity> entities)
+        {
+           var addressInfo =  entities.SingleEntity().addressInfo;
+           // Запускаем TcpListener и начинаем слушать клиентов.
+           var server = new TcpListener(addressInfo.ip, addressInfo.port);
+           server.Start();
+          
+           
+           var serverEntity = _contexts.game.CreateEntity();
+           serverEntity.AddServer(server, 0);
+
+
+           
         }
     }
 }

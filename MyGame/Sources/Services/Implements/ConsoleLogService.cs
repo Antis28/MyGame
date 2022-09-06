@@ -13,5 +13,10 @@ namespace MyGame.Sources.Services
         {
             ConsoleView.ShowMessage(message);
         }
+
+        public void LogMessage(string message, string sourceName)
+        {
+            ConsoleView.ShowMessage(sourceName, message);
+        }
     }
 }

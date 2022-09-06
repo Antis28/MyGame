@@ -10,4 +10,6 @@ public sealed class DebugLogComponent : IComponent
     /// Сообщение для вывода
     /// </summary>
     public string message;
+
+    public string sourceName;
 }
