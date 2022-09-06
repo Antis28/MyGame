@@ -44,6 +44,10 @@ namespace ConsoleForNet
         {
             Console.WriteLine($"\nСообщение: {message}");
         }
+        public static void ShowMessage(string source, string message)
+        {
+            Console.WriteLine($"\nСообщение от {source}: {message}");
+        }
 
         public static void ShowError(Exception e)
         {
