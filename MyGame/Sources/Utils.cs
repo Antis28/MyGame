@@ -2,8 +2,11 @@
 {
     public static class Utils
     {
-        public static void Show(Contexts _contexts)
+       
+        public static void Show()
         {
+            var _contexts = Contexts.sharedInstance;
+            
             ConsoleForNet.ConsoleView.ShowMessage(new string('-', 80));
             ConsoleForNet.ConsoleView.ShowMessage($"Context = game");
             ConsoleForNet.ConsoleView.ShowMessage($"Count E = {_contexts.game.count}");
@@ -39,5 +42,7 @@
             }
             ConsoleForNet.ConsoleView.ShowMessage(new string('-', 80));
         }
+
+        
     }
 }

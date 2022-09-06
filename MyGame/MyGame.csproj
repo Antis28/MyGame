@@ -131,6 +131,7 @@
     <Compile Include="Sources\Cleanup\Systems\DestroyDebugSystem.cs" />
     <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs" />
     <Compile Include="Sources\Debug\Components\DebugLogComponent .cs" />
+    <Compile Include="Sources\Debug\DebugHelper.cs" />
     <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
     <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs" />
     <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />

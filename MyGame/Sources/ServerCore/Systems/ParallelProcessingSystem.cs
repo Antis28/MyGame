@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Entitas;
+using MyGame.Sources.Debug;
 using MyGame.Sources.ServerCore;
 
 namespace MyGame.Sources.Systems
@@ -41,8 +42,7 @@ namespace MyGame.Sources.Systems
                     entity.ReplaceServer(server,++clientNumber);
                 
                     // Выводим информацию о подключении.
-                    var debugEntity = _contexts.debug.CreateEntity();
-                    debugEntity.ReplaceDebugLog($"Соединение №{clientNumber}!", nameof(ParallelProcessingSystem));
+                    DebugHelper.CreateEntityMessage($"Соединение №{clientNumber}!", nameof(ParallelProcessingSystem));
                 }
             }
         }

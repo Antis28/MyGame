@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Net.Sockets;
+using MyGame.Sources.Debug;
 
 namespace MyGame.Sources.Systems
 {
@@ -27,17 +28,17 @@ namespace MyGame.Sources.Systems
 
         protected override void Execute(List<GameEntity> entities)
         {
-           var addressInfo =  entities.SingleEntity().addressInfo;
-           // Запускаем TcpListener и начинаем слушать клиентов.
-           var server = new TcpListener(addressInfo.ip, addressInfo.port);
-           server.Start();
-          
-           
-           var serverEntity = _contexts.game.CreateEntity();
-           serverEntity.AddServer(server, 0);
+            var addressInfo = entities.SingleEntity().addressInfo;
+            // Запускаем TcpListener и начинаем слушать клиентов.
+            var server = new TcpListener(addressInfo.ip, addressInfo.port);
+            server.Start();
 
 
-           
+            var serverEntity = _contexts.game.CreateEntity();
+            serverEntity.AddServer(server, 0);
+
+
+            DebugHelper.CreateEntityMessage("Ожидание соединения... ", nameof(InitServerSystem));
         }
     }
 }

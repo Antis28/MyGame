@@ -23,7 +23,6 @@ namespace MyGame.Sources
             {
                 _systems.Execute();
                 Thread.Sleep(500);
-                
             }
         }
 
