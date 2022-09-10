@@ -4,7 +4,7 @@ using Entitas.CodeGeneration.Attributes;
 
 namespace MyGame.Sources.ServerCore.Components
 {
-    [Game]
+    [Game][Unique]
     public sealed class ServerComponent : IComponent
     {
         public TcpListener instance;

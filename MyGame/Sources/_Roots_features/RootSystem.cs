@@ -1,4 +1,5 @@
-﻿using MyGame.Sources.Systems;
+﻿using MyGame.Sources.ClientProcessing.Systems;
+using MyGame.Sources.Systems;
 
 public sealed class RootSystem : Feature
 {
@@ -11,14 +12,15 @@ public sealed class RootSystem : Feature
 
         // Update
         Add(new ParallelProcessingSystem(contexts));
-
+        Add(new ReadClientSystem(contexts));
         // Views / Render
 
         // Events (Generated)
+        Add(new ConverterMessagesSystem(contexts));
 
         // Cleanup
         Add(new HandleDebugLogMessageSystem(contexts));
         Add(new DestroyDebugSystem(contexts));
-        //Add(new ShowAllInContextSystem(contexts));
+        Add(new DestroyGameSystem(contexts));
     }
 }

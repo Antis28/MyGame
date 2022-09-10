@@ -46,20 +46,16 @@ namespace MyGame.Sources.Systems
                 }
             }
         }
-        private static void ProcessingRecivedData(object client_obj)
+        private void ProcessingRecivedData(object client_obj)
         {
             if (client_obj == null)
             {
                 throw new ArgumentNullException();
             }
 
-
-            ServerReader? reader = new ServerReader(client_obj as TcpClient);
-            string response = reader.Read("Success");
-
-            
-            KeyProvider prov = new KeyProvider(response);
-            prov.PostClick();            
+            // Создаем сущность клиента для дальнейшей обработки системами
+            var e  = _contexts.game.CreateEntity();
+            e.AddClient(client_obj as TcpClient);
         }
     }
 }

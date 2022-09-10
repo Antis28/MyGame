@@ -98,10 +98,12 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaLogServiceComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaThreadServiceComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs" />
-    <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameClientComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameMessageComponent.cs" />
     <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
     <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs" />
     <Compile Include="Generated\Meta\Components\MetaDestroyedComponent.cs" />
@@ -130,18 +132,21 @@
     <Compile Include="Sources\Cleanup\Components\DestroyedComponent.cs" />
     <Compile Include="Sources\Cleanup\Systems\DestroyDebugSystem.cs" />
     <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs" />
+    <Compile Include="Sources\ClientProcessing\Components\ClientComponent.cs" />
+    <Compile Include="Sources\ClientProcessing\Systems\ReadClient.cs" />
     <Compile Include="Sources\Debug\Components\DebugLogComponent .cs" />
     <Compile Include="Sources\Debug\DebugHelper.cs" />
     <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
     <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs" />
     <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />
+    <Compile Include="Sources\ServerCore\Components\MessageComponent.cs" />
     <Compile Include="Sources\ServerCore\Components\ServerComponent.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\KeyStates.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\KeyProvider.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\ServerReader.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\ButtonClicker.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
     <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />
     <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />
     <Compile Include="Sources\ServerCore\Systems\ParallelProcessingSystem.cs" />
+    <Compile Include="Sources\ServerCore\Systems\ConverterMessagesSystem.cs" />
     <Compile Include="Sources\Services\Components\LogServiceComponent.cs" />
     <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs" />
     <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
