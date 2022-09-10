@@ -32,6 +32,7 @@ namespace MyGame.Sources.Systems
                 { "PageDown", ButtonClicker.PageDownClick },
                 { "PageUp", ButtonClicker.PageUpClick },
                 { "Hibernate", SleepMode.GoHibernateMode },
+                { "StandBy", SleepMode.GoStandbyMode },
             };
         }
 
