@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using Entitas;
 using MyGame.Sources.Debug;
@@ -34,7 +33,7 @@ namespace MyGame.Sources.Systems
             {
                 DebugHelper.CreateEntityMessage(
                     $"No network adapters with an IPv4 address in the system!\n Installed Ip = {_localhost}\nPort = {_port}",
-                    nameof(GetIpAddressSystem));
+                    nameof(this.GetType));
             }
 
             DebugHelper.CreateEntityMessage($"AddressInfo was created\nip = {hostIp}, port = {_port}",
