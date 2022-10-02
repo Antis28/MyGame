@@ -31,9 +31,18 @@ namespace MyGame.Sources.Systems
                 { "PageUp", ButtonClicker.PageUpClick },
                 { "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
+                { "SaveName", SaveFileName },
             };
         }
 
+        private void SaveFileName()
+        {
+            var procFinder = new KeyboardEmulator.ProcessFinder();
+            var process = procFinder.GetActiveProcess();
+
+            var saveEntity = Contexts.sharedInstance.game.CreateEntity();
+            saveEntity.ReplaceSettings(process.MainWindowTitle);
+        }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
