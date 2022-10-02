@@ -31,11 +31,11 @@ namespace MyGame.Sources.Systems
                 { "PageUp", ButtonClicker.PageUpClick },
                 { "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
-                { "SaveName", SaveFileName },
+                { "SaveName", CreateSettingsEntity },
             };
         }
 
-        private void SaveFileName()
+        private static void CreateSettingsEntity()
         {
             var procFinder = new KeyboardEmulator.ProcessFinder();
             var process = procFinder.GetActiveProcess();
