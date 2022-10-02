@@ -1,5 +1,4 @@
 ﻿using System.Threading;
-using MyGame.Sources.ServerCore;
 using MyGame.Sources.Services;
 using MyGame.Sources.Systems;
 
@@ -11,8 +10,6 @@ namespace MyGame.Sources
 
         public void Start()
         {
-            new SleepMode();
-            
             var context = Contexts.sharedInstance;
 
             var services = new ServiceRootSystems(context, GetServices());
