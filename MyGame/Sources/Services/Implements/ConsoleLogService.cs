@@ -1,22 +1,24 @@
-﻿using ConsoleForNet;
+﻿using CrossConsole;
 
 namespace MyGame.Sources.Services
 {
     public class ConsoleLogService : ILogService
     {
+        private readonly IConsole console;
+
         public ConsoleLogService()
         {
-            ConsoleView.Init();
+            console = ConsoleCreator.CreateForDotNetFramework();
         }
 
         public void LogMessage(string message)
         {
-            ConsoleView.ShowMessage(message);
+            console.ShowMessage(message);
         }
 
         public void LogMessage(string message, string sourceName)
         {
-            ConsoleView.ShowMessage(sourceName, message);
+            console.ShowMessage(sourceName, message);
         }
     }
 }

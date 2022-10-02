@@ -9,9 +9,9 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>MyGame</RootNamespace>
         <AssemblyName>MyGame</AssemblyName>
-        <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
-        <LangVersion>9</LangVersion>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,14 +33,20 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Atlantis_CrossConsole">
+            <HintPath>..\..\_MyDLL\CrossConsole\CrossConsole\bin\Debug\Atlantis_CrossConsole.dll</HintPath>
+        </Reference>
+        <Reference Include="Atlantis_KeyEmulator">
+            <HintPath>..\..\_MyDLL\KeyEmulator\KeyEmulator\bin\Debug\Atlantis_KeyEmulator.dll</HintPath>
+        </Reference>
         <Reference Include="DesperateDevs.Analytics">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Analytics.dll</HintPath>
+            <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Analytics.dll</HintPath>
         </Reference>
         <Reference Include="DesperateDevs.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\DesperateDevs.Analytics.0.0.0\lib\net35\DesperateDevs.Analytics.dll</HintPath>
+            <HintPath>..\packages\DesperateDevs.Analytics.0.0.0\lib\net35\DesperateDevs.Analytics.dll</HintPath>
         </Reference>
         <Reference Include="DesperateDevs.CodeGeneration">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.dll</HintPath>
+            <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.dll</HintPath>
         </Reference>
         <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\DesperateDevs.CodeGeneration.0.0.0\lib\net35\DesperateDevs.CodeGeneration.dll</HintPath>
@@ -177,16 +183,6 @@
       <Content Include="any\any\icon.png" />
       <Content Include="Jenny.properties" />
       <Content Include="Sources\Services\Descripton Services.txt" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\ConsoleForNet\ConsoleForNet.csproj">
-        <Project>{b8ccbdb6-a50d-49b9-8828-ad991f1859f5}</Project>
-        <Name>ConsoleForNet</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\KeyEmul\KeyEmul.csproj">
-        <Project>{6926fc27-658f-422c-8588-9d0f6d52e881}</Project>
-        <Name>KeyEmul</Name>
-      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

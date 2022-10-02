@@ -1,48 +1,49 @@
-﻿namespace MyGame.Sources
+﻿using CrossConsole;
+
+namespace MyGame.Sources
 {
     public static class Utils
     {
-       
+        private static readonly IConsole _console = ConsoleCreator.CreateForDotNetFramework();
+
         public static void Show()
         {
             var _contexts = Contexts.sharedInstance;
-            
-            ConsoleForNet.ConsoleView.ShowMessage(new string('-', 80));
-            ConsoleForNet.ConsoleView.ShowMessage($"Context = game");
-            ConsoleForNet.ConsoleView.ShowMessage($"Count E = {_contexts.game.count}");
-            ConsoleForNet.ConsoleView.ShowMessage($"totalComponents = {_contexts.game.totalComponents}");
-            ConsoleForNet.ConsoleView.ShowMessage($"reusableEntitiesCount = {_contexts.game.reusableEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"retainedEntitiesCount = {_contexts.game.retainedEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"Length  componentPools= {_contexts.game.componentPools.Length}");
+
+            _console.ShowMessage(new string('-', 80));
+            _console.ShowMessage($"Context = game");
+            _console.ShowMessage($"Count E = {_contexts.game.count}");
+            _console.ShowMessage($"totalComponents = {_contexts.game.totalComponents}");
+            _console.ShowMessage($"reusableEntitiesCount = {_contexts.game.reusableEntitiesCount}");
+            _console.ShowMessage($"retainedEntitiesCount = {_contexts.game.retainedEntitiesCount}");
+            _console.ShowMessage($"Length  componentPools= {_contexts.game.componentPools.Length}");
             foreach (var componentName in _contexts.game.contextInfo.componentNames)
             {
-                ConsoleForNet.ConsoleView.ShowMessage(componentName);
+                _console.ShowMessage(componentName);
             }
-            ConsoleForNet.ConsoleView.ShowMessage($"componentPools: ");
+
+            _console.ShowMessage($"componentPools: ");
             foreach (var components in _contexts.game.componentPools)
             {
                 if (components != null)
                 {
-                    foreach (var component in components)
-                    {
-                        ConsoleForNet.ConsoleView.ShowMessage(component.ToString());
-                    }
+                    foreach (var component in components) { _console.ShowMessage(component.ToString()); }
                 }
             }
-            ConsoleForNet.ConsoleView.ShowMessage(new string('-', 40));
-            ConsoleForNet.ConsoleView.ShowMessage($"Context = debug");
-            ConsoleForNet.ConsoleView.ShowMessage($"Count E = {_contexts.debug.count}");
-            ConsoleForNet.ConsoleView.ShowMessage($"totalComponents = {_contexts.debug.totalComponents}");
-            ConsoleForNet.ConsoleView.ShowMessage($"reusableEntitiesCount = {_contexts.debug.reusableEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"retainedEntitiesCount = {_contexts.debug.retainedEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"Length  componentPools= {_contexts.debug.componentPools.Length}");
+
+            _console.ShowMessage(new string('-', 40));
+            _console.ShowMessage($"Context = debug");
+            _console.ShowMessage($"Count E = {_contexts.debug.count}");
+            _console.ShowMessage($"totalComponents = {_contexts.debug.totalComponents}");
+            _console.ShowMessage($"reusableEntitiesCount = {_contexts.debug.reusableEntitiesCount}");
+            _console.ShowMessage($"retainedEntitiesCount = {_contexts.debug.retainedEntitiesCount}");
+            _console.ShowMessage($"Length  componentPools= {_contexts.debug.componentPools.Length}");
             foreach (var componentName in _contexts.debug.contextInfo.componentNames)
             {
-                ConsoleForNet.ConsoleView.ShowMessage(componentName);
+                _console.ShowMessage(componentName);
             }
-            ConsoleForNet.ConsoleView.ShowMessage(new string('-', 80));
-        }
 
-        
+            _console.ShowMessage(new string('-', 80));
+        }
     }
 }

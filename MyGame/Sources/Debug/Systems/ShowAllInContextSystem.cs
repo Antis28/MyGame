@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using CrossConsole;
 using Entitas;
 
 namespace MyGame.Sources.Systems
@@ -15,29 +15,33 @@ namespace MyGame.Sources.Systems
 
         public void Execute()
         {
-            ConsoleForNet.ConsoleView.ShowMessage(new string('-', 80));
-            ConsoleForNet.ConsoleView.ShowMessage($"Context = game");
-            ConsoleForNet.ConsoleView.ShowMessage($"Count E = {_contexts.game.count}");
-            ConsoleForNet.ConsoleView.ShowMessage($"totalComponents = {_contexts.game.totalComponents}");
-            ConsoleForNet.ConsoleView.ShowMessage($"reusableEntitiesCount = {_contexts.game.reusableEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"retainedEntitiesCount = {_contexts.game.retainedEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"Length  componentPools= {_contexts.game.componentPools.Length}");
+            var console = ConsoleCreator.CreateForDotNetFramework();
+
+            console.ShowMessage(new string('-', 80));
+            console.ShowMessage($"Context = game");
+            console.ShowMessage($"Count E = {_contexts.game.count}");
+            console.ShowMessage($"totalComponents = {_contexts.game.totalComponents}");
+            console.ShowMessage($"reusableEntitiesCount = {_contexts.game.reusableEntitiesCount}");
+            console.ShowMessage($"retainedEntitiesCount = {_contexts.game.retainedEntitiesCount}");
+            console.ShowMessage($"Length  componentPools= {_contexts.game.componentPools.Length}");
             foreach (var componentName in _contexts.game.contextInfo.componentNames)
             {
-                ConsoleForNet.ConsoleView.ShowMessage(componentName);
+                console.ShowMessage(componentName);
             }
-            ConsoleForNet.ConsoleView.ShowMessage(new string('-', 40));
-            ConsoleForNet.ConsoleView.ShowMessage($"Context = debug");
-            ConsoleForNet.ConsoleView.ShowMessage($"Count E = {_contexts.debug.count}");
-            ConsoleForNet.ConsoleView.ShowMessage($"totalComponents = {_contexts.debug.totalComponents}");
-            ConsoleForNet.ConsoleView.ShowMessage($"reusableEntitiesCount = {_contexts.debug.reusableEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"retainedEntitiesCount = {_contexts.debug.retainedEntitiesCount}");
-            ConsoleForNet.ConsoleView.ShowMessage($"Length  componentPools= {_contexts.debug.componentPools.Length}");
+
+            console.ShowMessage(new string('-', 40));
+            console.ShowMessage($"Context = debug");
+            console.ShowMessage($"Count E = {_contexts.debug.count}");
+            console.ShowMessage($"totalComponents = {_contexts.debug.totalComponents}");
+            console.ShowMessage($"reusableEntitiesCount = {_contexts.debug.reusableEntitiesCount}");
+            console.ShowMessage($"retainedEntitiesCount = {_contexts.debug.retainedEntitiesCount}");
+            console.ShowMessage($"Length  componentPools= {_contexts.debug.componentPools.Length}");
             foreach (var componentName in _contexts.debug.contextInfo.componentNames)
             {
-                ConsoleForNet.ConsoleView.ShowMessage(componentName);
+                console.ShowMessage(componentName);
             }
-            ConsoleForNet.ConsoleView.ShowMessage(new string('-', 80));
+
+            console.ShowMessage(new string('-', 80));
         }
     }
 }
