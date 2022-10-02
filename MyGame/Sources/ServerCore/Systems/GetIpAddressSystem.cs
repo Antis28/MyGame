@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using Entitas;
-using MyGame.Sources.Debug;
 
 namespace MyGame.Sources.Systems
 {
@@ -29,15 +28,14 @@ namespace MyGame.Sources.Systems
                 if (ip.AddressFamily == AddressFamily.InterNetwork) { hostIp = ip.ToString(); }
             }
 
+            var message = $"AddressInfo was created\nip = {hostIp}, port = {_port}";
             if (hostIp == _localhost)
             {
-                DebugHelper.CreateEntityMessage(
-                    $"No network adapters with an IPv4 address in the system!\n Installed Ip = {_localhost}\nPort = {_port}",
-                    nameof(this.GetType));
+                message =
+                    $"No network adapters with an IPv4 address in the system!\n Installed Ip = {_localhost}\nPort = {_port}";
             }
 
-            DebugHelper.CreateEntityMessage($"AddressInfo was created\nip = {hostIp}, port = {_port}",
-                                            nameof(GetIpAddressSystem));
+            _contexts.debug.CreateEntity().AddDebugLog(message, GetType().Name);
 
             var e = _contexts.game.CreateEntity();
             e.AddAddressInfo(IPAddress.Parse(hostIp), _port);

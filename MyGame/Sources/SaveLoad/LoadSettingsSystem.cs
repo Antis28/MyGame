@@ -37,6 +37,6 @@ public sealed class LoadSettingsSystem : ReactiveSystem<GameEntity>
         entity.isDestroyed = true;
 
         var settings = JsonConvert.DeserializeObject<SettingsComponent>(textSettings);
-        _contexts.debug.CreateEntity().AddDebugLog(settings?.lastFileName, nameof(this.GetType));
+        _contexts.debug.CreateEntity().AddDebugLog(settings?.lastFileName, GetType().Name);
     }
 }

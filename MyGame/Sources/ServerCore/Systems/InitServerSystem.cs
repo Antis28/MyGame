@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
 using Entitas;
-using MyGame.Sources.Debug;
 
 namespace MyGame.Sources.Systems
 {
@@ -38,8 +37,7 @@ namespace MyGame.Sources.Systems
             var serverEntity = _contexts.game.CreateEntity();
             serverEntity.AddServer(server, 0);
 
-
-            DebugHelper.CreateEntityMessage("Ожидание соединения... ", nameof(this.GetType));
+            _contexts.debug.CreateEntity().AddDebugLog("Ожидание соединения... ", GetType().Name);
 
 
             int MaxThreadsCount = Environment.ProcessorCount * 4;

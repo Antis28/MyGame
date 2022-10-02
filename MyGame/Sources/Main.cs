@@ -18,6 +18,8 @@ namespace MyGame.Sources
             _systems = new RootSystem(context);
             _systems.Initialize();
 
+            context.game.CreateEntity().isLoadSettings = true;
+
             // для unity3D поместить в Update 
             while (true)
             {

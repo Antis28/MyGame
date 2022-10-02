@@ -17,7 +17,7 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
         public ReadClientSystem(Contexts contexts)
         {
-            _entities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Client) );
+            _entities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Client));
         }
 
         public void Execute()
@@ -34,22 +34,22 @@ namespace MyGame.Sources.ClientProcessing.Systems
                 {
                     // Преобразуем данные в UTF8 string.
                     data = System.Text.Encoding.UTF8.GetString(bytes, 0, count);
-                    
+
                     // Преобразуем полученную строку в массив Байт.
                     byte[] msg = System.Text.Encoding.UTF8.GetBytes("Response: Success");
-                
+
                     // Отправляем данные обратно клиенту (ответ).
                     stream.Write(msg, 0, msg.Length);
                 }
+
                 // Закрываем соединение.
                 client.Close();
                 entity.isDestroyed = true;
-                
-                DebugHelper.CreateEntityMessage(data, nameof(this.GetType));
+
+                DebugHelper.CreateEntityMessage(data, GetType().Name);
                 // сохраняем полученное сообщение
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
                 messageEntity.AddMessage(data);
-                
             }
         }
 

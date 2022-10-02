@@ -2,7 +2,6 @@
 using System.Net.Sockets;
 using System.Threading;
 using Entitas;
-using MyGame.Sources.Debug;
 
 namespace MyGame.Sources.Systems
 {
@@ -47,8 +46,9 @@ namespace MyGame.Sources.Systems
                     ThreadPool.QueueUserWorkItem(ProcessingRecivedData, server.AcceptTcpClient());
                     entity.ReplaceServer(server, ++clientNumber);
 
+                    var t = this;
                     // Выводим информацию о подключении.
-                    DebugHelper.CreateEntityMessage($"Соединение №{clientNumber}!", nameof(this.GetType));
+                    _contexts.debug.CreateEntity().AddDebugLog($"Соединение №{clientNumber}!", GetType().Name);
                 }
             }
         }
