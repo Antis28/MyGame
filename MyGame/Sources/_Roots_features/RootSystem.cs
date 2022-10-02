@@ -9,6 +9,7 @@ public sealed class RootSystem : Feature
         // Init
         Add(new GetIpAddressSystem(contexts));
         Add(new InitServerSystem(contexts));
+        Add(new LoadSettingsSystem(contexts));
         // Input
 
         // Update
@@ -18,7 +19,7 @@ public sealed class RootSystem : Feature
 
         // Events (Generated)
         Add(new ConverterMessagesSystem(contexts));
-        Add(new SaveSystem(contexts));
+        Add(new SaveSettingsSystem(contexts));
         // Cleanup
         Add(new HandleDebugLogMessageSystem(contexts));
         Add(new DestroyDebugSystem(contexts));

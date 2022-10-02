@@ -6,18 +6,18 @@ using Newtonsoft.Json;
 namespace MyGame.Sources.SaveLoad;
 
 //Регистрировать в классе производном от Feature
-public sealed class SaveSystem : ReactiveSystem<GameEntity>
+public sealed class SaveSettingsSystem : ReactiveSystem<GameEntity>
 {
     private readonly Contexts _contexts;
 
-    public SaveSystem(Contexts contexts) : base(contexts.game)
+    public SaveSettingsSystem(Contexts contexts) : base(contexts.game)
     {
         _contexts = contexts;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.Settings);
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.Settings));
     }
 
     protected override bool Filter(GameEntity entity)

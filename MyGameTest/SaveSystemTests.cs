@@ -9,7 +9,7 @@ namespace MyGameTest
     public class SaveSystemTests : nspec
     {
         private Contexts contexts;
-        private SaveSystem system;
+        private SaveSettingsSystem settingsSystem;
         private GameEntity entity;
 
         private string expectedTitle;
@@ -18,7 +18,7 @@ namespace MyGameTest
         public void Before()
         {
             contexts = Contexts.sharedInstance;
-            system = new SaveSystem(contexts);
+            settingsSystem = new SaveSettingsSystem(contexts);
             entity = contexts.game.CreateEntity();
             expectedTitle = "Person.of.Interest.S04E08.720p.WEB.rus.LostFilm.TV";
         }
@@ -28,7 +28,7 @@ namespace MyGameTest
         {
             entity.AddSettings(expectedTitle);
 
-            system.Execute();
+            settingsSystem.Execute();
 
             Assert.True(entity.isDestroyed);
         }
@@ -48,7 +48,7 @@ namespace MyGameTest
 
             entity.AddSettings(expectedTitle);
 
-            system.Execute();
+            settingsSystem.Execute();
 
             Assert.True(File.Exists(expectedFileName));
         }
