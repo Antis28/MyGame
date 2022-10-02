@@ -5,10 +5,10 @@ using NUnit.Framework;
 namespace MyGameTest
 {
     [TestFixture]
-    public class SaveTests : nspec
+    public class SaveSystemTests : nspec
     {
         [Test]
-        public void WhenExecuting()
+        public void WhenAddSettings_DestroyAndSaveToFile_lastFileNameExpected()
         {
             var expected = "Person.of.Interest.S04E08.720p.WEB.rus.LostFilm.TV";
             var contexts = Contexts.sharedInstance;
