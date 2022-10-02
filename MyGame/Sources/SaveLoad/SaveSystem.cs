@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using Entitas;
 using Newtonsoft.Json;
 
@@ -29,5 +30,10 @@ public sealed class SaveSystem : ReactiveSystem<GameEntity>
         var entity = entities.SingleEntity();
         var lastFileName = JsonConvert.SerializeObject(entity.settings);
         entity.isDestroyed = true;
+
+        using (var sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\settings.json"))
+        {
+            sw.Write(lastFileName);
+        }
     }
 }
