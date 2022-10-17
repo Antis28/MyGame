@@ -31,8 +31,12 @@ namespace MyGame.Sources.Systems
             var addressInfo = entities.SingleEntity().addressInfo;
             // Запускаем TcpListener и начинаем слушать клиентов.
             var server = new TcpListener(addressInfo.ip, addressInfo.port);
-            server.Start();
-
+            try { server.Start(); } catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Console.WriteLine("Возможно уже запущен экземпляр на этом сокете");
+                throw;
+            }
 
             var serverEntity = _contexts.game.CreateEntity();
             serverEntity.AddServer(server, 0);
