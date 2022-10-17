@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Sockets;
 using Entitas;
 using MyGame.Sources.Debug;
 
@@ -22,25 +21,25 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
         public void Execute()
         {
-            foreach (GameEntity entity in _entities)
+            var entity = _entities.GetSingleEntity();
+
+            var client = entity.client.value;
+            // Получаем информацию от клиента
+            var stream = client.GetStream();
+
+            // Принимаем данные от клиента в цикле пока не дойдём до конца.
+            int count;
+            while ((count = stream.Read(bytes, 0, bytes.Length)) != 0)
             {
-                var client = entity.client.value;
-                // Получаем информацию от клиента
-                NetworkStream stream = client.GetStream();
+                // Преобразуем данные в UTF8 string.
+                data = System.Text.Encoding.UTF8.GetString(bytes, 0, count);
 
-                // Принимаем данные от клиента в цикле пока не дойдём до конца.
-                int count;
-                while ((count = stream.Read(bytes, 0, bytes.Length)) != 0)
-                {
-                    // Преобразуем данные в UTF8 string.
-                    data = System.Text.Encoding.UTF8.GetString(bytes, 0, count);
+                // Преобразуем полученную строку в массив Байт.
+                var msg = System.Text.Encoding.UTF8.GetBytes("Response: Success");
 
-                    // Преобразуем полученную строку в массив Байт.
-                    byte[] msg = System.Text.Encoding.UTF8.GetBytes("Response: Success");
+                // Отправляем данные обратно клиенту (ответ).
+                stream.Write(msg, 0, msg.Length);
 
-                    // Отправляем данные обратно клиенту (ответ).
-                    stream.Write(msg, 0, msg.Length);
-                }
 
                 // Закрываем соединение.
                 client.Close();
