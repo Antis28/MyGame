@@ -11,7 +11,7 @@ namespace MyGame.Sources.ClientProcessing.Systems
         private readonly IGroup<GameEntity> _entities;
 
         // Буфер для принимаемых данных.
-        Byte[] bytes = new Byte[1024];
+        readonly Byte[] bytes = new Byte[1024];
         String data = String.Empty;
 
 
@@ -19,32 +19,31 @@ namespace MyGame.Sources.ClientProcessing.Systems
         {
             _entities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Client));
         }
-
         public void Execute()
         {
             foreach (var entity in _entities)
             {
                 var client = entity.client.value;
                 // Принимаем данные от клиента в цикле пока не дойдём до конца и отправит ответ об успехе.
-                Read(client);
+                ReadAndSendSuccessAnswer(client);
 
-                // Закрываем соединение.
-                client.Close();
                 entity.isDestroyed = true;
 
+                // Выводим в журнал полученное сообщение
                 DebugHelper.CreateEntityMessage(data, GetType().Name);
+
                 // сохраняем полученное сообщение
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
                 messageEntity.AddMessage(data);
             }
         }
-
-        private void Read(TcpClient client)
+        
+        private void ReadAndSendSuccessAnswer(TcpClient client)
         {
-            // Получаем информацию от клиента
-            NetworkStream stream = client.GetStream();
             try
             {
+                // Получаем информацию от клиента
+                var stream = client.GetStream();
                 int count;
                 while ((count = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
@@ -52,39 +51,16 @@ namespace MyGame.Sources.ClientProcessing.Systems
                     data = System.Text.Encoding.UTF8.GetString(bytes, 0, count);
 
                     // Преобразуем полученную строку в массив Байт.
-                    byte[] msg = System.Text.Encoding.UTF8.GetBytes("Response: Success");
+                    var msg = System.Text.Encoding.UTF8.GetBytes("Response: Success");
 
                     // Отправляем данные обратно клиенту (ответ).
                     stream.Write(msg, 0, msg.Length);
                 }
-            } catch (Exception e)
+            } catch (Exception e) { Console.WriteLine(e); } finally
             {
-                Console.WriteLine(e);
+                // Закрываем соединение.
+                client.Close();
             }
         }
-
-        // public String Read(string backMessage)
-        // {
-        //     // Получаем информацию от клиента
-        //     stream = client.GetStream();
-        //
-        //     int i;
-        //     // Принимаем данные от клиента в цикле пока не дойдём до конца.
-        //     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-        //     {
-        //         // Преобразуем данные в UTF8 string.
-        //         data = System.Text.Encoding.UTF8.GetString(bytes, 0, i);
-        //         consoleV.ShowMessage(data);
-        //
-        //         // Преобразуем полученную строку в массив Байт.
-        //         byte[] msg = System.Text.Encoding.UTF8.GetBytes(backMessage);
-        //         
-        //         // Отправляем данные обратно клиенту (ответ).
-        //         stream.Write(msg, 0, msg.Length);
-        //     }
-        //     // Закрываем соединение.
-        //     client.Close();
-        //     return data;
-        // }
     }
 }
