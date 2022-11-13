@@ -21,6 +21,7 @@ public sealed class RootSystem : Feature
         Add(new ConverterMessagesSystem(contexts));
         Add(new SaveSettingsSystem(contexts));
         // Cleanup
+        Add(new ClearMessagesSystem(contexts));
         Add(new HandleDebugLogMessageSystem(contexts));
         Add(new DestroyDebugSystem(contexts));
         Add(new DestroyGameSystem(contexts));

@@ -242,6 +242,7 @@
         <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
         <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs" />
         <Compile Include="Sources\MessageHandling\Components\MessageComponent.cs" />
+        <Compile Include="Sources\MessageHandling\Systems\ClearMessagesSystem.cs" />
         <Compile Include="Sources\MessageHandling\Systems\ConverterMessagesSystem.cs" />
         <Compile Include="Sources\SaveLoad\LoadSettingsComponent.cs" />
         <Compile Include="Sources\SaveLoad\LoadSettingsSystem.cs" />
