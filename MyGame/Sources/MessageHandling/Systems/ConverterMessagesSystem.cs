@@ -59,9 +59,13 @@ namespace MyGame.Sources.Systems
             foreach (var entity in entities)
             {
                 if (!entity.hasMessage) { return; }
-
+                
                 var message = entity.message.value;
-                if (_keyCommands.ContainsKey(message)) { _keyCommands[message](); }
+                if (_keyCommands.ContainsKey(message))
+                {
+                    var actionCommand = _keyCommands[message];
+                    actionCommand();
+                }
                 else { throw new ArgumentException("Сообщение от клиента не распознано"); }
             }
         }

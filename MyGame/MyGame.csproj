@@ -96,30 +96,30 @@
         <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
         </Reference>
-        <Reference Include="mscorlib"/>
+        <Reference Include="mscorlib" />
         <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
             <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
         </Reference>
         <Reference Include="nunit.framework">
             <HintPath>..\..\..\..\CodeGenerator\Libraries\nunit.framework.dll</HintPath>
         </Reference>
-        <Reference Include="System"/>
+        <Reference Include="System" />
         <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.AppContext.4.1.0\lib\net463\System.AppContext.dll</HintPath>
         </Reference>
-        <Reference Include="System.ComponentModel.Composition"/>
+        <Reference Include="System.ComponentModel.Composition" />
         <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
         </Reference>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Data"/>
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
         <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
         </Reference>
         <Reference Include="System.Diagnostics.Tracing, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Diagnostics.Tracing.4.1.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
         </Reference>
-        <Reference Include="System.Drawing"/>
+        <Reference Include="System.Drawing" />
         <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
         </Reference>
@@ -129,7 +129,7 @@
         <Reference Include="System.IO.Compression, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
             <HintPath>..\packages\System.IO.Compression.4.1.0\lib\net46\System.IO.Compression.dll</HintPath>
         </Reference>
-        <Reference Include="System.IO.Compression.FileSystem"/>
+        <Reference Include="System.IO.Compression.FileSystem" />
         <Reference Include="System.IO.Compression.ZipFile, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
             <HintPath>..\packages\System.IO.Compression.ZipFile.4.0.1\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
         </Reference>
@@ -151,7 +151,7 @@
         <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
         </Reference>
-        <Reference Include="System.Numerics"/>
+        <Reference Include="System.Numerics" />
         <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
         </Reference>
@@ -170,7 +170,7 @@
         <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
         </Reference>
-        <Reference Include="System.Runtime.Serialization"/>
+        <Reference Include="System.Runtime.Serialization" />
         <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.1.1\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
         </Reference>
@@ -195,76 +195,76 @@
         <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Text.RegularExpressions.4.1.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
         </Reference>
-        <Reference Include="System.Xml"/>
-        <Reference Include="System.Xml.Linq"/>
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Xml.Linq" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Generated\Game\Components\GameServerComponent.cs"/>
-        <Compile Include="Generated\Meta\Components\MetaLogServiceComponent.cs"/>
-        <Compile Include="Generated\Meta\Components\MetaThreadServiceComponent.cs"/>
-        <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs"/>
-        <Compile Include="Generated\Game\Components\GameClientComponent.cs"/>
-        <Compile Include="Generated\Game\Components\GameLoadSettingsComponent.cs"/>
-        <Compile Include="Generated\Game\Components\GameSettingsComponent.cs"/>
-        <Compile Include="Generated\Game\Components\GameMessageComponent.cs"/>
-        <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs"/>
-        <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs"/>
-        <Compile Include="Generated\Meta\Components\MetaDestroyedComponent.cs"/>
-        <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs"/>
-        <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs"/>
-        <Compile Include="Generated\Components\Interfaces\IDestroyedEntity.cs"/>
-        <Compile Include="Generated\Game\GameComponentsLookup.cs"/>
-        <Compile Include="Generated\Debug\DebugComponentsLookup.cs"/>
-        <Compile Include="Generated\Meta\MetaComponentsLookup.cs"/>
-        <Compile Include="Generated\Game\GameAttribute.cs"/>
-        <Compile Include="Generated\Debug\DebugAttribute.cs"/>
-        <Compile Include="Generated\Meta\MetaAttribute.cs"/>
-        <Compile Include="Generated\Game\GameContext.cs"/>
-        <Compile Include="Generated\Debug\DebugContext.cs"/>
-        <Compile Include="Generated\Meta\MetaContext.cs"/>
-        <Compile Include="Generated\Game\GameMatcher.cs"/>
-        <Compile Include="Generated\Debug\DebugMatcher.cs"/>
-        <Compile Include="Generated\Meta\MetaMatcher.cs"/>
-        <Compile Include="Generated\Contexts.cs"/>
-        <Compile Include="Generated\Game\GameEntity.cs"/>
-        <Compile Include="Generated\Debug\DebugEntity.cs"/>
-        <Compile Include="Generated\Meta\MetaEntity.cs"/>
-        <Compile Include="Generated\Feature.cs"/>
+        <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
+        <Compile Include="Generated\Meta\Components\MetaLogServiceComponent.cs" />
+        <Compile Include="Generated\Meta\Components\MetaThreadServiceComponent.cs" />
+        <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs" />
+        <Compile Include="Generated\Game\Components\GameClientComponent.cs" />
+        <Compile Include="Generated\Game\Components\GameLoadSettingsComponent.cs" />
+        <Compile Include="Generated\Game\Components\GameSettingsComponent.cs" />
+        <Compile Include="Generated\Game\Components\GameMessageComponent.cs" />
+        <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
+        <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs" />
+        <Compile Include="Generated\Meta\Components\MetaDestroyedComponent.cs" />
+        <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs" />
+        <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
+        <Compile Include="Generated\Components\Interfaces\IDestroyedEntity.cs" />
+        <Compile Include="Generated\Game\GameComponentsLookup.cs" />
+        <Compile Include="Generated\Debug\DebugComponentsLookup.cs" />
+        <Compile Include="Generated\Meta\MetaComponentsLookup.cs" />
+        <Compile Include="Generated\Game\GameAttribute.cs" />
+        <Compile Include="Generated\Debug\DebugAttribute.cs" />
+        <Compile Include="Generated\Meta\MetaAttribute.cs" />
+        <Compile Include="Generated\Game\GameContext.cs" />
+        <Compile Include="Generated\Debug\DebugContext.cs" />
+        <Compile Include="Generated\Meta\MetaContext.cs" />
+        <Compile Include="Generated\Game\GameMatcher.cs" />
+        <Compile Include="Generated\Debug\DebugMatcher.cs" />
+        <Compile Include="Generated\Meta\MetaMatcher.cs" />
+        <Compile Include="Generated\Contexts.cs" />
+        <Compile Include="Generated\Game\GameEntity.cs" />
+        <Compile Include="Generated\Debug\DebugEntity.cs" />
+        <Compile Include="Generated\Meta\MetaEntity.cs" />
+        <Compile Include="Generated\Feature.cs" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Sources\Cleanup\Components\DestroyedComponent.cs"/>
-        <Compile Include="Sources\Cleanup\Systems\DestroyDebugSystem.cs"/>
-        <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs"/>
-        <Compile Include="Sources\ClientProcessing\Components\ClientComponent.cs"/>
-        <Compile Include="Sources\ClientProcessing\Systems\ReadClient.cs"/>
-        <Compile Include="Sources\Debug\Components\DebugLogComponent .cs"/>
-        <Compile Include="Sources\Debug\DebugHelper.cs"/>
-        <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs"/>
-        <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs"/>
-        <Compile Include="Sources\SaveLoad\LoadSettingsComponent.cs"/>
-        <Compile Include="Sources\SaveLoad\LoadSettingsSystem.cs"/>
-        <Compile Include="Sources\SaveLoad\SaveSettingsSystem.cs"/>
-        <Compile Include="Sources\SaveLoad\SettingsComponent.cs"/>
-        <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs"/>
-        <Compile Include="Sources\ServerCore\Components\MessageComponent.cs"/>
-        <Compile Include="Sources\ServerCore\Components\ServerComponent.cs"/>
-        <Compile Include="Sources\ServerCore\NotECS\ButtonClicker.cs"/>
-        <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs"/>
-        <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs"/>
-        <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs"/>
-        <Compile Include="Sources\ServerCore\Systems\ParallelProcessingSystem.cs"/>
-        <Compile Include="Sources\ServerCore\Systems\ConverterMessagesSystem.cs"/>
-        <Compile Include="Sources\Services\Components\LogServiceComponent.cs"/>
-        <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs"/>
-        <Compile Include="Sources\Services\Components\TimeServiceComponent.cs"/>
-        <Compile Include="Sources\Services\Implements\ConsoleLogService.cs"/>
-        <Compile Include="Sources\Services\Implements\JsonLogService.cs"/>
-        <Compile Include="Sources\Services\Implements\MyTimeService.cs"/>
-        <Compile Include="Sources\Services\Implements\ThreadService.cs"/>
-        <Compile Include="Sources\Services\ServicesRegister.cs"/>
-        <Compile Include="Sources\Services\Systems\RegisterLogServiceSystem.cs"/>
-        <Compile Include="Sources\Services\Systems\RegisterMultiThreadServiceSystem.cs"/>
-        <Compile Include="Sources\Services\Systems\RegisterTimeServiceSystem.cs"/>
+        <Compile Include="Sources\Cleanup\Components\DestroyedComponent.cs" />
+        <Compile Include="Sources\Cleanup\Systems\DestroyDebugSystem.cs" />
+        <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs" />
+        <Compile Include="Sources\ClientProcessing\Components\ClientComponent.cs" />
+        <Compile Include="Sources\ClientProcessing\Systems\ReadClient.cs" />
+        <Compile Include="Sources\Debug\Components\DebugLogComponent .cs" />
+        <Compile Include="Sources\Debug\DebugHelper.cs" />
+        <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
+        <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs" />
+        <Compile Include="Sources\MessageHandling\Components\MessageComponent.cs" />
+        <Compile Include="Sources\MessageHandling\Systems\ConverterMessagesSystem.cs" />
+        <Compile Include="Sources\SaveLoad\LoadSettingsComponent.cs" />
+        <Compile Include="Sources\SaveLoad\LoadSettingsSystem.cs" />
+        <Compile Include="Sources\SaveLoad\SaveSettingsSystem.cs" />
+        <Compile Include="Sources\SaveLoad\SettingsComponent.cs" />
+        <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />
+        <Compile Include="Sources\ServerCore\Components\ServerComponent.cs" />
+        <Compile Include="Sources\ServerCore\NotECS\ButtonClicker.cs" />
+        <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
+        <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />
+        <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />
+        <Compile Include="Sources\ServerCore\Systems\ParallelProcessingSystem.cs" />
+        <Compile Include="Sources\Services\Components\LogServiceComponent.cs" />
+        <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs" />
+        <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
+        <Compile Include="Sources\Services\Implements\ConsoleLogService.cs" />
+        <Compile Include="Sources\Services\Implements\JsonLogService.cs" />
+        <Compile Include="Sources\Services\Implements\MyTimeService.cs" />
+        <Compile Include="Sources\Services\Implements\ThreadService.cs" />
+        <Compile Include="Sources\Services\ServicesRegister.cs" />
+        <Compile Include="Sources\Services\Systems\RegisterLogServiceSystem.cs" />
+        <Compile Include="Sources\Services\Systems\RegisterMultiThreadServiceSystem.cs" />
+        <Compile Include="Sources\Services\Systems\RegisterTimeServiceSystem.cs" />
     </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Utils.cs" />
@@ -278,7 +278,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="App.config"/>
+        <None Include="App.config" />
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
