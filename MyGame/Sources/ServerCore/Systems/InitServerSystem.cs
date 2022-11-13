@@ -18,7 +18,7 @@ namespace MyGame.Sources.Systems
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.AddressInfo);
+            return context.CreateCollector(GameMatcher.AddressInfo);  
         }
 
         protected override bool Filter(GameEntity entity)
