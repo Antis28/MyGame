@@ -34,23 +34,22 @@ namespace MyGame.Sources.Systems
                 var server = entity.server.instance;
                 var clientNumber = entity.server.clientNumber;
 
-                if (!server.Pending())
-                {
-                    // var debugEntity = _contexts.debug.CreateEntity();
-                    // debugEntity.ReplaceDebugLog($"Sorry, no connection requests have arrived", nameof(ParallelProcessingSystem));
-                }
-                else
-                {
-                    //Accept the pending client connection and return a TcpClient object initialized for communication.
-                    // TcpClient tcpClient = server.AcceptTcpClient();
-                    //ThreadPool.QueueUserWorkItem(ProcessingRecivedData, server.AcceptTcpClient());
-                    ProcessingRecivedData(server.AcceptTcpClient());
-                    entity.ReplaceServer(server, ++clientNumber);
+                // if (!server.Pending())
+                // {
+                // вывод сообщения о том, что сервер ожидает запроса
+                // var debugEntity = _contexts.debug.CreateEntity();
+                // debugEntity.ReplaceDebugLog($"Sorry, no connection requests have arrived", nameof(ParallelProcessingSystem));
+                // }
+                // else
+                // {
+                //Accept the pending client connection and return a TcpClient object initialized for communication.
+                ProcessingRecivedData(server.AcceptTcpClient());
+                entity.ReplaceServer(server, ++clientNumber);
 
-                    var t = this;
-                    // Выводим информацию о подключении.
-                    _contexts.debug.CreateEntity().AddDebugLog($"Соединение №{clientNumber}!", GetType().Name);
-                }
+                var t = this;
+                // Выводим информацию о подключении.
+                _contexts.debug.CreateEntity().AddDebugLog($"Соединение №{clientNumber}!", GetType().Name);
+                // }
             }
         }
     }

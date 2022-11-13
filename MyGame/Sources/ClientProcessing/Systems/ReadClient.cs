@@ -22,15 +22,11 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
         public void Execute()
         {
-
             foreach (var entity in _entities)
             {
                 var client = entity.client.value;
-                // Получаем информацию от клиента
-                NetworkStream stream = client.GetStream();
-
-                // Принимаем данные от клиента в цикле пока не дойдём до конца.
-                Read(stream);
+                // Принимаем данные от клиента в цикле пока не дойдём до конца и отправит ответ об успехе.
+                Read(client);
 
                 // Закрываем соединение.
                 client.Close();
@@ -43,8 +39,10 @@ namespace MyGame.Sources.ClientProcessing.Systems
             }
         }
 
-        private void Read(NetworkStream stream)
+        private void Read(TcpClient client)
         {
+            // Получаем информацию от клиента
+            NetworkStream stream = client.GetStream();
             try
             {
                 int count;
