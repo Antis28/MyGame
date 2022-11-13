@@ -17,15 +17,6 @@ namespace MyGame.Sources.Systems
             _entities = contexts.game.GetGroup(GameMatcher.Server);
         }
 
-        private void ProcessingRecivedData(object client_obj)
-        {
-            if (client_obj == null) { throw new ArgumentNullException(); }
-
-            // Создаем сущность клиента для дальнейшей обработки системами
-            var e = _contexts.game.CreateEntity();
-            e.AddClient(client_obj as TcpClient);
-        }
-
         public void Execute()
         {
             foreach (GameEntity entity in _entities)
@@ -34,11 +25,21 @@ namespace MyGame.Sources.Systems
                 var server = entity.server.instance;
                 var clientNumber = entity.server.clientNumber;
 
+                // Есть ли ожидающие запросы
+                if (!server.Pending())
+                {
+                    // Запросов нет
+                    return;
+                }
+
                 //Accept the pending client connection and return a TcpClient object initialized for communication.
-                ProcessingRecivedData(server.AcceptTcpClient());
+                // Создаем сущность клиента для дальнейшей обработки системами
+                var listener = server.AcceptTcpClient();
+                var e = _contexts.game.CreateEntity();
+                e.AddClient(listener);
+
                 entity.ReplaceServer(server, ++clientNumber);
 
-                var t = this;
                 // Выводим информацию в журнал о подключении.
                 _contexts.debug.CreateEntity().AddDebugLog($"Соединение №{clientNumber}!", GetType().Name);
             }
