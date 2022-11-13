@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Sockets;
 using Entitas;
 using MyGame.Sources.Debug;
 
@@ -21,25 +22,15 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
         public void Execute()
         {
-            var entity = _entities.GetSingleEntity();
 
-            var client = entity.client.value;
-            // Получаем информацию от клиента
-            var stream = client.GetStream();
-
-            // Принимаем данные от клиента в цикле пока не дойдём до конца.
-            int count;
-            while ((count = stream.Read(bytes, 0, bytes.Length)) != 0)
+            foreach (var entity in _entities)
             {
-                // Преобразуем данные в UTF8 string.
-                data = System.Text.Encoding.UTF8.GetString(bytes, 0, count);
+                var client = entity.client.value;
+                // Получаем информацию от клиента
+                NetworkStream stream = client.GetStream();
 
-                // Преобразуем полученную строку в массив Байт.
-                var msg = System.Text.Encoding.UTF8.GetBytes("Response: Success");
-
-                // Отправляем данные обратно клиенту (ответ).
-                stream.Write(msg, 0, msg.Length);
-
+                // Принимаем данные от клиента в цикле пока не дойдём до конца.
+                Read(stream);
 
                 // Закрываем соединение.
                 client.Close();
@@ -49,6 +40,28 @@ namespace MyGame.Sources.ClientProcessing.Systems
                 // сохраняем полученное сообщение
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
                 messageEntity.AddMessage(data);
+            }
+        }
+
+        private void Read(NetworkStream stream)
+        {
+            try
+            {
+                int count;
+                while ((count = stream.Read(bytes, 0, bytes.Length)) != 0)
+                {
+                    // Преобразуем данные в UTF8 string.
+                    data = System.Text.Encoding.UTF8.GetString(bytes, 0, count);
+
+                    // Преобразуем полученную строку в массив Байт.
+                    byte[] msg = System.Text.Encoding.UTF8.GetBytes("Response: Success");
+
+                    // Отправляем данные обратно клиенту (ответ).
+                    stream.Write(msg, 0, msg.Length);
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
 

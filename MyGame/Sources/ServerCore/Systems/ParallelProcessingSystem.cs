@@ -43,7 +43,8 @@ namespace MyGame.Sources.Systems
                 {
                     //Accept the pending client connection and return a TcpClient object initialized for communication.
                     // TcpClient tcpClient = server.AcceptTcpClient();
-                    ThreadPool.QueueUserWorkItem(ProcessingRecivedData, server.AcceptTcpClient());
+                    //ThreadPool.QueueUserWorkItem(ProcessingRecivedData, server.AcceptTcpClient());
+                    ProcessingRecivedData(server.AcceptTcpClient());
                     entity.ReplaceServer(server, ++clientNumber);
 
                     var t = this;
