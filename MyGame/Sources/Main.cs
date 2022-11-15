@@ -4,6 +4,11 @@ using System.Threading;
 using MyGame.Sources.Services;
 using MyGame.Sources.Systems;
 using CrossConsole;
+using System;
+using System.Collections;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace MyGame.Sources
 {
@@ -22,7 +27,9 @@ namespace MyGame.Sources
             _systems.Initialize();
 
             context.game.CreateEntity().isLoadSettings = true;
-            Connect("hi");
+            //Connect("hi");
+
+            SendAllDiscNames();
 
             // для unity3D поместить в Update 
             while (true)
@@ -30,6 +37,37 @@ namespace MyGame.Sources
                 _systems.Execute();
                 Thread.Sleep(500);
             }
+        }
+
+        private void SendAllDiscNames()
+        {
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            string output = JsonConvert.SerializeObject(allDrives);
+            var res =
+                from driveInfo in allDrives
+                where driveInfo.DriveType.ToString() == "Fixed"
+                select $"{driveInfo.VolumeLabel} ({driveInfo.Name}) ";
+
+            Print(res.ToArray());
+            var t = Directory.GetDirectories(allDrives[0].Name);
+            Print(t);
+            
+            
+        }
+
+        private void Print(string text)
+        {
+            ConsoleCreator.CreateForDotNetFramework().ShowMessage(text);
+        }
+
+        private void Print(params string[] texts)
+        {
+            foreach (var text in texts) { Print(Path.GetFileName(text)); }
+        }
+
+        private void Print(params object[] objects)
+        {
+            foreach (var text in objects) { Print(text.ToString()); }
         }
 
         private static ServicesRegister GetServices()
@@ -49,17 +87,18 @@ namespace MyGame.Sources
                 //     new UnityPhysicsService()                  // raycast, checkcircle, checksphere etc.
             );
         }
-        static async void  Connect(String message)
+
+        static async void Connect(String message)
         {
             // Настраиваем его на IP нашего сервера и тот же порт.
-            String  server = "192.168.1.201";
+            String server = "192.168.1.201";
             Int32 port = 9090;
             try
             {
                 // Создаём TcpClient.
                 TcpClient client = new TcpClient();
                 await client.ConnectAsync(server, port);
-                
+
                 // Переводим наше сообщение в UTF8, а затем в массив Byte.
                 Byte[] data = System.Text.Encoding.UTF8.GetBytes(message);
                 // Получаем поток для чтения и записи данных.
@@ -77,13 +116,14 @@ namespace MyGame.Sources
                 Int32 bytes = await stream.ReadAsync(data, 0, data.Length);
                 var responseData = System.Text.Encoding.UTF8.GetString(data, 0, bytes);
                 ConsoleCreator.CreateForDotNetFramework().ShowMessage(responseData);
-                
+
                 // Закрываем всё.
                 stream.Close();
                 client.Close();
-            } catch (ArgumentNullException e) { ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); } catch (SocketException e)
+            } catch (ArgumentNullException
+                     e) { ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); } catch (SocketException e)
             {
-                ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); 
+                ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message);
             }
         }
     }
