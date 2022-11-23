@@ -18,6 +18,9 @@ namespace MyGame.Sources
 
         public void Start()
         {
+            var builder = new FileSystemBuilder();
+            builder.FillFileSystem();
+            
             var context = Contexts.sharedInstance;
 
             var services = new ServiceRootSystems(context, GetServices());
