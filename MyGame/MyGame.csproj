@@ -287,6 +287,12 @@
       <Content Include="Jenny.properties" />
       <Content Include="Sources\Services\Descripton Services.txt" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\MessegeObjects\MessegeObjects.csproj">
+        <Project>{ce7ce01e-7194-4f4c-ad35-425be691bb93}</Project>
+        <Name>MessegeObjects</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
