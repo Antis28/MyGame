@@ -15,7 +15,7 @@ public class FileSystemBuilder
     private FileSystem _fileSystem;
     private List<string> _exceptPath;
 
-    public void FillFileSystem()
+    public FileSystem FillFileSystem()
     {
         _exceptPath = ReadDirFromFile();
         _fileSystem = new FileSystem()
@@ -34,7 +34,8 @@ public class FileSystemBuilder
                 Files = new List<File>(),
             };
         _fileSystem.Disks.AddRange(disks);
-        FillDirectories(3);
+        FillDirectories(1);
+        return _fileSystem;
     }
 
     private void FillDirectories(int deep)

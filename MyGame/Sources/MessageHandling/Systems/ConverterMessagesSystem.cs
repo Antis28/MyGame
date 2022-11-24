@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
+using System.Text;
+using CrossConsole;
 using Entitas;
 using MyGame.Sources.ServerCore;
+using MyGame.Sources.ServerCore.Components;
+using Newtonsoft.Json;
 
 namespace MyGame.Sources.Systems
 {
@@ -13,6 +18,8 @@ namespace MyGame.Sources.Systems
     {
         private readonly Contexts _contexts;
         private readonly Dictionary<string, Action> _keyCommands;
+        private string _currentIp;
+        private int _currentPort;
 
         public ConverterMessagesSystem(Contexts contexts) : base(contexts.game)
         {
@@ -32,6 +39,7 @@ namespace MyGame.Sources.Systems
                 { "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
                 { "SaveName", CreateSettingsEntity },
+                { "GetFileSystem", SendFileSystemInJson },
             };
         }
 
@@ -59,8 +67,10 @@ namespace MyGame.Sources.Systems
             foreach (var entity in entities)
             {
                 if (!entity.hasMessage) { return; }
-                
+
                 var message = entity.message.value;
+                _currentIp = entity.message.ipClient;
+                _currentPort = entity.message.portClient;
                 if (_keyCommands.ContainsKey(message))
                 {
                     var actionCommand = _keyCommands[message];
@@ -69,6 +79,59 @@ namespace MyGame.Sources.Systems
                 else { throw new ArgumentException("Сообщение от клиента не распознано"); }
             }
         }
+
+        private void SendFileSystemInJson()
+        {
+            var builder = new FileSystemBuilder();
+            var fileSystem = builder.FillFileSystem();
+            var jsonText = JsonConvert.SerializeObject(fileSystem);
+            Connect(jsonText,_currentIp);
+        }
+
+        private async void Connect(string message, string ipAddress = "192.168.1.201", int port = 9090)
+        {
+            // Настраиваем его на IP нашего сервера и тот же порт.
+
+            try
+            {
+                // Создаём TcpClient.
+                TcpClient client = new TcpClient();
+                await client.ConnectAsync(ipAddress, port);
+
+                // Переводим наше сообщение в UTF8, а затем в массив Byte.
+                Byte[] responseData = System.Text.Encoding.UTF8.GetBytes(message);
+                
+                // Получаем поток для чтения и записи данных.
+                NetworkStream stream = client.GetStream();
+               
+                // Отправляем сообщение нашему серверу. 
+                await stream.WriteAsync(responseData, 0, responseData.Length);
+
+                // Получаем ответ от сервера.
+                // Буфер для хранения принятого массива bytes.
+                // responseData = new byte[512];
+                //
+                // int count;
+                // // StringBuilder для склеивания полученных данных в одну строку
+                // var response = new StringBuilder();
+                // // Можно читать всё сообщение.
+                // while ((count = stream.Read(responseData, 0, responseData.Length)) != 0)
+                // {
+                //     // Строка для хранения полученных UTF8 данных.
+                //     String dataStr = System.Text.Encoding.UTF8.GetString(responseData, 0, count);
+                //     response.Append(dataStr);
+                // }
+                //
+                // ConsoleCreator.CreateForDotNetFramework().ShowMessage(response.ToString());
+
+                // Закрываем всё.
+                stream.Close();
+                client.Close();
+            } catch (ArgumentNullException
+                     e) { ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); } catch (SocketException e)
+            {
+                ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message);
+            }
+        }
     }
 }
-                                                            

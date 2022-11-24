@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Sockets;
 using Entitas;
 using MyGame.Sources.Debug;
@@ -19,14 +20,21 @@ namespace MyGame.Sources.ClientProcessing.Systems
         {
             _entities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Client));
         }
+
         public void Execute()
         {
             foreach (var entity in _entities)
             {
                 var client = entity.client.value;
+                
+                // получит ip клиента
+                IPEndPoint ipep = (IPEndPoint)client.Client.RemoteEndPoint;
+                var ip = ipep.Address;
+                var port = ipep.Port;
+                
                 // Принимаем данные от клиента в цикле пока не дойдём до конца и отправит ответ об успехе.
                 ReadAndSendSuccessAnswer(client);
-
+                
                 entity.isDestroyed = true;
 
                 // Выводим в журнал полученное сообщение
@@ -34,10 +42,10 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
                 // сохраняем полученное сообщение
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
-                messageEntity.AddMessage(data);
+                messageEntity.AddMessage(data, ip.ToString(), port);
             }
         }
-        
+
         private void ReadAndSendSuccessAnswer(TcpClient client)
         {
             try

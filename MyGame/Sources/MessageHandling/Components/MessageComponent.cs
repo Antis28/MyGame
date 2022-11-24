@@ -9,6 +9,8 @@ namespace MyGame.Sources.ServerCore.Components
     public sealed class MessageComponent : IComponent
     {
         public string value;
+        public string ipClient;
+        public int portClient;
     }
 }
 
