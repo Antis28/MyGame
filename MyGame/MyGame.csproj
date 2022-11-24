@@ -1,273 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{06C783B8-2821-4A27-9C9B-E078216CF3F8}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>MyGame</RootNamespace>
-        <AssemblyName>MyGame</AssemblyName>
-        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
-        <LangVersion>default</LangVersion>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="Atlantis_CrossConsole">
-            <HintPath>..\..\_MyDLL\CrossConsole\CrossConsole\bin\Debug\Atlantis_CrossConsole.dll</HintPath>
-        </Reference>
-        <Reference Include="Atlantis_KeyEmulator">
-            <HintPath>..\..\_MyDLL\KeyEmulator\KeyEmulator\bin\Debug\Atlantis_KeyEmulator.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Analytics">
-            <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Analytics.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <HintPath>..\packages\DesperateDevs.Analytics.0.0.0\lib\net35\DesperateDevs.Analytics.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.CodeGeneration">
-            <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\DesperateDevs.CodeGeneration.0.0.0\lib\net35\DesperateDevs.CodeGeneration.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\DesperateDevs.CodeGeneration.CodeGenerator.0.0.0\lib\net35\DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Logging">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Logging.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Logging, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\DesperateDevs.Logging.0.0.0\lib\net20\DesperateDevs.Logging.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Serialization">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Serialization.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Serialization, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\DesperateDevs.Serialization.0.0.0\lib\net35\DesperateDevs.Serialization.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Utils">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Utils.dll</HintPath>
-        </Reference>
-        <Reference Include="DesperateDevs.Utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\DesperateDevs.Utils.0.0.0\lib\net35\DesperateDevs.Utils.dll</HintPath>
-        </Reference>
-        <Reference Include="Entitas">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.dll</HintPath>
-        </Reference>
-        <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\Entitas.1.13.0\lib\net35\Entitas.dll</HintPath>
-        </Reference>
-        <Reference Include="Entitas.CodeGeneration.Attributes">
-          <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.CodeGeneration.Attributes.dll</HintPath>
-        </Reference>
-        <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <HintPath>..\packages\Entitas.CodeGeneration.Attributes.1.13.0\lib\net35\Entitas.CodeGeneration.Attributes.dll</HintPath>
-        </Reference>
-        <Reference Include="Entitas.CodeGeneration.Plugins">
-            <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.CodeGeneration.Plugins.dll</HintPath>
-        </Reference>
-        <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <HintPath>..\packages\Entitas.CodeGeneration.Plugins.1.13.0\lib\net35\Entitas.CodeGeneration.Plugins.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
-        </Reference>
-        <Reference Include="mscorlib" />
-        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-            <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-        </Reference>
-        <Reference Include="nunit.framework">
-            <HintPath>..\..\..\..\CodeGenerator\Libraries\nunit.framework.dll</HintPath>
-        </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.AppContext.4.1.0\lib\net463\System.AppContext.dll</HintPath>
-        </Reference>
-        <Reference Include="System.ComponentModel.Composition" />
-        <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Diagnostics.Tracing, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Diagnostics.Tracing.4.1.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Drawing" />
-        <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.IO.4.1.0\lib\net462\System.IO.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.Compression, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.IO.Compression.4.1.0\lib\net46\System.IO.Compression.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.Compression.FileSystem" />
-        <Reference Include="System.IO.Compression.ZipFile, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.IO.Compression.ZipFile.4.0.1\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.FileSystem, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.IO.FileSystem.4.0.1\lib\net46\System.IO.FileSystem.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Net.Http, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Net.Http.4.1.0\lib\net46\System.Net.Http.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Numerics" />
-        <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Reflection.TypeExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Reflection.TypeExtensions.4.1.0\lib\net462\System.Reflection.TypeExtensions.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.Serialization" />
-        <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.1.1\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.Serialization.Xml, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Runtime.Serialization.Xml.4.1.1\lib\net46\System.Runtime.Serialization.Xml.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.2.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Security.Cryptography.Encoding.4.0.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Security.Cryptography.Primitives.4.0.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Text.Encodings.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Text.Encodings.Web.4.0.0\lib\netstandard1.0\System.Text.Encodings.Web.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\packages\System.Text.RegularExpressions.4.1.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Xml" />
-        <Reference Include="System.Xml.Linq" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
-        <Compile Include="Generated\Meta\Components\MetaLogServiceComponent.cs" />
-        <Compile Include="Generated\Meta\Components\MetaThreadServiceComponent.cs" />
-        <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs" />
-        <Compile Include="Generated\Game\Components\GameClientComponent.cs" />
-        <Compile Include="Generated\Game\Components\GameLoadSettingsComponent.cs" />
-        <Compile Include="Generated\Game\Components\GameSettingsComponent.cs" />
-        <Compile Include="Generated\Game\Components\GameMessageComponent.cs" />
-        <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
-        <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs" />
-        <Compile Include="Generated\Meta\Components\MetaDestroyedComponent.cs" />
-        <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs" />
-        <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
-        <Compile Include="Generated\Components\Interfaces\IDestroyedEntity.cs" />
-        <Compile Include="Generated\Game\GameComponentsLookup.cs" />
-        <Compile Include="Generated\Debug\DebugComponentsLookup.cs" />
-        <Compile Include="Generated\Meta\MetaComponentsLookup.cs" />
-        <Compile Include="Generated\Game\GameAttribute.cs" />
-        <Compile Include="Generated\Debug\DebugAttribute.cs" />
-        <Compile Include="Generated\Meta\MetaAttribute.cs" />
-        <Compile Include="Generated\Game\GameContext.cs" />
-        <Compile Include="Generated\Debug\DebugContext.cs" />
-        <Compile Include="Generated\Meta\MetaContext.cs" />
-        <Compile Include="Generated\Game\GameMatcher.cs" />
-        <Compile Include="Generated\Debug\DebugMatcher.cs" />
-        <Compile Include="Generated\Meta\MetaMatcher.cs" />
-        <Compile Include="Generated\Contexts.cs" />
-        <Compile Include="Generated\Game\GameEntity.cs" />
-        <Compile Include="Generated\Debug\DebugEntity.cs" />
-        <Compile Include="Generated\Meta\MetaEntity.cs" />
-        <Compile Include="Generated\Feature.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="Sources\Cleanup\Components\DestroyedComponent.cs" />
-        <Compile Include="Sources\Cleanup\Systems\DestroyDebugSystem.cs" />
-        <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs" />
-        <Compile Include="Sources\ClientProcessing\Components\ClientComponent.cs" />
-        <Compile Include="Sources\ClientProcessing\Systems\ReadClient.cs" />
-        <Compile Include="Sources\Debug\Components\DebugLogComponent .cs" />
-        <Compile Include="Sources\Debug\DebugHelper.cs" />
-        <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
-        <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs" />
-        <Compile Include="Sources\FileSystemBuilder.cs" />
-        <Compile Include="Sources\MessageHandling\Components\MessageComponent.cs" />
-        <Compile Include="Sources\MessageHandling\Systems\ClearMessagesSystem.cs" />
-        <Compile Include="Sources\MessageHandling\Systems\ConverterMessagesSystem.cs" />
-        <Compile Include="Sources\SaveLoad\LoadSettingsComponent.cs" />
-        <Compile Include="Sources\SaveLoad\LoadSettingsSystem.cs" />
-        <Compile Include="Sources\SaveLoad\SaveSettingsSystem.cs" />
-        <Compile Include="Sources\SaveLoad\SettingsComponent.cs" />
-        <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />
-        <Compile Include="Sources\ServerCore\Components\ServerComponent.cs" />
-        <Compile Include="Sources\ServerCore\NotECS\ButtonClicker.cs" />
-        <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
-        <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />
-        <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />
-        <Compile Include="Sources\ServerCore\Systems\ParallelProcessingSystem.cs" />
-        <Compile Include="Sources\Services\Components\LogServiceComponent.cs" />
-        <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs" />
-        <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
-        <Compile Include="Sources\Services\Implements\ConsoleLogService.cs" />
-        <Compile Include="Sources\Services\Implements\JsonLogService.cs" />
-        <Compile Include="Sources\Services\Implements\MyTimeService.cs" />
-        <Compile Include="Sources\Services\Implements\ThreadService.cs" />
-        <Compile Include="Sources\Services\ServicesRegister.cs" />
-        <Compile Include="Sources\Services\Systems\RegisterLogServiceSystem.cs" />
-        <Compile Include="Sources\Services\Systems\RegisterMultiThreadServiceSystem.cs" />
-        <Compile Include="Sources\Services\Systems\RegisterTimeServiceSystem.cs" />
-    </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06C783B8-2821-4A27-9C9B-E078216CF3F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyGame</RootNamespace>
+    <AssemblyName>MyGame</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atlantis_CrossConsole">
+      <HintPath>..\..\_MyDLL\CrossConsole\CrossConsole\bin\Debug\Atlantis_CrossConsole.dll</HintPath>
+    </Reference>
+    <Reference Include="Atlantis_KeyEmulator">
+      <HintPath>..\..\..\..\My_Progi\C#\_MyDLL\KeyEmulator\KeyEmulator\bin\Debug\Atlantis_KeyEmulator.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Analytics">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DesperateDevs.Analytics.0.0.0\lib\net35\DesperateDevs.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DesperateDevs.CodeGeneration.0.0.0\lib\net35\DesperateDevs.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.CodeGeneration.CodeGenerator, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DesperateDevs.CodeGeneration.CodeGenerator.0.0.0\lib\net35\DesperateDevs.CodeGeneration.CodeGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Logging">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Logging, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DesperateDevs.Logging.0.0.0\lib\net20\DesperateDevs.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Serialization">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Serialization, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DesperateDevs.Serialization.0.0.0\lib\net35\DesperateDevs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Utils">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\DesperateDevs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="DesperateDevs.Utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DesperateDevs.Utils.0.0.0\lib\net35\DesperateDevs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Entitas.1.13.0\lib\net35\Entitas.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Attributes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Entitas.CodeGeneration.Attributes.1.13.0\lib\net35\Entitas.CodeGeneration.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Plugins">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\Entitas.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Entitas.CodeGeneration.Plugins.1.13.0\lib\net35\Entitas.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\CodeGenerator\Libraries\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.1.0\lib\net463\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Tracing.4.1.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.1.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.1.0\lib\net46\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.0.1\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.0.1\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.1.0\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.TypeExtensions.4.1.0\lib\net462\System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.1.1\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Xml.4.1.1\lib\net46\System.Runtime.Serialization.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.2.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.0.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.0.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.0.0\lib\netstandard1.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.1.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generated\Game\Components\GameServerComponent.cs" />
+    <Compile Include="Generated\Meta\Components\MetaLogServiceComponent.cs" />
+    <Compile Include="Generated\Meta\Components\MetaThreadServiceComponent.cs" />
+    <Compile Include="Generated\Meta\Components\MetaTimeServiceComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameClientComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameMessageComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameLoadSettingsComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameSettingsComponent.cs" />
+    <Compile Include="Generated\Debug\Components\DebugDestroyedComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameDestroyedComponent.cs" />
+    <Compile Include="Generated\Meta\Components\MetaDestroyedComponent.cs" />
+    <Compile Include="Generated\Debug\Components\DebugDebugLogComponent.cs" />
+    <Compile Include="Generated\Game\Components\GameAddressInfoComponent.cs" />
+    <Compile Include="Generated\Components\Interfaces\IDestroyedEntity.cs" />
+    <Compile Include="Generated\Game\GameComponentsLookup.cs" />
+    <Compile Include="Generated\Debug\DebugComponentsLookup.cs" />
+    <Compile Include="Generated\Meta\MetaComponentsLookup.cs" />
+    <Compile Include="Generated\Game\GameAttribute.cs" />
+    <Compile Include="Generated\Debug\DebugAttribute.cs" />
+    <Compile Include="Generated\Meta\MetaAttribute.cs" />
+    <Compile Include="Generated\Game\GameContext.cs" />
+    <Compile Include="Generated\Debug\DebugContext.cs" />
+    <Compile Include="Generated\Meta\MetaContext.cs" />
+    <Compile Include="Generated\Game\GameMatcher.cs" />
+    <Compile Include="Generated\Debug\DebugMatcher.cs" />
+    <Compile Include="Generated\Meta\MetaMatcher.cs" />
+    <Compile Include="Generated\Contexts.cs" />
+    <Compile Include="Generated\Game\GameEntity.cs" />
+    <Compile Include="Generated\Debug\DebugEntity.cs" />
+    <Compile Include="Generated\Meta\MetaEntity.cs" />
+    <Compile Include="Generated\Feature.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sources\Cleanup\Components\DestroyedComponent.cs" />
+    <Compile Include="Sources\Cleanup\Systems\DestroyDebugSystem.cs" />
+    <Compile Include="Sources\Cleanup\Systems\DestroyGameSystem.cs" />
+    <Compile Include="Sources\ClientProcessing\Components\ClientComponent.cs" />
+    <Compile Include="Sources\ClientProcessing\Systems\ReadClient.cs" />
+    <Compile Include="Sources\Debug\Components\DebugLogComponent .cs" />
+    <Compile Include="Sources\Debug\DebugHelper.cs" />
+    <Compile Include="Sources\Debug\Systems\HandleDebugLogMessageSystem.cs" />
+    <Compile Include="Sources\Debug\Systems\ShowAllInContextSystem.cs" />
+    <Compile Include="Sources\FileSystemBuilder.cs" />
+    <Compile Include="Sources\MessageHandling\Components\MessageComponent.cs" />
+    <Compile Include="Sources\MessageHandling\Systems\ClearMessagesSystem.cs" />
+    <Compile Include="Sources\MessageHandling\Systems\ConverterMessagesSystem.cs" />
+    <Compile Include="Sources\SaveLoad\LoadSettingsComponent.cs" />
+    <Compile Include="Sources\SaveLoad\LoadSettingsSystem.cs" />
+    <Compile Include="Sources\SaveLoad\SaveSettingsSystem.cs" />
+    <Compile Include="Sources\SaveLoad\SettingsComponent.cs" />
+    <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />
+    <Compile Include="Sources\ServerCore\Components\ServerComponent.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\ButtonClicker.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStates.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStateCodes.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
+    <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />
+    <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />
+    <Compile Include="Sources\ServerCore\Systems\ParallelProcessingSystem.cs" />
+    <Compile Include="Sources\Services\Components\LogServiceComponent.cs" />
+    <Compile Include="Sources\Services\Components\ThreadServiceComponent.cs" />
+    <Compile Include="Sources\Services\Components\TimeServiceComponent.cs" />
+    <Compile Include="Sources\Services\Implements\ConsoleLogService.cs" />
+    <Compile Include="Sources\Services\Implements\JsonLogService.cs" />
+    <Compile Include="Sources\Services\Implements\MyTimeService.cs" />
+    <Compile Include="Sources\Services\Implements\ThreadService.cs" />
+    <Compile Include="Sources\Services\ServicesRegister.cs" />
+    <Compile Include="Sources\Services\Systems\RegisterLogServiceSystem.cs" />
+    <Compile Include="Sources\Services\Systems\RegisterMultiThreadServiceSystem.cs" />
+    <Compile Include="Sources\Services\Systems\RegisterTimeServiceSystem.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Sources\Utils.cs" />
     <Compile Include="Sources\_Roots_features\RootSystem.cs" />
@@ -276,31 +278,30 @@
   <ItemGroup>
     <Compile Include="Sources\Main.cs" />
   </ItemGroup>
-    <ItemGroup>
-        <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Include="App.config" />
-      <None Include="packages.config" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="any\any\icon.png" />
-      <Content Include="Jenny.properties" />
-      <Content Include="Sources\Services\Descripton Services.txt" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\MessegeObjects\MessegeObjects.csproj">
-        <Project>{ce7ce01e-7194-4f4c-ad35-425be691bb93}</Project>
-        <Name>MessegeObjects</Name>
-      </ProjectReference>
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="any\any\icon.png" />
+    <Content Include="Jenny.properties" />
+    <Content Include="Sources\Services\Descripton Services.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MessegeObjects\MessegeObjects.csproj">
+      <Project>{ce7ce01e-7194-4f4c-ad35-425be691bb93}</Project>
+      <Name>MessegeObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
     </Target>
     <Target Name="AfterBuild">
     </Target>
     -->
-
 </Project>

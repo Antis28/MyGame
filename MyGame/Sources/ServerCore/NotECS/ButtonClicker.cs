@@ -1,61 +1,62 @@
-﻿using System;
-using KeyboardEmulator;
+﻿using KeyboardEmulator;
+using MyGame.Sources.ServerCore.KeyState;
+using MyGame.Sources.ServerCore.KeyStateCode;
 
 namespace MyGame.Sources.ServerCore
 {
-    internal static class ButtonClicker
+    internal static partial class ButtonClicker
     {
         public static void MoveRightClick()
         {
-            EmulateKeyDown(new MoveRight());
+            EmulateKeyPress(new MoveRight());
         }
 
         public static void MoveRight10Click()
         {
-            EmulateKeyDown(new MoveRight10());
+            EmulateSendKey(new PressShift(), new PressPageDown() );
         }
 
         public static void MoveLeftClick()
         {
-            EmulateKeyDown(new MoveLeft());
+            EmulateKeyPress(new MoveLeft());
         }
 
         public static void MoveLeft10Click()
         {
-            EmulateKeyDown(new MoveLeft10());
+            EmulateSendKey(new PressShift(), new PressPageUp());
         }
 
         public static void MuteClick()
         {
-            EmulateKeyDown(new Mute());
+            EmulateKeyPress(new Mute());
         }
 
         public static void PageDownClick()
         {
-            EmulateKeyDown(new PageDown());
+            EmulateKeyPress(new PageDown());
         }
 
         public static void PageUpClick()
         {
-            EmulateKeyDown(new PageUp());
+            EmulateKeyPress(new PageUp());
         }
 
         public static void PausePlayClick()
         {
-            EmulateKeyDown(new PausePlay());
+            EmulateKeyPress(new PausePlay());
         }
 
         public static void VolumeDownClick()
         {
-            EmulateKeyDown(new VolumeDown());
+            EmulateKeyPress(new VolumeDown());
         }
 
         public static void VolumeUpClick()
         {
-            EmulateKeyDown(new VolumeUp());
+            EmulateKeyPress(new VolumeUp());
         }
 
-        private static void EmulateKeyDown(KeyState state)
+        private static void EmulateKeyPress(IKeyState state)
         {
             var procFinder = new ProcessFinder();
             var hWnd = procFinder.GetActiveProcesses();
@@ -64,83 +65,16 @@ namespace MyGame.Sources.ServerCore
             for (int i = 0; i < state.Repeat; i++) { emul.PostClick(hWnd, state.VKey); }
         }
 
-        #region Nested Types
-
-        private interface KeyState
+        private static void EmulateSendKey(IKeyStateCode state1, IKeyStateCode state2)
         {
-            int Repeat { get; }
-            Int32 VKey { get; }
+            KeyEmul emul = new KeyEmul();
+
+            for (int i = 0; i < state1.Repeat; i++)
+            {
+                emul.SendInput(state1.VKey, state2.VKey);
+            }
         }
 
-        private struct MoveLeft : KeyState
-        {
-            public int VKey => (int)VirtualKeys.LEFT;
-
-            public int Repeat => 1;
-        }
-
-        private struct MoveLeft10 : KeyState
-        {
-            public int VKey => (int)VirtualKeys.LEFT;
-            public new int Repeat => 10;
-        }
-
-
-        private struct MoveRight : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.RIGHT;
-
-            public int Repeat => 1;
-        }
-
-        private struct MoveRight10 : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.RIGHT;
-            public int Repeat => 10;
-        }
-
-        private struct Mute : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.KEY_M;
-
-            public int Repeat => 1;
-        }
-
-        private struct PageDown : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.NEXT;
-
-            public int Repeat => 1;
-        }
-
-        private struct PageUp : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.PRIOR;
-
-            public int Repeat => 1;
-        }
-
-        private struct PausePlay : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.SPACE;
-
-            public int Repeat => 1;
-        }
-
-        private struct VolumeDown : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.DOWN;
-
-            public int Repeat => 1;
-        }
-
-        private struct VolumeUp : KeyState
-        {
-            public int VKey => (Int32)VirtualKeys.UP;
-
-            public int Repeat => 1;
-        }
-
-        #endregion
+       
     }
 }
