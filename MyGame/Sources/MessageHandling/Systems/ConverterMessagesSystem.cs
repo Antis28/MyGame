@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using CrossConsole;
 using Entitas;
 using MyGame.Sources.ServerCore;
@@ -80,49 +82,27 @@ namespace MyGame.Sources.Systems
             }
         }
 
-        private void SendFileSystemInJson()
+        private async void SendFileSystemInJson()
         {
             var builder = new FileSystemBuilder();
             var fileSystem = builder.FillFileSystem();
             var jsonText = JsonConvert.SerializeObject(fileSystem);
-            Connect(jsonText,_currentIp);
+            await Connect(jsonText, _currentIp).ConfigureAwait(false);
         }
 
-        private async void Connect(string message, string ipAddress = "192.168.1.201", int port = 9090)
+        private async Task Connect(string message, string ipAddress = "192.168.1.201", int port = 9090)
         {
             // Настраиваем его на IP нашего сервера и тот же порт.
-
             try
             {
                 // Создаём TcpClient.
                 TcpClient client = new TcpClient();
-                await client.ConnectAsync(ipAddress, port);
-
-                // Переводим наше сообщение в UTF8, а затем в массив Byte.
-                Byte[] responseData = System.Text.Encoding.UTF8.GetBytes(message);
-                
-                // Получаем поток для чтения и записи данных.
-                NetworkStream stream = client.GetStream();
+                await client.ConnectAsync(ipAddress, port).ConfigureAwait(false);
                
-                // Отправляем сообщение нашему серверу. 
-                await stream.WriteAsync(responseData, 0, responseData.Length);
+                // Получаем поток для чтения и записи данных.
+                var stream = client.GetStream();
 
-                // Получаем ответ от сервера.
-                // Буфер для хранения принятого массива bytes.
-                // responseData = new byte[512];
-                //
-                // int count;
-                // // StringBuilder для склеивания полученных данных в одну строку
-                // var response = new StringBuilder();
-                // // Можно читать всё сообщение.
-                // while ((count = stream.Read(responseData, 0, responseData.Length)) != 0)
-                // {
-                //     // Строка для хранения полученных UTF8 данных.
-                //     String dataStr = System.Text.Encoding.UTF8.GetString(responseData, 0, count);
-                //     response.Append(dataStr);
-                // }
-                //
-                // ConsoleCreator.CreateForDotNetFramework().ShowMessage(response.ToString());
+                await SendToMobileServer(message, stream);
 
                 // Закрываем всё.
                 stream.Close();
@@ -132,6 +112,46 @@ namespace MyGame.Sources.Systems
             {
                 ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message);
             }
+        }
+
+
+        private static async Task SendToMobileServer(string message, Stream stream)
+        {
+            // Переводим наше сообщение в UTF8, а затем в массив Byte.
+            Byte[] responseData = Encoding.UTF8.GetBytes(message);
+
+            // Отправляем сообщение нашему мобильному серверу. 
+            stream.Write(responseData, 0, responseData.Length);
+            await GetAnswerFromMobileAnswer(stream).ConfigureAwait(false);
+        }
+
+        private static async Task GetAnswerFromMobileAnswer(Stream stream)
+        {
+            // // Получаем ответ от сервера.
+            // Буфер для хранения принятого массива bytes.
+            Byte[] responseData = new byte[512];
+
+            int count = 0;
+            // StringBuilder для склеивания полученных данных в одну строку
+            var response = new StringBuilder();
+
+            // !!! deadlock !!!!
+            // Можно читать всё сообщение. 
+            while (true)
+            {
+                var length = responseData.Length;
+                bool isContinue = stream != null &&
+                                  (count = await stream.ReadAsync(responseData, 0, length)) != 0;
+                if (!isContinue) break;
+
+                // Строка для хранения полученных UTF8 данных.
+                var dataStr = Encoding.UTF8.GetString(responseData, 0, count);
+                response.Append(dataStr);
+                SendToMobileServer("Response: Success", stream);
+                if (dataStr == "Response: Success") { break; }
+            }
+
+            ConsoleCreator.CreateForDotNetFramework().ShowMessage(response.ToString());
         }
     }
 }
