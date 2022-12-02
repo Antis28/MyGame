@@ -34,7 +34,7 @@ public class FileSystemBuilder
                 Files = new List<File>(),
             };
         _fileSystem.Disks.AddRange(disks);
-        FillDirectories(2);
+        FillDirectories(3);
         return _fileSystem;
     }
 
