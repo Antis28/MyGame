@@ -87,7 +87,13 @@ namespace MyGame.Sources.Systems
             var builder = new FileSystemBuilder();
             var fileSystem = builder.FillFileSystem();
             var jsonText = JsonConvert.SerializeObject(fileSystem);
-            await Connect(jsonText, _currentIp).ConfigureAwait(false);
+            try
+            {
+                await Connect(jsonText, _currentIp).ConfigureAwait(false);
+            } catch (Exception e)
+            {
+                ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message);
+            }
         }
 
         private async Task Connect(string message, string ipAddress = "192.168.1.201", int port = 9090)
@@ -96,22 +102,44 @@ namespace MyGame.Sources.Systems
             try
             {
                 // Создаём TcpClient.
-                TcpClient client = new TcpClient();
-                await client.ConnectAsync(ipAddress, port).ConfigureAwait(false);
-               
-                // Получаем поток для чтения и записи данных.
-                var stream = client.GetStream();
+                TcpClient tcpClient = new TcpClient();
+                await tcpClient.ConnectAsync(ipAddress, port); // соединение
+                NetworkStream networkStream = tcpClient.GetStream();
+                StreamWriter writer = new StreamWriter(networkStream, Encoding.UTF8);
+                StreamReader reader = new StreamReader(networkStream, Encoding.UTF8);
+                writer.AutoFlush = true;
 
-                await SendToMobileServer(message, stream);
+                await writer.WriteLineAsync(message);
+                
+                string response = await reader.ReadLineAsync();
+                tcpClient.Close();
+                ConsoleCreator.CreateForDotNetFramework().ShowMessage(response);
+                // return response;
 
-                // Закрываем всё.
-                stream.Close();
-                client.Close();
-            } catch (ArgumentNullException
-                     e) { ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); } catch (SocketException e)
-            {
-                ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message);
-            }
+
+                // while (true)
+                // {
+                //     string request = await reader.ReadLineAsync();
+                //     if (request != null)
+                //     {
+                //         Console.WriteLine("Received service request: " + request);
+                //         string response = Response(request);
+                //         Console.WriteLine("Computed response is: " + response + "\n");
+                //         await writer.WriteLineAsync(message);
+                //     }
+                //     else
+                //         break; // клиент закрыл соединение
+                // }
+                //
+                // tcpClient.Close();
+
+
+                // await SendToMobileServer(message, stream);
+                //
+                // // Закрываем всё.
+                // stream.Close();
+                // tcpClient.Close();
+            } catch (Exception e) { ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); } 
         }
 
 
