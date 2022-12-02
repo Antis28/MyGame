@@ -6,52 +6,52 @@ namespace MyGame.Sources.ServerCore
 {
     internal static partial class ButtonClicker
     {
-        public static void MoveRightClick()
+        public static void MoveRightClick(string _)
         {
             EmulateKeyPress(new MoveRight());
         }
 
-        public static void MoveRight10Click()
+        public static void MoveRight10Click(string _)
         {
             EmulateSendKey(new PressShift(), new PressPageDown() );
         }
 
-        public static void MoveLeftClick()
+        public static void MoveLeftClick(string _)
         {
             EmulateKeyPress(new MoveLeft());
         }
 
-        public static void MoveLeft10Click()
+        public static void MoveLeft10Click(string _)
         {
             EmulateSendKey(new PressShift(), new PressPageUp());
         }
 
-        public static void MuteClick()
+        public static void MuteClick(string _)
         {
             EmulateKeyPress(new Mute());
         }
 
-        public static void PageDownClick()
+        public static void PageDownClick(string _)
         {
             EmulateKeyPress(new PageDown());
         }
 
-        public static void PageUpClick()
+        public static void PageUpClick(string _)
         {
             EmulateKeyPress(new PageUp());
         }
 
-        public static void PausePlayClick()
+        public static void PausePlayClick(string _)
         {
             EmulateKeyPress(new PausePlay());
         }
 
-        public static void VolumeDownClick()
+        public static void VolumeDownClick(string _)
         {
             EmulateKeyPress(new VolumeDown());
         }
 
-        public static void VolumeUpClick()
+        public static void VolumeUpClick(string _)
         {
             EmulateKeyPress(new VolumeUp());
         }

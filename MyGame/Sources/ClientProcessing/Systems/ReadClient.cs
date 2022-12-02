@@ -2,7 +2,9 @@
 using System.Net;
 using System.Net.Sockets;
 using Entitas;
+using MessageObjects;
 using MyGame.Sources.Debug;
+using Newtonsoft.Json;
 
 namespace MyGame.Sources.ClientProcessing.Systems
 {
@@ -34,7 +36,7 @@ namespace MyGame.Sources.ClientProcessing.Systems
                 
                 // Принимаем данные от клиента в цикле пока не дойдём до конца и отправит ответ об успехе.
                 ReadAndSendSuccessAnswer(client);
-                
+
                 entity.isDestroyed = true;
 
                 // Выводим в журнал полученное сообщение
@@ -42,7 +44,15 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
                 // сохраняем полученное сообщение
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
-                messageEntity.AddMessage(data, ip.ToString(), port);
+                
+                CommandMessage deserializedMessage;
+                try { deserializedMessage = JsonConvert.DeserializeObject<CommandMessage>(data); } catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return;
+                }
+
+                messageEntity.AddMessage(deserializedMessage, ip.ToString(), port);
             }
         }
 

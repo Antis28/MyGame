@@ -14,14 +14,14 @@ namespace MyGame.Sources.ServerCore
         [DllImport("Powrprof.dll", CharSet=CharSet.Auto, ExactSpelling=true)]
         private static extern bool SetSuspendState(bool hibernate, bool forceCritical, bool disableWakeEvent);
 
-        public static void GoHibernateMode()
+        public static void GoHibernateMode(string _)
         {
             SetSuspendState(true, true, true);
             // Hibernate for winforms
             // Application.SetSuspendState(PowerState.Hibernate, true, true);
 
         }
-        public static void GoStandbyMode()
+        public static void GoStandbyMode(string _)
         {
             SetSuspendState(false, true, true);
             // Standby for winforms

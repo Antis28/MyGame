@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using MessageObjects;
 
 namespace MyGame.Sources.ServerCore.Components
 {
@@ -8,7 +9,7 @@ namespace MyGame.Sources.ServerCore.Components
     /// </summary>
     public sealed class MessageComponent : IComponent
     {
-        public string value;
+        public ICommandMessage value;
         public string ipClient;
         public int portClient;
     }

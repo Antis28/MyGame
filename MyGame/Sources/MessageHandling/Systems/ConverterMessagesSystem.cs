@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
@@ -7,7 +8,6 @@ using System.Threading.Tasks;
 using CrossConsole;
 using Entitas;
 using MyGame.Sources.ServerCore;
-using MyGame.Sources.ServerCore.Components;
 using Newtonsoft.Json;
 
 namespace MyGame.Sources.Systems
@@ -19,14 +19,14 @@ namespace MyGame.Sources.Systems
     public sealed class ConverterMessagesSystem : ReactiveSystem<GameEntity>
     {
         private readonly Contexts _contexts;
-        private readonly Dictionary<string, Action> _keyCommands;
+        private readonly Dictionary<string, Action<string>> _keyCommands;
         private string _currentIp;
         private int _currentPort;
 
         public ConverterMessagesSystem(Contexts contexts) : base(contexts.game)
         {
             _contexts = contexts;
-            _keyCommands = new Dictionary<string, Action>()
+            _keyCommands = new Dictionary<string, Action<string>>()
             {
                 { "Right x 10", ButtonClicker.MoveRight10Click },
                 { "Left x 10", ButtonClicker.MoveLeft10Click },
@@ -42,10 +42,18 @@ namespace MyGame.Sources.Systems
                 { "StandBy", SleepMode.GoStandbyMode },
                 { "SaveName", CreateSettingsEntity },
                 { "GetFileSystem", SendFileSystemInJson },
+                { "ExecutableFile", ExecutableFile },
             };
         }
 
-        private static void CreateSettingsEntity()
+        private void ExecutableFile(string path)
+        {
+            ConsoleCreator.CreateForDotNetFramework().ShowMessage("exe -> " + path);
+            
+            Process.Start(path);
+        }
+
+        private static void CreateSettingsEntity(string _)
         {
             var procFinder = new KeyboardEmulator.ProcessFinder();
             var process = procFinder.GetActiveProcess();
@@ -73,16 +81,18 @@ namespace MyGame.Sources.Systems
                 var message = entity.message.value;
                 _currentIp = entity.message.ipClient;
                 _currentPort = entity.message.portClient;
-                if (_keyCommands.ContainsKey(message))
+                var command = message.Command;
+                var argument = message.Argument;
+                if (_keyCommands.ContainsKey(command))
                 {
-                    var actionCommand = _keyCommands[message];
-                    actionCommand();
+                    var actionCommand = _keyCommands[command];
+                    actionCommand(argument);
                 }
                 else { throw new ArgumentException("Сообщение от клиента не распознано"); }
             }
         }
 
-        private async void SendFileSystemInJson()
+        private async void SendFileSystemInJson(string _)
         {
             var builder = new FileSystemBuilder();
             var fileSystem = builder.FillFileSystem();
@@ -114,31 +124,7 @@ namespace MyGame.Sources.Systems
                 string response = await reader.ReadLineAsync();
                 tcpClient.Close();
                 ConsoleCreator.CreateForDotNetFramework().ShowMessage(response);
-                // return response;
-
-
-                // while (true)
-                // {
-                //     string request = await reader.ReadLineAsync();
-                //     if (request != null)
-                //     {
-                //         Console.WriteLine("Received service request: " + request);
-                //         string response = Response(request);
-                //         Console.WriteLine("Computed response is: " + response + "\n");
-                //         await writer.WriteLineAsync(message);
-                //     }
-                //     else
-                //         break; // клиент закрыл соединение
-                // }
-                //
-                // tcpClient.Close();
-
-
-                // await SendToMobileServer(message, stream);
-                //
-                // // Закрываем всё.
-                // stream.Close();
-                // tcpClient.Close();
+               
             } catch (Exception e) { ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); } 
         }
 
