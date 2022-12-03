@@ -1,5 +1,7 @@
- M:\My_projects\!_Unity\MyRemoteControl\MyGame> 
+﻿ M:\My_projects\!_Unity\MyRemoteControl\MyGame> 
  
  
  cd MyGame
  Jenny\jenny.exe client gen
+ 
+

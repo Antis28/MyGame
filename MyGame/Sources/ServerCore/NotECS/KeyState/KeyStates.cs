@@ -22,7 +22,7 @@ internal struct MoveLeft : IKeyState
 internal struct MoveLeft10 : IKeyState
 {
     public int VKey => (int)VirtualKeys.LEFT;
-    public new int Repeat => 10;
+    public int Repeat => 10;
 }
 
 internal struct MoveRight : IKeyState

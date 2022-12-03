@@ -1,11 +1,12 @@
-﻿namespace MyGame.Sources.Services
+﻿#pragma warning disable CS0169
+namespace MyGame.Sources.Services
 {
     public class JsonLogService : ILogService
     {
-        string filepath;
-        string filename;
+        private string _filepath;
+        private string _filename;
 
-        bool prettyPrint;
+        private bool _prettyPrint;
 
         // etc...
         public void LogMessage(string message)
