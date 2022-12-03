@@ -1,54 +1,100 @@
-﻿namespace MyGame.Sources.ServerCore;
+﻿using KeyboardEmulator.ForPostMessage;
+using MyGame.Sources.ServerCore.KeyState;
+using MyGame.Sources.ServerCore.NotECS.KeyState;
+using System;
+using KeyboardEmulator.ForSendInput;
+using MyGame.Sources.ServerCore.KeyStateCode;
 
-class PlayerNavigator : IPlayerNavigator
+namespace MyGame.Sources.ServerCore;
+
+internal class YouTubePlayerNavigator : IPlayerNavigator
 {
-    public void MoveRightClick(ArgumentAction _)
+    public void MoveRight() =>  KeyEmulator.EmulateSendKey(new MoveRightStruct());
+    public void MoveRight10() => KeyEmulator.EmulateSendKey(new MoveRight10Struct()); 
+    public void MoveLeft() => KeyEmulator.EmulateSendKey(new MoveLeftStruct()); 
+    public void MoveLeft10() => KeyEmulator.EmulateSendKey(new MoveLeft10Struct()); 
+    public void Mute() => KeyEmulator.EmulateSendKey(new MuteStruct()); 
+    public void Next() => KeyEmulator.EmulateSendKey(new ShiftStruct(),new NextStruct()); 
+    public void Previous() => KeyEmulator.EmulateSendKey(new ShiftStruct(), new PrevStruct()); 
+    public void PausePlay() => KeyEmulator.EmulateSendKey(new PausePlayStruct()); 
+    public void VolumeDown ()=> KeyEmulator.EmulateSendKey(new VolumeDownStruct()); 
+    public void VolumeUp() => KeyEmulator.EmulateSendKey(new VolumeUpStruct());
+
+    #region Nested Types
+
+    private struct MoveLeftStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.LEFT;
+
+        public int Repeat => 1;
     }
 
-    public void MoveRight10Click(ArgumentAction _)
+    private struct MoveLeft10Struct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.KEY_J;
+        public int Repeat => 3;
     }
 
-    public void MoveLeftClick(ArgumentAction _)
+    private struct MoveRightStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.RIGHT;
+
+        public int Repeat => 1;
     }
 
-    public void MoveLeft10Click(ArgumentAction _)
+    private struct MoveRight10Struct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.KEY_L;
+        public int Repeat => 3;
     }
 
-    public void MuteClick(ArgumentAction _)
+    private struct MuteStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.KEY_M;
+
+        public int Repeat => 1;
     }
 
-    public void NextClick(ArgumentAction _)
+    private struct PrevStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.KEY_P;
+
+        public int Repeat => 1;
     }
 
-    public void PreviousClick(ArgumentAction _)
+    private struct NextStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.KEY_N;
+
+        public int Repeat => 1;
     }
 
-    public void PausePlayClick(ArgumentAction _)
+    private struct PausePlayStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.KEY_K;
+
+        public int Repeat => 1;
     }
 
-    public void VolumeDownClick(ArgumentAction _)
+    private struct VolumeDownStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.DOWN;
+
+        public int Repeat => 1;
     }
 
-    public void VolumeUpClick(ArgumentAction _)
+    private struct VolumeUpStruct : IKeyStateCode
     {
-        throw new System.NotImplementedException();
+        public ScanCodeShort VKey => ScanCodeShort.UP;
+
+        public int Repeat => 1;
     }
+    
+    private struct ShiftStruct : IKeyStateCode
+    {
+        public ScanCodeShort VKey => ScanCodeShort.SHIFT;
+        public int Repeat => 1;
+    }
+
+    #endregion
 }

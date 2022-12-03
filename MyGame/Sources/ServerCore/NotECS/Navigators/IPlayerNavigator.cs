@@ -1,15 +1,18 @@
-﻿namespace MyGame.Sources.ServerCore;
+﻿using MyGame.Sources.ServerCore.KeyState;
+using MyGame.Sources.ServerCore.KeyStateCode;
+
+namespace MyGame.Sources.ServerCore;
 
 internal interface IPlayerNavigator
 {
-    void MoveRightClick(ArgumentAction _);
-    void MoveRight10Click(ArgumentAction _);
-    void MoveLeftClick(ArgumentAction _);
-    void MoveLeft10Click(ArgumentAction _);
-    void MuteClick(ArgumentAction _);
-    void NextClick(ArgumentAction _);
-    void PreviousClick(ArgumentAction _);
-    void PausePlayClick(ArgumentAction _);
-    void VolumeDownClick(ArgumentAction _);
-    void VolumeUpClick(ArgumentAction _);
+    public void MoveRight();
+    public void MoveRight10();
+    public void MoveLeft();
+    public void MoveLeft10();
+    public void Mute();
+    public void Next();
+    public void Previous();
+    public void PausePlay();
+    public void VolumeDown();
+    public void VolumeUp();
 }

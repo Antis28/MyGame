@@ -253,12 +253,15 @@
     <Compile Include="Sources\ServerCore\Components\ServerComponent.cs" />
     <Compile Include="Sources\ServerCore\NotECS\ArgumentAction.cs" />
     <Compile Include="Sources\ServerCore\NotECS\FileBrowserHandler.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\KeyState\IKeyState.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\KeyState\IKeyStateCode.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyEmulator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\IPlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStates.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStateCodes.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\Navigators\YouTubePlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\PotPlayerNavigator.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\Navigators\YouTubePlayerNavigator.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\Navigators\PlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
     <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />
     <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />

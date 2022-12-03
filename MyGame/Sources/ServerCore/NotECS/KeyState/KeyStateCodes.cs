@@ -3,11 +3,6 @@
 namespace MyGame.Sources.ServerCore.KeyStateCode;
 
 // Для SendInput
-internal interface IKeyStateCode
-{
-    int Repeat { get; }
-    ScanCodeShort VKey { get; }
-}
 
 internal struct PressShift : IKeyStateCode
 {
