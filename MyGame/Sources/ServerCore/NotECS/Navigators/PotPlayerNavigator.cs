@@ -10,9 +10,9 @@ namespace MyGame.Sources.ServerCore;
 internal class PotPlayerNavigator : IPlayerNavigator
 {
     public void MoveRight() =>  KeyEmulator.EmulateSendKey(new MoveRightStruct());
-    public void MoveRight10() => KeyEmulator.EmulateSendKey(new MoveLeft10Struct()); 
+    public void MoveRight10() => KeyEmulator.EmulateSendKey(new MoveRight10Struct()); 
     public void MoveLeft() => KeyEmulator.EmulateSendKey(new MoveLeftStruct()); 
-    public void MoveLeft10() => KeyEmulator.EmulateSendKey(new MoveRightStruct()); 
+    public void MoveLeft10() => KeyEmulator.EmulateSendKey(new MoveLeft10Struct()); 
     public void Mute() => KeyEmulator.EmulateSendKey(new MuteStruct()); 
     public void Next() => KeyEmulator.EmulateSendKey(new NextStruct()); 
     public void Previous() => KeyEmulator.EmulateSendKey(new PrevStruct()); 
