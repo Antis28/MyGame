@@ -23,29 +23,28 @@ namespace MyGame.Sources.Systems
 
         public ConverterMessagesSystem(Contexts contexts) : base(contexts.game)
         {
-            //var potNav = new PlayerNavigator(new PotPlayerNavigator());
-            var potNav = new PlayerNavigator(new YouTubePlayerNavigator());
+            var navigator = new PlayerNavigator();
             _contexts = contexts;
             _keyCommands = new Dictionary<string, Action<ArgumentAction>>
             {
-                // навигация для PotPlayer
-                { "Right x 10", potNav.MoveRight10Click },
-                { "Left x 10", potNav.MoveLeft10Click },
-                { "Right", potNav.MoveRightClick },
-                { "Left", potNav.MoveLeftClick },
-                { "Space", potNav.PausePlayClick },
-                { "Volume +", potNav.VolumeUpClick },
-                { "Volume -", potNav.VolumeDownClick },
-                { "Mute", potNav.MuteClick },
-                { "PageDown", potNav.NextClick },
-                { "PageUp", potNav.PreviousClick },
-                
+                // навигация для Player
+                { "Right x 10", navigator.MoveRight10Click },
+                { "Left x 10", navigator.MoveLeft10Click },
+                { "Right", navigator.MoveRightClick },
+                { "Left", navigator.MoveLeftClick },
+                { "Space", navigator.PausePlayClick },
+                { "Volume +", navigator.VolumeUpClick },
+                { "Volume -", navigator.VolumeDownClick },
+                { "Mute", navigator.MuteClick },
+                { "PageDown", navigator.NextClick },
+                { "PageUp", navigator.PreviousClick },
+
                 // навигация упрвления питанием
                 { "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
                 { "SaveName", CreateSettingsEntity },
                 
-                // навигация упрвления браузером
+                // навигация упрвления браузером файлов
                 { "GetFileSystem", FileBrowserHandler.SendFileSystemInJson },
                 { "ExecutableFile", FileBrowserHandler.ExecutableFile },
             };

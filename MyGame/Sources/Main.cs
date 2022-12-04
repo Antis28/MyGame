@@ -46,21 +46,6 @@ namespace MyGame.Sources
         //     Print(t);
         // }
 
-        private void Print(string text)
-        {
-            ConsoleCreator.CreateForDotNetFramework().ShowMessage(text);
-        }
-
-        private void Print(params string[] texts)
-        {
-            foreach (var text in texts) { Print(Path.GetFileName(text)); }
-        }
-
-        private void Print(params object[] objects)
-        {
-            foreach (var text in objects) { Print(text.ToString()); }
-        }
-
         private static ServicesRegister GetServices()
         {
             return new ServicesRegister(
