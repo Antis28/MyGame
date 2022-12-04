@@ -23,8 +23,8 @@ namespace MyGame.Sources.Systems
 
         public ConverterMessagesSystem(Contexts contexts) : base(contexts.game)
         {
-            var potNav = new PlayerNavigator(new PotPlayerNavigator());
-            var youTubeNav = new PlayerNavigator(new YouTubePlayerNavigator());
+            //var potNav = new PlayerNavigator(new PotPlayerNavigator());
+            var potNav = new PlayerNavigator(new YouTubePlayerNavigator());
             _contexts = contexts;
             _keyCommands = new Dictionary<string, Action<ArgumentAction>>
             {
