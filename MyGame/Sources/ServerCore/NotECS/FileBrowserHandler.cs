@@ -15,7 +15,8 @@ public static class FileBrowserHandler
     public static async void SendFileSystemInJson(ArgumentAction argument)
     {
         var builder = new FileSystemBuilder();
-        var fileSystem = builder.FillFileSystem();
+        var deep = int.Parse(argument.Argument);
+        var fileSystem = builder.FillFileSystem(deep);
         var jsonText = JsonConvert.SerializeObject(fileSystem);
         try
         {
