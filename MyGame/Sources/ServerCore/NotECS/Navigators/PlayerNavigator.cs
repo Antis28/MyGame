@@ -1,73 +1,77 @@
 ﻿using System;
-using KeyboardEmulator.ForPostMessage;
-using MyGame.Sources.ServerCore.KeyState;
-using MyGame.Sources.ServerCore.KeyStateCode;
-using MyGame.Sources.ServerCore.NotECS.KeyState;
+using MessageObjects;
+using Newtonsoft.Json;
+using File = System.IO.File;
 
 namespace MyGame.Sources.ServerCore
 {
     internal class PlayerNavigator
     {
         private readonly IPlayerNavigator _potNavigator;
-        private readonly IPlayerNavigator _youTubenavigator;
+        private readonly IPlayerNavigator _youTubeNavigator;
         private IPlayerNavigator _navigator;
+        private CommandsSettings _commandSettings;
+
         public PlayerNavigator()
         {
-            _potNavigator = new PotPlayerNavigator();
-            _youTubenavigator = new YouTubePlayerNavigator();
-            
+            InitSettingsFromFile();
+            // _potNavigator = new PotPlayerNavigator(_commandSettings?.CommandList["PotPlayer"]);
+            // _youTubenavigator = new YouTubePlayerNavigator(_commandSettings?.CommandList["YouTubePlayer"]);
+            _potNavigator = new Navigator(_commandSettings?.CommandList["PotPlayer"]);
+            _youTubeNavigator = new Navigator(_commandSettings?.CommandList["YouTubePlayer"]);
+
             _navigator = _potNavigator;
         }
 
-        public  void MoveRightClick(ArgumentAction argument)
+        public void MoveRightClick(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.MoveRight();
         }
 
-        public  void MoveRight10Click(ArgumentAction argument)
+        public void MoveRight10Click(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.MoveRight10();
         }
 
-        public  void MoveLeftClick(ArgumentAction argument)
+        public void MoveLeftClick(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.MoveLeft();
         }
 
-        public  void MoveLeft10Click(ArgumentAction argument)
+        public void MoveLeft10Click(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.MoveLeft10();
         }
 
-        public  void MuteClick(ArgumentAction argument)
+        public void MuteClick(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.Mute();
         }
 
-        public  void NextClick(ArgumentAction argument)
+        public void NextClick(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.Next();
         }
 
-        public  void PreviousClick(ArgumentAction argument)
+        public void PreviousClick(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.Previous();
         }
 
-        public  void PausePlayClick(ArgumentAction argument)
+        public void PausePlayClick(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.PausePlay();
         }
 
-        public  void VolumeDownClick(ArgumentAction argument)
+        public void VolumeDownClick(ArgumentAction argument)
         {
             SelectPlayer(argument);
             _navigator.VolumeDown();
@@ -78,19 +82,37 @@ namespace MyGame.Sources.ServerCore
             SelectPlayer(argument);
             _navigator.VolumeUp();
         }
-        
+
+        private void InitSettingsFromFile()
+        {
+            var path = Environment.CurrentDirectory + @"\command settings.json";
+            if (!File.Exists(path))
+            {
+                Console.WriteLine("Файл настроек комманд не существует");
+                return;
+            }
+
+            // deserialize JSON directly from a file
+
+            var text = File.ReadAllText(path);
+            _commandSettings = JsonConvert.DeserializeObject<CommandsSettings>(text, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
+        }
+
         private void SelectPlayer(ArgumentAction argument)
         {
             var playerType = argument.Argument;
             _navigator = playerType switch
             {
                 "Pot Player" => _potNavigator,
-                "YouTube Player" => _youTubenavigator,
+                "YouTube Player" => _youTubeNavigator,
                 _ => _navigator
             };
         }
     }
-    
+
     // internal class PlayerNavigator2
     // {
     //     private readonly IPlayerNavigator _navigator;

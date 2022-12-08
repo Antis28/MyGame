@@ -1,33 +1,73 @@
-﻿using KeyboardEmulator.ForPostMessage;
-using MyGame.Sources.ServerCore.KeyState;
-using MyGame.Sources.ServerCore.NotECS.KeyState;
-using System;
+﻿using System.Collections.Generic;
 using KeyboardEmulator.ForSendInput;
-using MyGame.Sources.ServerCore.KeyStateCode;
+using MessageObjects;
+using MyGame.Sources.ServerCore.NotECS.KeyState;
+using Newtonsoft.Json;
+using File = System.IO.File;
 
 namespace MyGame.Sources.ServerCore;
 
 internal class YouTubePlayerNavigator : IPlayerNavigator
 {
-    public void MoveRight() =>  KeyEmulator.EmulateSendKey(new MoveRightStruct());
-    public void MoveRight10() => KeyEmulator.EmulateSendKey(new MoveRight10Struct()); 
-    public void MoveLeft() => KeyEmulator.EmulateSendKey(new MoveLeftStruct()); 
-    public void MoveLeft10() => KeyEmulator.EmulateSendKey(new MoveLeft10Struct()); 
-    public void Mute() => KeyEmulator.EmulateSendKey(new MuteStruct()); 
-    public void Next() => KeyEmulator.EmulateSendKey(new ShiftStruct(),new NextStruct()); 
-    public void Previous() => KeyEmulator.EmulateSendKey(new ShiftStruct(), new PrevStruct()); 
-    public void PausePlay() => KeyEmulator.EmulateSendKey(new PausePlayStruct()); 
-    public void VolumeDown ()=> KeyEmulator.EmulateSendKey(new VolumeDownStruct()); 
-    public void VolumeUp() => KeyEmulator.EmulateSendKey(new VolumeUpStruct());
+    private readonly Dictionary<string, IKeyStateCode> _commandSettings;
+
+    public YouTubePlayerNavigator()
+    {
+        // CreateFileSettings();
+    }
+
+    public YouTubePlayerNavigator(Dictionary<string, IKeyStateCode> commandSettings)
+    {
+        //CreateFileSettings();
+        _commandSettings = commandSettings;
+    }
+
+
+    private static void CreateFileSettings()
+    {
+        var settings = new CommandsSettings
+        {
+            CommandList = new Dictionary<string, Dictionary<string, IKeyStateCode>>
+            {
+                {
+                    "YouTubePlayer", new Dictionary<string, IKeyStateCode>
+                    {
+                        { "MoveRight", new MoveRightStruct() },
+                        { "MoveRight10", new MoveRight10Struct() },
+                        { "MoveLeft", new MoveLeftStruct() },
+                        { "MoveLeft10", new MoveLeft10Struct() },
+                        { "Next", new NextStruct() },
+                        { "Prev", new PrevStruct() },
+                        { "PausePlay", new PausePlayStruct() },
+                        { "VolumeDown", new VolumeDownStruct() },
+                        { "VolumeUp", new VolumeUpStruct() },
+                    }
+                }
+            }
+        };
+
+
+        var jsonTypeNameAll = JsonConvert.SerializeObject(settings, Formatting.Indented, new JsonSerializerSettings
+        {
+            TypeNameHandling = TypeNameHandling.Auto
+        });
+
+        // serialize JSON to a string and then write string to a file
+        File.WriteAllText(@"c:\command settings2.json", jsonTypeNameAll);
+    }
+
+    public void MoveRight() => KeyEmulator.EmulateSendKey(_commandSettings["MoveRight"] ?? new MoveRightStruct());
+    public void MoveRight10() => KeyEmulator.EmulateSendKey(_commandSettings["MoveRight10"] ?? new MoveRight10Struct());
+    public void MoveLeft() => KeyEmulator.EmulateSendKey(_commandSettings["MoveLeft"] ?? new MoveLeftStruct());
+    public void MoveLeft10() => KeyEmulator.EmulateSendKey(_commandSettings["MoveLeft10"] ?? new MoveLeft10Struct());
+    public void Mute() => KeyEmulator.EmulateSendKey(_commandSettings["Mute"] ?? new MuteStruct());
+    public void Next() => KeyEmulator.EmulateSendKey(_commandSettings["Next"] ?? new NextStruct());
+    public void Previous() => KeyEmulator.EmulateSendKey(_commandSettings["Previous"] ?? new PrevStruct());
+    public void PausePlay() => KeyEmulator.EmulateSendKey(_commandSettings["PausePlay"] ?? new PausePlayStruct());
+    public void VolumeDown() => KeyEmulator.EmulateSendKey(_commandSettings["VolumeDown"] ?? new VolumeDownStruct());
+    public void VolumeUp() => KeyEmulator.EmulateSendKey(_commandSettings["VolumeUp"] ?? new VolumeUpStruct());
 
     #region Nested Types
-
-    private struct MoveLeftStruct : IKeyStateCode
-    {
-        public ScanCodeShort VKey => ScanCodeShort.LEFT;
-
-        public int Repeat => 1;
-    }
 
     private struct MoveLeft10Struct : IKeyStateCode
     {
@@ -35,9 +75,9 @@ internal class YouTubePlayerNavigator : IPlayerNavigator
         public int Repeat => 3;
     }
 
-    private struct MoveRightStruct : IKeyStateCode
+    private struct MoveLeftStruct : IKeyStateCode
     {
-        public ScanCodeShort VKey => ScanCodeShort.RIGHT;
+        public ScanCodeShort VKey => ScanCodeShort.LEFT;
 
         public int Repeat => 1;
     }
@@ -48,16 +88,16 @@ internal class YouTubePlayerNavigator : IPlayerNavigator
         public int Repeat => 3;
     }
 
-    private struct MuteStruct : IKeyStateCode
+    private struct MoveRightStruct : IKeyStateCode
     {
-        public ScanCodeShort VKey => ScanCodeShort.KEY_M;
+        public ScanCodeShort VKey => ScanCodeShort.RIGHT;
 
         public int Repeat => 1;
     }
 
-    private struct PrevStruct : IKeyStateCode
+    private struct MuteStruct : IKeyStateCode
     {
-        public ScanCodeShort VKey => ScanCodeShort.KEY_P;
+        public ScanCodeShort VKey => ScanCodeShort.KEY_M;
 
         public int Repeat => 1;
     }
@@ -76,6 +116,19 @@ internal class YouTubePlayerNavigator : IPlayerNavigator
         public int Repeat => 1;
     }
 
+    private struct PrevStruct : IKeyStateCode
+    {
+        public ScanCodeShort VKey => ScanCodeShort.KEY_P;
+
+        public int Repeat => 1;
+    }
+
+    private struct ShiftStruct : IKeyStateCode
+    {
+        public ScanCodeShort VKey => ScanCodeShort.SHIFT;
+        public int Repeat => 1;
+    }
+
     private struct VolumeDownStruct : IKeyStateCode
     {
         public ScanCodeShort VKey => ScanCodeShort.DOWN;
@@ -87,12 +140,6 @@ internal class YouTubePlayerNavigator : IPlayerNavigator
     {
         public ScanCodeShort VKey => ScanCodeShort.UP;
 
-        public int Repeat => 1;
-    }
-    
-    private struct ShiftStruct : IKeyStateCode
-    {
-        public ScanCodeShort VKey => ScanCodeShort.SHIFT;
         public int Repeat => 1;
     }
 

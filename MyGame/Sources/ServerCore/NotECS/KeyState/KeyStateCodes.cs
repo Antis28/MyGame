@@ -1,4 +1,5 @@
 ﻿using KeyboardEmulator.ForSendInput;
+using MessageObjects;
 
 namespace MyGame.Sources.ServerCore.KeyStateCode;
 
