@@ -18,7 +18,7 @@ internal class PotPlayerNavigator : IPlayerNavigator
 
     public PotPlayerNavigator(Dictionary<string, IKeyStateCode> commandSettings)
     {
-        //CreateFileSettings();
+        CreateFileSettings();
         _commandSettings = commandSettings;
     }
 
@@ -31,15 +31,15 @@ internal class PotPlayerNavigator : IPlayerNavigator
                 {
                     "PotPlayer", new Dictionary<string, IKeyStateCode>
                     {
-                        { "MoveRight", new MoveRightStruct() },
-                        { "MoveRight10", new MoveRight10Struct() },
-                        { "MoveLeft", new MoveLeftStruct() },
-                        { "MoveLeft10", new MoveLeft10Struct() },
-                        { "Next", new NextStruct() },
-                        { "Prev", new PrevStruct() },
-                        { "PausePlay", new PausePlayStruct() },
-                        { "VolumeDown", new VolumeDownStruct() },
-                        { "VolumeUp", new VolumeUpStruct() },
+                        { "MoveRight", new CommandStruct() },
+                        { "MoveRight10", new CommandStruct() },
+                        { "MoveLeft", new CommandStruct() },
+                        { "MoveLeft10", new CommandStruct() },
+                        { "Next", new CommandStruct() },
+                        { "Prev", new CommandStruct() },
+                        { "PausePlay", new CommandStruct() },
+                        { "VolumeDown", new CommandStruct() },
+                        { "VolumeUp", new CommandStruct() },
                     }
                 }
             }

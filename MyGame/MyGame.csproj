@@ -256,10 +256,11 @@
     <Compile Include="Sources\ServerCore\NotECS\KeyState\IKeyState.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\IKeyStateCode.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyEmulator.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\Navigators\CommandStruct.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\IPlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStates.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStateCodes.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\Navigators\Navigator.cs"/>
+    <Compile Include="Sources\ServerCore\NotECS\Navigators\Navigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\PotPlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\YouTubePlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\PlayerNavigator.cs" />

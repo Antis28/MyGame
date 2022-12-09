@@ -14,9 +14,9 @@ namespace MyGame.Sources.ServerCore
 
         public PlayerNavigator()
         {
-            InitSettingsFromFile();
             // _potNavigator = new PotPlayerNavigator(_commandSettings?.CommandList["PotPlayer"]);
             // _youTubenavigator = new YouTubePlayerNavigator(_commandSettings?.CommandList["YouTubePlayer"]);
+            InitSettingsFromFile();
             _potNavigator = new Navigator(_commandSettings?.CommandList["PotPlayer"]);
             _youTubeNavigator = new Navigator(_commandSettings?.CommandList["YouTubePlayer"]);
 
