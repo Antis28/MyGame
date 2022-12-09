@@ -31,15 +31,15 @@ internal class PotPlayerNavigator : IPlayerNavigator
                 {
                     "PotPlayer", new Dictionary<string, IKeyStateCode>
                     {
-                        { "MoveRight", new CommandStruct() },
-                        { "MoveRight10", new CommandStruct() },
-                        { "MoveLeft", new CommandStruct() },
-                        { "MoveLeft10", new CommandStruct() },
-                        { "Next", new CommandStruct() },
-                        { "Prev", new CommandStruct() },
-                        { "PausePlay", new CommandStruct() },
-                        { "VolumeDown", new CommandStruct() },
-                        { "VolumeUp", new CommandStruct() },
+                        { "MoveRight", new CommandSettings() },
+                        { "MoveRight10", new CommandSettings() },
+                        { "MoveLeft", new CommandSettings() },
+                        { "MoveLeft10", new CommandSettings() },
+                        { "Next", new CommandSettings() },
+                        { "Prev", new CommandSettings() },
+                        { "PausePlay", new CommandSettings() },
+                        { "VolumeDown", new CommandSettings() },
+                        { "VolumeUp", new CommandSettings() },
                     }
                 }
             }
@@ -144,3 +144,4 @@ internal class PotPlayerNavigator : IPlayerNavigator
 
     #endregion
 }
+

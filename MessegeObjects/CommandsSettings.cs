@@ -13,6 +13,12 @@ public class CommandSettings : IKeyStateCode
         VKey = vKey;
     }
 
+    public CommandSettings()
+    {
+        Repeat = 1;
+        VKey = ScanCodeShort.SPACE;
+    }
+
     public int Repeat { get; }
     public ScanCodeShort VKey { get; }
 }
@@ -29,3 +35,4 @@ public class CommandsSettings
     // Dictionary<string, IKeyStateCode> - имя комманды + настройки для этой комманды
     public Dictionary<string, Dictionary<string, IKeyStateCode>> CommandList;
 }
+

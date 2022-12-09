@@ -256,7 +256,6 @@
     <Compile Include="Sources\ServerCore\NotECS\KeyState\IKeyState.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\IKeyStateCode.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyEmulator.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\Navigators\CommandStruct.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\IPlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStates.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStateCodes.cs" />
