@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Entitas;
+using MyGame.Sources.Systems;
 using Newtonsoft.Json;
 
 namespace MyGame.Sources.SaveLoad;
@@ -27,16 +28,13 @@ public sealed class LoadSettingsSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        string textSettings;
-        using (var sw = new StreamReader(Directory.GetCurrentDirectory() + @"\settings.json"))
-        {
-            textSettings = sw.ReadToEnd();
-        }
-
+        var settings = LastMovieRepository.GetSettings();
+        
         var entity = entities.SingleEntity();
         entity.isDestroyed = true;
-
-        var settings = JsonConvert.DeserializeObject<SettingsComponent>(textSettings);
+        
         _contexts.debug.CreateEntity().AddDebugLog(settings?.lastFileName, GetType().Name);
     }
+
+    
 }

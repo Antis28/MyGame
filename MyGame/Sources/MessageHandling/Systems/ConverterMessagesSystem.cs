@@ -13,7 +13,8 @@ using Newtonsoft.Json;
 namespace MyGame.Sources.Systems
 {
 //Регистрировать в классе производном от Feature
-    /// <summary>
+
+/// <summary>
     /// Когда было прочитано сообщение, обработать его
     /// </summary>
     public sealed class ConverterMessagesSystem : ReactiveSystem<GameEntity>
@@ -42,11 +43,14 @@ namespace MyGame.Sources.Systems
                 // навигация упрвления питанием
                 { "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
-                { "SaveName", CreateSettingsEntity },
                 
                 // навигация упрвления браузером файлов
                 { "GetFileSystem", FileBrowserHandler.SendFileSystemInJson },
                 { "ExecutableFile", FileBrowserHandler.ExecutableFile },
+                
+                // Другое
+                { "SaveName", LastMovieRepository.SaveFilePathFromPotPlayer },
+                { "LoadLastMovie", LastMovieRepository.LoadLastMovie },
             };
         }
 
@@ -86,16 +90,6 @@ namespace MyGame.Sources.Systems
                 }
                 else { throw new ArgumentException("Сообщение от клиента не распознано"); }
             }
-        }
-
-
-        private static void CreateSettingsEntity(ArgumentAction _)
-        {
-            var procFinder = new KeyboardEmulator.ProcessFinder();
-            var process = procFinder.GetActiveProcess();
-
-            var saveEntity = Contexts.sharedInstance.game.CreateEntity();
-            saveEntity.ReplaceSettings(process.MainWindowTitle);
         }
     }
 }
