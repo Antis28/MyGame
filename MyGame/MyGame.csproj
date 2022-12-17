@@ -264,6 +264,7 @@
     <Compile Include="Sources\ServerCore\NotECS\Navigators\PlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\LastMovieRepository.cs" />
     <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\WinApi.cs" />
     <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />
     <Compile Include="Sources\ServerCore\Systems\InitServerSystem.cs" />
     <Compile Include="Sources\ServerCore\Systems\ParallelProcessingSystem.cs" />

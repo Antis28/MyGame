@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Windows;
+using CrossConsole;
 using KeyboardEmulator;
 using KeyboardEmulator.ForSendInput;
 using MyGame.Sources.SaveLoad;
@@ -24,10 +25,12 @@ public static class LastMovieRepository
     {
         var emulator = new KeyEmul();
         GoToFileInfo(emulator);
+
+
         GoToCopyToClipboard(emulator);
         CloseFileInfo(emulator);
 
-        Thread.Sleep(500);
+        Thread.Sleep(1500);
         var filePath = GetFilePathFromClipData();
 
         var saveEntity = Contexts.sharedInstance.game.CreateEntity();
@@ -43,20 +46,28 @@ public static class LastMovieRepository
     public static void LoadLastMovie(ArgumentAction _)
     {
         var sc = GetSettings();
-        if (!File.Exists(sc.lastFileName)) return;
-        FileBrowserHandler.ExecutableFile(new ArgumentAction { Argument = sc.lastFileName });
+        //FileBrowserHandler.ExecutableFile(new ArgumentAction { Argument = sc.lastFileName });
+
+        var pot = @"D:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
+        FileBrowserHandler.ExecutableFile(pot, sc.lastFileName);
+
+        Thread.Sleep(1000);
+        var emulator = new KeyEmul();
+        emulator.SendInput(ScanCodeShort.MENU, ScanCodeShort.RETURN);
+
+        ConsoleCreator.CreateForDotNetFramework().ShowMessage("Загружен последний видеофайл");
     }
 
     public static SettingsComponent GetSettings()
     {
-        string textSettings;
-        using (var sw = new StreamReader(Directory.GetCurrentDirectory() + @"\settings.json"))
-        {
-            textSettings = sw.ReadToEnd();
-        }
+        var path = Directory.GetCurrentDirectory() + @"\settings.json";
+        if (!File.Exists(path)) return new SettingsComponent() { lastFileName = string.Empty };
 
-        var settings = JsonConvert.DeserializeObject<SettingsComponent>(textSettings);
-        return settings;
+        string textSettings;
+        using (var sw = new StreamReader(path)) { textSettings = sw.ReadToEnd(); }
+
+        var jsonSettings = JsonConvert.DeserializeObject<SettingsComponent>(textSettings);
+        return jsonSettings;
     }
 
     /// <summary>
@@ -73,7 +84,7 @@ public static class LastMovieRepository
             var arr = text.Split(new[] { ':', '\r' }, sepCount);
             if (arr.Length < sepCount) { return filePath; }
 
-            filePath = arr[2] + ':' + arr[3];
+            filePath = (arr[2] + ':' + arr[3]).Trim();
         } catch (Exception e) { Console.WriteLine(e); }
 
         return filePath;
