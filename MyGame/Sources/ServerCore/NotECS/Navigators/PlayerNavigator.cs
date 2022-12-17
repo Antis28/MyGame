@@ -88,7 +88,7 @@ namespace MyGame.Sources.ServerCore
             var path = Environment.CurrentDirectory + @"\command settings.json";
             if (!File.Exists(path))
             {
-                Console.WriteLine("Файл настроек комманд не существует");
+                Console.WriteLine("Файл настроек комманд не существует - command settings.json");
                 return;
             }
 
