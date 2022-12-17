@@ -260,8 +260,6 @@
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStates.cs" />
     <Compile Include="Sources\ServerCore\NotECS\KeyState\KeyStateCodes.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\Navigator.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\Navigators\PotPlayerNavigator.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\Navigators\YouTubePlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\PlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
     <Compile Include="Sources\ServerCore\Systems\GetIpAddressSystem.cs" />

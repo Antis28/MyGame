@@ -32,19 +32,6 @@ namespace MyGame.Sources
             }
         }
 
-        // private void SendAllDiscNames()
-        // {
-        //     DriveInfo[] allDrives = DriveInfo.GetDrives();
-        //     string output = JsonConvert.SerializeObject(allDrives);
-        //     var res =
-        //         from driveInfo in allDrives
-        //         where driveInfo.DriveType.ToString() == "Fixed"
-        //         select $"{driveInfo.VolumeLabel} ({driveInfo.Name}) ";
-        //
-        //     Print(res.ToArray());
-        //     var t = Directory.GetDirectories(allDrives[0].Name);
-        //     Print(t);
-        // }
 
         private static ServicesRegister GetServices()
         {

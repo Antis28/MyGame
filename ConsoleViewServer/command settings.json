@@ -1,0 +1,113 @@
+{
+  "CommandList": {
+    "PotPlayer": {
+      "MoveRight": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 77,
+        "Repeat": 1
+      },
+      "MoveRight10": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 77,
+        "Repeat": 12
+      },
+      "MoveLeft": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 75,
+        "Repeat": 1
+      },
+      "MoveLeft10": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 75,
+        "Repeat": 12
+      },
+      "Next": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 81,
+        "Repeat": 1
+      },
+      "Previous": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 73,
+        "Repeat": 1
+      },
+      "PausePlay": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 57,
+        "Repeat": 1
+      },
+	  "Mute": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 50,
+        "Repeat": 1
+      },
+	   "PausePlay": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 57,
+        "Repeat": 1
+      },
+      "VolumeDown": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 80,
+        "Repeat": 1
+      },
+      "VolumeUp": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 72,
+        "Repeat": 1
+      }
+    },
+	"YouTubePlayer": {
+      "MoveRight": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 77,
+        "Repeat": 1
+      },
+      "MoveRight10": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 38,
+        "Repeat": 3
+      },
+      "MoveLeft": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 75,
+        "Repeat": 1
+      },
+      "MoveLeft10": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 36,
+        "Repeat": 3
+      },
+      "Next": {
+      "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 49,
+        "Repeat": 1
+      },      
+      "Previous": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 25,
+        "Repeat": 1
+      },      
+	  "Mute": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 50,
+        "Repeat": 1
+      },
+	  "PausePlay": {
+        "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 37,
+        "Repeat": 1
+      },
+      "VolumeDown": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 80,
+        "Repeat": 1
+      },
+      "VolumeUp": {
+       "$type": "MessageObjects.CommandSettings, MessegeObjects",
+        "VKey": 72,
+        "Repeat": 1
+      }
+    }
+  }
+}
