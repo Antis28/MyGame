@@ -14,8 +14,22 @@ class Navigator : IPlayerNavigator
     }
 
     public void MoveRight() => KeyEmulator.EmulateSendKey(_commandSettings["MoveRight"]);
+
+    public void MoveRight(int count)
+    {
+        var command = new CommandSettings(count, _commandSettings["MoveRight"].VKey);
+        KeyEmulator.EmulateSendKey(command);
+    }
+
     public void MoveRight10() => KeyEmulator.EmulateSendKey(_commandSettings["MoveRight10"]);
     public void MoveLeft() => KeyEmulator.EmulateSendKey(_commandSettings["MoveLeft"]);
+
+    public void MoveLeft(int count)
+    {
+        var command = new CommandSettings(count, _commandSettings["MoveLeft"].VKey);
+        KeyEmulator.EmulateSendKey(command);
+    }
+
     public void MoveLeft10() => KeyEmulator.EmulateSendKey(_commandSettings["MoveLeft10"]);
     public void Mute() => KeyEmulator.EmulateSendKey(_commandSettings["Mute"]);
     public void Next() => KeyEmulator.EmulateSendKey(_commandSettings["Next"]);

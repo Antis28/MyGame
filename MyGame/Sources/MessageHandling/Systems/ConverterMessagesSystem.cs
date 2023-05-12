@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using CrossConsole;
 using Entitas;
 using MyGame.Sources.ServerCore;
+using MyGame.Sources.ServerCore.NotECS;
 using Newtonsoft.Json;
 
 namespace MyGame.Sources.Systems
@@ -41,7 +42,7 @@ namespace MyGame.Sources.Systems
                 { "PageUp", navigator.PreviousClick },
 
                 // навигация упрвления питанием
-                { "Hibernate", SleepMode.GoHibernateMode },
+                //{ "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
                 
                 // навигация упрвления браузером файлов
@@ -51,6 +52,7 @@ namespace MyGame.Sources.Systems
                 // Другое
                 { "SaveName", LastMovieRepository.SaveFilePathFromPotPlayer },
                 { "LoadLastMovie", LastMovieRepository.LoadLastMovie },
+                { "Hibernate", TimerShutdown.test },
             };
         }
 

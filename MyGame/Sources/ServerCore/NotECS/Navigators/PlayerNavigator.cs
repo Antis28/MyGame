@@ -25,61 +25,66 @@ namespace MyGame.Sources.ServerCore
 
         public void MoveRightClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
-            _navigator.MoveRight();
+            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+            SelectPlayer(playerType);
+            _navigator.MoveRight(stepCount);
         }
 
         public void MoveRight10Click(ArgumentAction argument)
         {
-            SelectPlayer(argument);
-            _navigator.MoveRight10();
+            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+            SelectPlayer(playerType);
+            _navigator.MoveRight(stepCount);
         }
 
         public void MoveLeftClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
-            _navigator.MoveLeft();
+            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+            SelectPlayer(playerType);
+            _navigator.MoveLeft(stepCount);
         }
 
         public void MoveLeft10Click(ArgumentAction argument)
         {
-            SelectPlayer(argument);
-            _navigator.MoveLeft10();
+            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+
+            SelectPlayer(playerType);
+            _navigator.MoveLeft(stepCount);
         }
 
         public void MuteClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
+            SelectPlayer(argument.Argument);
             _navigator.Mute();
         }
 
         public void NextClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
+            SelectPlayer(argument.Argument);
             _navigator.Next();
         }
 
         public void PreviousClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
+            SelectPlayer(argument.Argument);
             _navigator.Previous();
         }
 
         public void PausePlayClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
+            SelectPlayer(argument.Argument);
             _navigator.PausePlay();
         }
 
         public void VolumeDownClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
+            SelectPlayer(argument.Argument);
             _navigator.VolumeDown();
         }
 
         public void VolumeUpClick(ArgumentAction argument)
         {
-            SelectPlayer(argument);
+            SelectPlayer(argument.Argument);
             _navigator.VolumeUp();
         }
 
@@ -99,11 +104,18 @@ namespace MyGame.Sources.ServerCore
             {
                 TypeNameHandling = TypeNameHandling.Auto
             });
+
+            //var lastFileName = JsonConvert.SerializeObject(entity.settings);
+            //entity.isDestroyed = true;
+
+            //using (var sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\settings.json"))
+            //{
+            //    sw.Write(lastFileName);
+            //}
         }
 
-        private void SelectPlayer(ArgumentAction argument)
+        private void SelectPlayer(string playerType)
         {
-            var playerType = argument.Argument;
             _navigator = playerType switch
             {
                 "Pot Player" => _potNavigator,
@@ -111,7 +123,17 @@ namespace MyGame.Sources.ServerCore
                 _ => _navigator
             };
         }
+
+        private (string playerType, int stepCount) ArgumentParser(string argument)
+        {
+            var args = argument.Split('&');
+            int count = 1;
+            if (args.Length > 1)
+                int.TryParse(args[1], out count);
+            return (args[0], count);
+        }
     }
+
 
     // internal class PlayerNavigator2
     // {

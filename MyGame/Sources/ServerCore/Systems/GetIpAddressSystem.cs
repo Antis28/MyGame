@@ -25,7 +25,11 @@ namespace MyGame.Sources.Systems
 
             foreach (var ip in host.AddressList)
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork) { hostIp = ip.ToString(); }
+                if (ip.AddressFamily == AddressFamily.InterNetwork && ip.ToString().StartsWith("192"))
+                {
+                    hostIp = ip.ToString();
+                    break;
+                }
             }
 
             var message = $"AddressInfo was created\nip = {hostIp}, port = {_port}";

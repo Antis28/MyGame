@@ -80,11 +80,21 @@ public static class LastMovieRepository
         var filePath = string.Empty;
         try
         {
-            var sepCount = 5;
+            var sepCount = 10;
             var arr = text.Split(new[] { ':', '\r' }, sepCount);
             if (arr.Length < sepCount) { return filePath; }
 
-            filePath = (arr[2] + ':' + arr[3]).Trim();
+            int pathIndex = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].Contains("Complete name"))
+                {
+                    pathIndex = i;
+                    break;
+                } 
+            }
+
+            filePath = (arr[pathIndex+1].Trim() + ':' + arr[pathIndex+2]).Trim();
         } catch (Exception e) { Console.WriteLine(e); }
 
         return filePath;
