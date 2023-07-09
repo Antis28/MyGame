@@ -23,14 +23,14 @@ namespace MyGame.Sources.ServerCore.NotECS
             timer = new Timer(tm, num, 0, 60000);
         }
         public static void Count(object obj)
-        {
-            time--;
+        {           
             Console.WriteLine("Осталось минут до гибернации - " + time);
             if (time <= 0)
             {               
                 timer.Dispose();
                 SleepMode.GoHibernateMode(new ArgumentAction());
             }
+            time--;
         }
     }
     
