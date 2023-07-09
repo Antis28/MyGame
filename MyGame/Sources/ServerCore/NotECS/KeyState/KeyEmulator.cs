@@ -5,7 +5,7 @@ using MyGame.Sources.ServerCore.KeyState;
 
 namespace MyGame.Sources.ServerCore.NotECS.KeyState;
 
-internal static class KeyEmulator
+internal static class KeyEmulatorHandler
 {
     public static void EmulateKeyPress(IKeyState state)
     {

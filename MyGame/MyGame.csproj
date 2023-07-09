@@ -263,6 +263,7 @@
     <Compile Include="Sources\ServerCore\NotECS\Navigators\Navigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\PlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\LastMovieRepository.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\SkipOpenning.cs" />
     <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
     <Compile Include="Sources\ServerCore\NotECS\TimerShutdown.cs" />
     <Compile Include="Sources\ServerCore\NotECS\WinApi.cs" />

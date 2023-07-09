@@ -2,39 +2,41 @@
 using MessageObjects;
 using MyGame.Sources.ServerCore.NotECS.KeyState;
 
-namespace MyGame.Sources.ServerCore;
-
-class Navigator : IPlayerNavigator
+namespace MyGame.Sources.ServerCore
 {
-    private readonly Dictionary<string, IKeyStateCode> _commandSettings;
 
-    public Navigator(Dictionary<string, IKeyStateCode> commandSettings)
+    class Navigator : IPlayerNavigator
     {
-        _commandSettings = commandSettings;
+        private readonly Dictionary<string, IKeyStateCode> _commandSettings;
+
+        public Navigator(Dictionary<string, IKeyStateCode> commandSettings)
+        {
+            _commandSettings = commandSettings;
+        }
+
+        public void MoveRight() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["MoveRight"]);
+
+        public void MoveRight(int count)
+        {
+            var command = new CommandSettings(count, _commandSettings["MoveRight"].VKey);
+            KeyEmulatorHandler.EmulateSendKey(command);
+        }
+
+        public void MoveRight10() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["MoveRight10"]);
+        public void MoveLeft() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["MoveLeft"]);
+
+        public void MoveLeft(int count)
+        {
+            var command = new CommandSettings(count, _commandSettings["MoveLeft"].VKey);
+            KeyEmulatorHandler.EmulateSendKey(command);
+        }
+
+        public void MoveLeft10() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["MoveLeft10"]);
+        public void Mute() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Mute"]);
+        public void Next() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Next"]);
+        public void Previous() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Previous"]);
+        public void PausePlay() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["PausePlay"]);
+        public void VolumeDown() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["VolumeDown"]);
+        public void VolumeUp() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["VolumeUp"]);
     }
-
-    public void MoveRight() => KeyEmulator.EmulateSendKey(_commandSettings["MoveRight"]);
-
-    public void MoveRight(int count)
-    {
-        var command = new CommandSettings(count, _commandSettings["MoveRight"].VKey);
-        KeyEmulator.EmulateSendKey(command);
-    }
-
-    public void MoveRight10() => KeyEmulator.EmulateSendKey(_commandSettings["MoveRight10"]);
-    public void MoveLeft() => KeyEmulator.EmulateSendKey(_commandSettings["MoveLeft"]);
-
-    public void MoveLeft(int count)
-    {
-        var command = new CommandSettings(count, _commandSettings["MoveLeft"].VKey);
-        KeyEmulator.EmulateSendKey(command);
-    }
-
-    public void MoveLeft10() => KeyEmulator.EmulateSendKey(_commandSettings["MoveLeft10"]);
-    public void Mute() => KeyEmulator.EmulateSendKey(_commandSettings["Mute"]);
-    public void Next() => KeyEmulator.EmulateSendKey(_commandSettings["Next"]);
-    public void Previous() => KeyEmulator.EmulateSendKey(_commandSettings["Previous"]);
-    public void PausePlay() => KeyEmulator.EmulateSendKey(_commandSettings["PausePlay"]);
-    public void VolumeDown() => KeyEmulator.EmulateSendKey(_commandSettings["VolumeDown"]);
-    public void VolumeUp() => KeyEmulator.EmulateSendKey(_commandSettings["VolumeUp"]);
 }
