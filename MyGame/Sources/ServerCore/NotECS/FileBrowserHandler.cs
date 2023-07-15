@@ -67,7 +67,7 @@ public static class FileBrowserHandler
 
         if (!File.Exists(programPath) || !File.Exists(filePath))
         {
-            ConsoleCreator.CreateForDotNetFramework().ShowMessage("Нет сохраненных видеофайлов");
+            ConsoleCreator.CreateForDotNetFramework().ShowMessage("Нет сохраненных видеофайлов, или неверный путь к сохраненному файлу.");
             return;
         }
 

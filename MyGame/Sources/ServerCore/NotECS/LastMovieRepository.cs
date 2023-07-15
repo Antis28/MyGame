@@ -27,6 +27,7 @@ public static class LastMovieRepository
         GoToFileInfo(emulator);
 
 
+                    
         GoToCopyToClipboard(emulator);
         CloseFileInfo(emulator);
 
@@ -48,7 +49,7 @@ public static class LastMovieRepository
         var sc = GetSettings();
         //FileBrowserHandler.ExecutableFile(new ArgumentAction { Argument = sc.lastFileName });
 
-        var pot = @"D:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
+        var pot = @"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
         FileBrowserHandler.ExecutableFile(pot, sc.lastFileName);
 
         Thread.Sleep(1000);
@@ -109,6 +110,7 @@ public static class LastMovieRepository
         emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
+        emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.RETURN);
     }
 
@@ -120,6 +122,7 @@ public static class LastMovieRepository
     {
         // открыть информацию о файле
         emulator.SendInput(ScanCodeShort.CONTROL, ScanCodeShort.F1);
+        emulator.SendInput(ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.TAB);
