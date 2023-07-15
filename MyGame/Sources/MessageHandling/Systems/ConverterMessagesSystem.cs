@@ -42,7 +42,10 @@ namespace MyGame.Sources.Systems
                     //navigator.NextClick 
                     AnilibriaPlayer.NextEpisode
                 },
-                { "PageUp", navigator.PreviousClick },
+                { "PageUp", 
+                    //navigator.PreviousClick
+                    AnilibriaPlayer.PreviousEpisode
+                },
 
                 // навигация упрвления питанием
                 //{ "Hibernate", SleepMode.GoHibernateMode },

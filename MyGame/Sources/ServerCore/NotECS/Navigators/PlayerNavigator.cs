@@ -9,6 +9,7 @@ namespace MyGame.Sources.ServerCore
     {
         private readonly IPlayerNavigator _potNavigator;
         private readonly IPlayerNavigator _youTubeNavigator;
+        private readonly IPlayerNavigator _anilibriaNavigator;
         private IPlayerNavigator _navigator;
         private CommandsSettings _commandSettings;
 
@@ -19,6 +20,7 @@ namespace MyGame.Sources.ServerCore
             InitSettingsFromFile();
             _potNavigator = new Navigator(_commandSettings?.CommandList["PotPlayer"]);
             _youTubeNavigator = new Navigator(_commandSettings?.CommandList["YouTubePlayer"]);
+            //_anilibriaNavigator = new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"]);
 
             _navigator = _potNavigator;
         }

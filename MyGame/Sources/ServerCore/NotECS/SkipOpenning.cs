@@ -17,7 +17,12 @@ namespace MyGame.Sources.ServerCore.NotECS
         }
         public static void NextEpisode(ArgumentAction argument)
         {
-            WorkerWithMouse.MouseMove(113,1056);
+            WorkerWithMouse.MouseMove(113,1063);
+            WorkerWithMouse.MouseClick(MouseButtons.left);
+        }
+        public static void PreviousEpisode(ArgumentAction argument)
+        {           
+            WorkerWithMouse.MouseMove(31, 1063);
             WorkerWithMouse.MouseClick(MouseButtons.left);
         }
 
