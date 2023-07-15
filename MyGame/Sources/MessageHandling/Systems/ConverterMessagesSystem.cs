@@ -38,7 +38,10 @@ namespace MyGame.Sources.Systems
                 { "Volume +", navigator.VolumeUpClick },
                 { "Volume -", navigator.VolumeDownClick },
                 { "Mute", navigator.MuteClick },
-                { "PageDown", navigator.NextClick },
+                { "PageDown", 
+                    //navigator.NextClick 
+                    AnilibriaPlayer.NextEpisode
+                },
                 { "PageUp", navigator.PreviousClick },
 
                 // навигация упрвления питанием
@@ -53,7 +56,7 @@ namespace MyGame.Sources.Systems
                 { "SaveName", LastMovieRepository.SaveFilePathFromPotPlayer },
                 { "LoadLastMovie", LastMovieRepository.LoadLastMovie },
                 { "Hibernate", TimerShutdown.test },
-                { "SkipOpenning", SkipOpenning.Skip },
+                { "SkipOpenning", AnilibriaPlayer.Skip },
             };
         }
 

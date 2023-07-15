@@ -4,16 +4,28 @@ using System;
 
 namespace MyGame.Sources.ServerCore.NotECS
 {
-    public class SkipOpenning
+    public class AnilibriaPlayer
     {
+        private static RECT rect;
+
         public static void Skip(ArgumentAction argument)
         {
-            IntPtr hWnd = WorkerWithWindows.GetDesktopWindow();
-            RECT rect = new RECT();
-            WorkerWithWindows.GetWindowRect(hWnd, out rect);
+            InitRect();
 
             WorkerWithMouse.MouseMove(rect.right - 170, rect.bottom - 125);
             WorkerWithMouse.MouseClick(MouseButtons.left);
+        }
+        public static void NextEpisode(ArgumentAction argument)
+        {
+            WorkerWithMouse.MouseMove(113,1056);
+            WorkerWithMouse.MouseClick(MouseButtons.left);
+        }
+
+        private static void InitRect()
+        {
+            IntPtr hWnd = WorkerWithWindows.GetDesktopWindow();
+            rect = new RECT();
+            WorkerWithWindows.GetWindowRect(hWnd, out rect);
         }
     }
 }
