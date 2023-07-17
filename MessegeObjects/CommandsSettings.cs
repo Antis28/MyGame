@@ -31,7 +31,7 @@ public interface IKeyStateCode
 
 public class CommandsSettings
 {
-    // string - для какой программы
+    // string - для какой программы(плеера)
     // Dictionary<string, IKeyStateCode> - имя комманды + настройки для этой комманды
     public Dictionary<string, Dictionary<string, IKeyStateCode>> CommandList;
 }

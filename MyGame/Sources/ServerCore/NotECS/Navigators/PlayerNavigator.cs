@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MessageObjects;
 using Newtonsoft.Json;
 using File = System.IO.File;
@@ -7,22 +8,22 @@ namespace MyGame.Sources.ServerCore
 {
     internal class PlayerNavigator
     {
-        private readonly IPlayerNavigator _potNavigator;
-        private readonly IPlayerNavigator _youTubeNavigator;
-        private readonly IPlayerNavigator _anilibriaNavigator;
+        private readonly Dictionary<string, IPlayerNavigator>  _navigatorList;
+
         private IPlayerNavigator _navigator;
         private CommandsSettings _commandSettings;
 
         public PlayerNavigator()
         {
-            //_potNavigator = new PotPlayerNavigator(_commandSettings?.CommandList["PotPlayer"]);
-            // _youTubenavigator = new YouTubePlayerNavigator(_commandSettings?.CommandList["YouTubePlayer"]);
-            InitSettingsFromFile();
-            _potNavigator = new Navigator(_commandSettings?.CommandList["PotPlayer"]);
-            _youTubeNavigator = new Navigator(_commandSettings?.CommandList["YouTubePlayer"]);
-            //_anilibriaNavigator = new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"]);
+            _navigatorList = new Dictionary<string, IPlayerNavigator>
+            {
+                { "PotPlayer", new Navigator(_commandSettings?.CommandList["PotPlayer"])},
+                { "YouTubePlayer", new Navigator(_commandSettings?.CommandList["YouTubePlayer"])},
+                { "AnilibriaPlayer", new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"])},
+            };
 
-            _navigator = _potNavigator;
+            InitSettingsFromFile();     
+            _navigator = _navigatorList["PotPlayer"];
         }
 
         public void MoveRightClick(ArgumentAction argument)
@@ -118,12 +119,7 @@ namespace MyGame.Sources.ServerCore
 
         private void SelectPlayer(string playerType)
         {
-            _navigator = playerType switch
-            {
-                "Pot Player" => _potNavigator,
-                "YouTube Player" => _youTubeNavigator,
-                _ => _navigator
-            };
+            _navigator = _navigatorList[playerType];
         }
 
         private (string playerType, int stepCount) ArgumentParser(string argument)
