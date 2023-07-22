@@ -2,6 +2,7 @@
 using KeyboardEmulator.ForSendInput;
 using MessageObjects;
 using MyGame.Sources.ServerCore.KeyState;
+using System.Threading.Tasks;
 
 namespace MyGame.Sources.ServerCore.NotECS.KeyState;
 
@@ -26,8 +27,10 @@ internal static class KeyEmulatorHandler
     {
         var emul = new KeyEmul();
 
-        for (int i = 0; i < state1.Repeat; i++) { 
-           emul.SendInput(state1.VKey);
+        for (int i = 0; i < state1.Repeat; i++)
+        {
+            Task.Delay(300);
+            emul.SendInput(state1.VKey);
         }
     }
 
