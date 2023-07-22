@@ -15,15 +15,15 @@ namespace MyGame.Sources.ServerCore
 
         public PlayerNavigator()
         {
+            InitSettingsFromFile();
+
             _navigatorList = new Dictionary<string, IPlayerNavigator>
             {
-                { "PotPlayer", new Navigator(_commandSettings?.CommandList["PotPlayer"])},
+                { "Pot Player", new Navigator(_commandSettings?.CommandList["PotPlayer"])},
                 { "YouTubePlayer", new Navigator(_commandSettings?.CommandList["YouTubePlayer"])},
                 { "AnilibriaPlayer", new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"])},
-            };
-
-            InitSettingsFromFile();     
-            _navigator = _navigatorList["PotPlayer"];
+            };              
+            _navigator = _navigatorList["Pot Player"];
         }
 
         public void MoveRightClick(ArgumentAction argument)
