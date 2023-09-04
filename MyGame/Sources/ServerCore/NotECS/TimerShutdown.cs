@@ -23,7 +23,8 @@ namespace MyGame.Sources.ServerCore.NotECS
             timer = new Timer(tm, num, 0, 60000);
         }
         public static void Count(object obj)
-        {           
+        {
+            // TODO: Выделить в нормальный логер
             Console.WriteLine("Осталось минут до гибернации - " + time);
             if (time <= 0)
             {               

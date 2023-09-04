@@ -33,6 +33,7 @@ namespace MyGame.Sources.Systems
             var server = new TcpListener(addressInfo.ip, addressInfo.port);
             try { server.Start(); } catch (Exception e)
             {
+                // TODO: Выделить в нормальный логер
                 Console.WriteLine(e);
                 Console.WriteLine("Возможно уже запущен экземпляр на этом сокете");
                 throw;

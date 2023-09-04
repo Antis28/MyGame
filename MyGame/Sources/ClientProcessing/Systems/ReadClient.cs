@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace MyGame.Sources.ClientProcessing.Systems
 {
-//Регистрировать в классе производном от Feature
+    //Регистрировать в классе производном от Feature
     public sealed class ReadClientSystem : IExecuteSystem
     {
         private readonly IGroup<GameEntity> _entities;
@@ -28,12 +28,12 @@ namespace MyGame.Sources.ClientProcessing.Systems
             foreach (var entity in _entities)
             {
                 var client = entity.client.value;
-                
+
                 // получит ip клиента
                 IPEndPoint ipep = (IPEndPoint)client.Client.RemoteEndPoint;
                 var ip = ipep.Address;
                 var port = ipep.Port;
-                
+
                 // Принимаем данные от клиента в цикле пока не дойдём до конца и отправит ответ об успехе.
                 ReadAndSendSuccessAnswer(client);
 
@@ -44,10 +44,12 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
                 // сохраняем полученное сообщение
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
-                
+
                 CommandMessage deserializedMessage;
-                try { deserializedMessage = JsonConvert.DeserializeObject<CommandMessage>(data); } catch (Exception e)
+                try { deserializedMessage = JsonConvert.DeserializeObject<CommandMessage>(data); }
+                catch (Exception e)
                 {
+                    // TODO: Выделить в нормальный логер
                     Console.WriteLine(e.Message);
                     return;
                 }
@@ -74,10 +76,13 @@ namespace MyGame.Sources.ClientProcessing.Systems
                     // Отправляем данные обратно клиенту (ответ).
                     stream.Write(msg, 0, msg.Length);
                 }
-            } catch (Exception e) { Console.WriteLine(e); } finally
-            {
-                // Закрываем соединение.
-                client.Close();
+            }
+            catch (Exception _)
+            {// TODO: Выделить в нормальный логер Console.WriteLine(e); } finally
+                {
+                    // Закрываем соединение.
+                    client.Close();
+                }
             }
         }
     }

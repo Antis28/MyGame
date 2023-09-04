@@ -91,6 +91,7 @@ public class FileSystemBuilder
         IEnumerable<string> dirPathArray = null;
         try { dirPathArray = System.IO.Directory.GetDirectories(path); } catch (Exception e)
         {
+            // TODO: Выделить в нормальный логер
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(e);
             Console.ResetColor();
@@ -107,6 +108,7 @@ public class FileSystemBuilder
         IEnumerable<string> files = null;
         try { files = System.IO.Directory.GetFiles(path); } catch (Exception e)
         {
+            // TODO: Выделить в нормальный логер
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(e);
             Console.ResetColor();

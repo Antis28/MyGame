@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGameTest", "MyGameTest\My
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessegeObjects", "MessegeObjects\MessegeObjects.csproj", "{CE7CE01E-7194-4F4C-AD35-425BE691BB93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileClientXamarin", "..\MobileClientXamarin\MobileClientXamarin.csproj", "{6A286A5D-42E2-4562-8D7F-00871EF23E9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlantisService", "AtlantisService\AtlantisService.csproj", "{15AB0C11-1857-4161-901D-8E694B8FED1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,16 @@ Global
 		{CE7CE01E-7194-4F4C-AD35-425BE691BB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE7CE01E-7194-4F4C-AD35-425BE691BB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE7CE01E-7194-4F4C-AD35-425BE691BB93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A286A5D-42E2-4562-8D7F-00871EF23E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A286A5D-42E2-4562-8D7F-00871EF23E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A286A5D-42E2-4562-8D7F-00871EF23E9E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6A286A5D-42E2-4562-8D7F-00871EF23E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A286A5D-42E2-4562-8D7F-00871EF23E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A286A5D-42E2-4562-8D7F-00871EF23E9E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{15AB0C11-1857-4161-901D-8E694B8FED1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15AB0C11-1857-4161-901D-8E694B8FED1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15AB0C11-1857-4161-901D-8E694B8FED1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15AB0C11-1857-4161-901D-8E694B8FED1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

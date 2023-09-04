@@ -27,7 +27,7 @@ public static class LastMovieRepository
         GoToFileInfo(emulator);
 
 
-                    
+
         GoToCopyToClipboard(emulator);
         CloseFileInfo(emulator);
 
@@ -92,11 +92,16 @@ public static class LastMovieRepository
                 {
                     pathIndex = i;
                     break;
-                } 
+                }
             }
 
-            filePath = (arr[pathIndex+1].Trim() + ':' + arr[pathIndex+2]).Trim();
-        } catch (Exception e) { Console.WriteLine(e); }
+            filePath = (arr[pathIndex + 1].Trim() + ':' + arr[pathIndex + 2]).Trim();
+        }
+        catch (Exception e)
+        {
+            // TODO: Выделить в нормальный логер
+            Console.WriteLine(e);
+        }
 
         return filePath;
     }

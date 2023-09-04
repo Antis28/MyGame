@@ -8,7 +8,7 @@ namespace MyGame.Sources.ServerCore
 {
     internal class PlayerNavigator
     {
-        private readonly Dictionary<string, IPlayerNavigator>  _navigatorList;
+        private readonly Dictionary<string, IPlayerNavigator> _navigatorList;
 
         private IPlayerNavigator _navigator;
         private CommandsSettings _commandSettings;
@@ -22,7 +22,7 @@ namespace MyGame.Sources.ServerCore
                 { "Pot Player", new Navigator(_commandSettings?.CommandList["PotPlayer"])},
                 { "YouTubePlayer", new Navigator(_commandSettings?.CommandList["YouTubePlayer"])},
                 { "AnilibriaPlayer", new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"])},
-            };              
+            };
             _navigator = _navigatorList["Pot Player"];
         }
 
@@ -96,6 +96,7 @@ namespace MyGame.Sources.ServerCore
             var path = Environment.CurrentDirectory + @"\command settings.json";
             if (!File.Exists(path))
             {
+                // TODO: Выделить в нормальный логер
                 Console.WriteLine("Файл настроек комманд не существует - command settings.json");
                 return;
             }
