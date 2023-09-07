@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading;
 
 namespace MyGame.Sources.ServerCore.NotECS
 {
@@ -11,28 +6,32 @@ namespace MyGame.Sources.ServerCore.NotECS
     {
         static int time = 0;
         static Timer timer;
+
         public static void test(ArgumentAction timeElapsed)
         {
-            int num = 0;
+            var num = 0;
             // устанавливаем метод обратного вызова
-            TimerCallback tm = new TimerCallback(Count);          
-            
+            var tm = new TimerCallback(Count);
+
             int.TryParse(timeElapsed.Argument, out time);
 
             // создаем таймер тикающий раз в 1 минуту
             timer = new Timer(tm, num, 0, 60000);
         }
+
         public static void Count(object obj)
         {
-            // TODO: Выделить в нормальный логер
-            Console.WriteLine("Осталось минут до гибернации - " + time);
+            // TODO: Переделать в логер ECS(DI), если будет в ECS
+            var message = $"Осталось минут до гибернации - {time}";
+            Main.Logger.ShowMessage(message);
+
             if (time <= 0)
-            {               
+            {
                 timer.Dispose();
                 SleepMode.GoHibernateMode(new ArgumentAction());
             }
+
             time--;
         }
     }
-    
 }

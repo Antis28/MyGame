@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading;
 using System.Windows;
-using ApiCrossConsole;
 using KeyboardEmulator;
 using KeyboardEmulator.ForSendInput;
 using MyGame.Sources.SaveLoad;
@@ -25,7 +24,6 @@ public static class LastMovieRepository
     {
         var emulator = new KeyEmul();
         GoToFileInfo(emulator);
-
 
 
         GoToCopyToClipboard(emulator);
@@ -56,7 +54,9 @@ public static class LastMovieRepository
         var emulator = new KeyEmul();
         emulator.SendInput(ScanCodeShort.MENU, ScanCodeShort.RETURN);
 
-        ConsoleCreator.CreateForDotNetFramework().ShowMessage("Загружен последний видеофайл");
+        // TODO: Выделить в нормальный логер, если будет в ECS
+        var message = "Загружен последний видеофайл";
+        Main.Logger.ShowMessage(message);
     }
 
     public static SettingsComponent GetSettings()
@@ -85,8 +85,8 @@ public static class LastMovieRepository
             var arr = text.Split(new[] { ':', '\r' }, sepCount);
             if (arr.Length < sepCount) { return filePath; }
 
-            int pathIndex = 0;
-            for (int i = 0; i < arr.Length; i++)
+            var pathIndex = 0;
+            for (var i = 0; i < arr.Length; i++)
             {
                 if (arr[i].Contains("Complete name"))
                 {
@@ -96,11 +96,10 @@ public static class LastMovieRepository
             }
 
             filePath = (arr[pathIndex + 1].Trim() + ':' + arr[pathIndex + 2]).Trim();
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
-            // TODO: Выделить в нормальный логер
-            Console.WriteLine(e);
+            // TODO: Выделить в нормальный логер, когда будет признак ошибки
+            Main.Logger.ShowError(e);
         }
 
         return filePath;
@@ -147,8 +146,8 @@ public static class LastMovieRepository
     // Копировать содержимое буфера обмена
     private static string GetClipText()
     {
-        string res = string.Empty;
-        Thread staThread = new Thread(x =>
+        var res = string.Empty;
+        var staThread = new Thread(x =>
         {
             try { res = Clipboard.GetText(); } catch (Exception ex) { res = ex.Message; }
         });

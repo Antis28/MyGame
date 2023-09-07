@@ -11,6 +11,7 @@ namespace MyGame.Sources.ClientProcessing.Systems
     //Регистрировать в классе производном от Feature
     public sealed class ReadClientSystem : IExecuteSystem
     {
+        private Contexts _contexts;
         private readonly IGroup<GameEntity> _entities;
 
         // Буфер для принимаемых данных.
@@ -20,6 +21,7 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
         public ReadClientSystem(Contexts contexts)
         {
+            _contexts = contexts;
             _entities = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Client));
         }
 
@@ -30,7 +32,7 @@ namespace MyGame.Sources.ClientProcessing.Systems
                 var client = entity.client.value;
 
                 // получит ip клиента
-                IPEndPoint ipep = (IPEndPoint)client.Client.RemoteEndPoint;
+                var ipep = (IPEndPoint)client.Client.RemoteEndPoint;
                 var ip = ipep.Address;
                 var port = ipep.Port;
 
@@ -46,11 +48,12 @@ namespace MyGame.Sources.ClientProcessing.Systems
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
 
                 CommandMessage deserializedMessage;
-                try { deserializedMessage = JsonConvert.DeserializeObject<CommandMessage>(data); }
-                catch (Exception e)
+                try { deserializedMessage = JsonConvert.DeserializeObject<CommandMessage>(data); } catch (Exception e)
                 {
-                    // TODO: Выделить в нормальный логер
-                    Console.WriteLine(e.Message);
+                    // TODO: Переделать в логер ECS(DI), когда будет признак ошибки
+                    var message = e.Message;
+                    // _contexts.debug.CreateEntity().AddDebugLog(message, GetType().Name);
+                    Main.Logger.ShowError(e);
                     return;
                 }
 
@@ -76,13 +79,14 @@ namespace MyGame.Sources.ClientProcessing.Systems
                     // Отправляем данные обратно клиенту (ответ).
                     stream.Write(msg, 0, msg.Length);
                 }
-            }
-            catch (Exception _)
-            {// TODO: Выделить в нормальный логер Console.WriteLine(e); } finally
-                {
-                    // Закрываем соединение.
-                    client.Close();
-                }
+            } catch (Exception e)
+            {
+                // TODO: Переделать в логер ECS(DI)
+                Main.Logger.ShowError(e);
+            } finally
+            {
+                // Закрываем соединение.
+                client.Close();
             }
         }
     }

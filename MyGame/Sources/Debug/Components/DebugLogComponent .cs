@@ -6,6 +6,7 @@
 [Debug]
 public sealed class DebugLogComponent : IComponent
 {
+    //ToDo Добавить признак: сообщение, ошибка, предупреждение, подсказка. 
     /// <summary>
     /// Сообщение для вывода
     /// </summary>

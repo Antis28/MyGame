@@ -1,4 +1,5 @@
 ﻿using ApiCrossConsole;
+using CrossConsole;
 
 namespace MyGame.Sources.Services
 {
@@ -9,6 +10,11 @@ namespace MyGame.Sources.Services
         public ConsoleLogService()
         {
             console = ConsoleCreator.CreateForDotNetFramework();
+        }
+
+        public ConsoleLogService(IConsole logger)
+        {
+            console = logger;
         }
 
         public void LogMessage(string message)

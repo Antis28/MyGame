@@ -1,7 +1,7 @@
 ﻿using System.Threading;
+using ApiCrossConsole;
 using MyGame.Sources.Services;
 using MyGame.Sources.Systems;
-using ApiCrossConsole;
 
 namespace MyGame.Sources
 {
@@ -10,19 +10,20 @@ namespace MyGame.Sources
         private RootSystem _systems;
 
         public static IConsole Logger { get; set; }
+        public static Contexts Context { get; set; }
 
         public void Start(IConsole logger)
         {
-            Logger = logger;    
-            var context = Contexts.sharedInstance;
+            Logger = logger;
+            Context = Contexts.sharedInstance;
 
-            var services = new ServiceRootSystems(context, GetServices());
+            var services = new ServiceRootSystems(Context, GetServices());
             services.Initialize();
 
-            _systems = new RootSystem(context);
+            _systems = new RootSystem(Context);
             _systems.Initialize();
 
-            context.game.CreateEntity().isLoadSettings = true;
+            Context.game.CreateEntity().isLoadSettings = true;
 
             // SendAllDiscNames();
 
@@ -39,7 +40,7 @@ namespace MyGame.Sources
         {
             return new ServicesRegister(
                 new MyTimeService(),
-                new ConsoleLogService(),
+                new ConsoleLogService(Logger),
                 new MultiThreadService()
                 //     new UnityViewService(),        // responsible for creating gameobjects for views
                 //     new UnityApplicationService(), // gives app functionality like .Quit()

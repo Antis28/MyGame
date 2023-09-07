@@ -1,8 +1,8 @@
-﻿using MessageObjects;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
-using ApiCrossConsole;
+using CrossConsole;
+using MessageObjects;
+using Newtonsoft.Json;
 using File = System.IO.File;
 
 namespace ConsoleViewServer
@@ -12,10 +12,11 @@ namespace ConsoleViewServer
         public static void Main(string[] args)
         {
             //var logger = ConsoleCreator.CreateForDotNetFramework();
-            IConsole logger = ConsoleCreator.CreateForService();
+            var logger = ConsoleCreator.CreateForService();
             // TestJsonSettings();
             new MyGame.Sources.Main().Start(logger);
         }
+
         private static void TestJsonSettings()
         {
             var path = Environment.CurrentDirectory + @"\command settings.json";
@@ -32,12 +33,8 @@ namespace ConsoleViewServer
             {
                 Formatting = Formatting.Indented,
                 TypeNameHandling = TypeNameHandling.Auto,
-
             });
-            using (var sw = new StreamWriter(path))
-            {
-                sw.Write(jsString);
-            }
+            using (var sw = new StreamWriter(path)) { sw.Write(jsString); }
         }
     }
 }

@@ -19,37 +19,37 @@ namespace MyGame.Sources.ServerCore
 
             _navigatorList = new Dictionary<string, IPlayerNavigator>
             {
-                { "Pot Player", new Navigator(_commandSettings?.CommandList["PotPlayer"])},
-                { "YouTubePlayer", new Navigator(_commandSettings?.CommandList["YouTubePlayer"])},
-                { "AnilibriaPlayer", new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"])},
+                { "Pot Player", new Navigator(_commandSettings?.CommandList["PotPlayer"]) },
+                { "YouTubePlayer", new Navigator(_commandSettings?.CommandList["YouTubePlayer"]) },
+                { "AnilibriaPlayer", new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"]) },
             };
             _navigator = _navigatorList["Pot Player"];
         }
 
         public void MoveRightClick(ArgumentAction argument)
         {
-            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+            var (playerType, stepCount) = ArgumentParser(argument.Argument);
             SelectPlayer(playerType);
             _navigator.MoveRight(stepCount);
         }
 
         public void MoveRight10Click(ArgumentAction argument)
         {
-            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+            var (playerType, stepCount) = ArgumentParser(argument.Argument);
             SelectPlayer(playerType);
             _navigator.MoveRight(stepCount);
         }
 
         public void MoveLeftClick(ArgumentAction argument)
         {
-            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+            var (playerType, stepCount) = ArgumentParser(argument.Argument);
             SelectPlayer(playerType);
             _navigator.MoveLeft(stepCount);
         }
 
         public void MoveLeft10Click(ArgumentAction argument)
         {
-            (string playerType, int stepCount) = ArgumentParser(argument.Argument);
+            var (playerType, stepCount) = ArgumentParser(argument.Argument);
 
             SelectPlayer(playerType);
             _navigator.MoveLeft(stepCount);
@@ -96,8 +96,9 @@ namespace MyGame.Sources.ServerCore
             var path = Environment.CurrentDirectory + @"\command settings.json";
             if (!File.Exists(path))
             {
-                // TODO: Выделить в нормальный логер
-                Console.WriteLine("Файл настроек комманд не существует - command settings.json");
+                // TODO: Переделать в логер ECS(DI)
+                var message = "Файл настроек комманд не существует - command settings.json";
+                Main.Logger.ShowMessage(message);
                 return;
             }
 
@@ -126,7 +127,7 @@ namespace MyGame.Sources.ServerCore
         private (string playerType, int stepCount) ArgumentParser(string argument)
         {
             var args = argument.Split('&');
-            int count = 1;
+            var count = 1;
             if (args.Length > 1)
                 int.TryParse(args[1], out count);
             return (args[0], count);

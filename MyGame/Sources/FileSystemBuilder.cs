@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using MessageObjects;
-using NUnit.Framework;
 using Directory = MessageObjects.Directory;
 using File = MessageObjects.File;
 
@@ -74,7 +72,6 @@ public class FileSystemBuilder
         return dirList;
     }
 
-    
 
     private List<File> FillFiles(string path)
     {
@@ -82,19 +79,17 @@ public class FileSystemBuilder
 
         return files?.Select(file => new File() { Name = file }).ToList();
     }
+
     private IEnumerable<string> TryGetDirPathArray(string path)
     {
-        if (_exceptPath.Contains(path))
-        {
-            return null;
-        }
+        if (_exceptPath.Contains(path)) { return null; }
+
         IEnumerable<string> dirPathArray = null;
         try { dirPathArray = System.IO.Directory.GetDirectories(path); } catch (Exception e)
         {
-            // TODO: Выделить в нормальный логер
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(e);
-            Console.ResetColor();
+            // TODO: Выделить в нормальный логер, когда будет признак ошибки
+            Main.Logger.ShowError(e);
+
             WriteDirToFile(path);
         }
 
@@ -104,14 +99,12 @@ public class FileSystemBuilder
 
     private IEnumerable<string> TryGetFilesPathArray(string path)
     {
-        
         IEnumerable<string> files = null;
         try { files = System.IO.Directory.GetFiles(path); } catch (Exception e)
         {
-            // TODO: Выделить в нормальный логер
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(e);
-            Console.ResetColor();
+            // TODO: Выделить в нормальный логер, когда будет признак ошибки
+            Main.Logger.ShowError(e);
+
             WriteFilePathToFile(path);
         }
 
@@ -124,7 +117,7 @@ public class FileSystemBuilder
         // добавление в файл
         using (var writer = new StreamWriter(pathExept, true)) { writer.WriteLine(path); }
     }
-    
+
     private static void WriteDirToFile(string dir)
     {
         var path = "exceptDir.txt";
@@ -136,15 +129,12 @@ public class FileSystemBuilder
     {
         var path = "exceptDir.txt";
         var dirString = new List<string>();
-        
+
         // асинхронное чтение
         using (var reader = new StreamReader(path))
         {
             string line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                dirString.Add(line);
-            }
+            while ((line = reader.ReadLine()) != null) { dirString.Add(line); }
         }
 
         return dirString;

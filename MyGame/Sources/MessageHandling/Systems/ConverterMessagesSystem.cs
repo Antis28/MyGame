@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using Entitas;
 using MyGame.Sources.ServerCore;
 using MyGame.Sources.ServerCore.NotECS;
-using Newtonsoft.Json;
 
 namespace MyGame.Sources.Systems
 {
 //Регистрировать в классе производном от Feature
 
-/// <summary>
+    /// <summary>
     /// Когда было прочитано сообщение, обработать его
     /// </summary>
     public sealed class ConverterMessagesSystem : ReactiveSystem<GameEntity>
@@ -37,11 +31,13 @@ namespace MyGame.Sources.Systems
                 { "Volume +", navigator.VolumeUpClick },
                 { "Volume -", navigator.VolumeDownClick },
                 { "Mute", navigator.MuteClick },
-                { "PageDown", 
+                {
+                    "PageDown",
                     //navigator.NextClick 
                     AnilibriaPlayer.NextEpisode
                 },
-                { "PageUp", 
+                {
+                    "PageUp",
                     //navigator.PreviousClick
                     AnilibriaPlayer.PreviousEpisode
                 },
@@ -49,11 +45,11 @@ namespace MyGame.Sources.Systems
                 // навигация упрвления питанием
                 //{ "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
-                
+
                 // навигация упрвления браузером файлов
                 { "GetFileSystem", FileBrowserHandler.SendFileSystemInJson },
                 { "ExecutableFile", FileBrowserHandler.ExecutableFile },
-                
+
                 // Другое
                 { "SaveName", LastMovieRepository.SaveFilePathFromPotPlayer },
                 { "LoadLastMovie", LastMovieRepository.LoadLastMovie },

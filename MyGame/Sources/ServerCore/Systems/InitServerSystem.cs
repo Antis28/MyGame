@@ -18,7 +18,7 @@ namespace MyGame.Sources.Systems
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.AddressInfo);  
+            return context.CreateCollector(GameMatcher.AddressInfo);
         }
 
         protected override bool Filter(GameEntity entity)
@@ -33,9 +33,11 @@ namespace MyGame.Sources.Systems
             var server = new TcpListener(addressInfo.ip, addressInfo.port);
             try { server.Start(); } catch (Exception e)
             {
-                // TODO: Выделить в нормальный логер
-                Console.WriteLine(e);
-                Console.WriteLine("Возможно уже запущен экземпляр на этом сокете");
+                // TODO: Выделить в нормальный логер, когда будет признак ошибки
+                Main.Logger.ShowError(e);
+
+                var message = "Возможно уже запущен экземпляр на этом сокете";
+                _contexts.debug.CreateEntity().AddDebugLog(message, GetType().Name);
                 throw;
             }
 
@@ -45,7 +47,7 @@ namespace MyGame.Sources.Systems
             _contexts.debug.CreateEntity().AddDebugLog("Ожидание соединения... ", GetType().Name);
 
 
-            int MaxThreadsCount = Environment.ProcessorCount * 4;
+            var MaxThreadsCount = Environment.ProcessorCount * 4;
             // Установим максимальное количество рабочих потоков
             ThreadPool.SetMaxThreads(MaxThreadsCount, MaxThreadsCount);
             // Установим минимальное количество рабочих потоков

@@ -2,10 +2,11 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ApiCrossConsole;
+using CrossConsole;
 using MyGame.Sources.ServerCore.NotECS;
 using Newtonsoft.Json;
 
@@ -21,29 +22,9 @@ public static class FileBrowserHandler
         var jsonText = JsonConvert.SerializeObject(fileSystem);
         try { await Connect(jsonText, argument.Ip).ConfigureAwait(false); } catch (Exception e)
         {
-            ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message);
+            // TODO: Переделать в логер ECS(DI), когда будет признак ошибки
+            Main.Logger.ShowError(e);
         }
-    }
-
-    private static async Task Connect(string message, string ipAddress = "192.168.1.201", int port = 9090)
-    {
-        // Настраиваем его на IP нашего сервера и тот же порт.
-        try
-        {
-            // Создаём TcpClient.
-            TcpClient tcpClient = new TcpClient();
-            await tcpClient.ConnectAsync(ipAddress, port); // соединение
-            NetworkStream networkStream = tcpClient.GetStream();
-            StreamWriter writer = new StreamWriter(networkStream, Encoding.UTF8);
-            StreamReader reader = new StreamReader(networkStream, Encoding.UTF8);
-            writer.AutoFlush = true;
-
-            await writer.WriteLineAsync(message);
-
-            string response = await reader.ReadLineAsync();
-            tcpClient.Close();
-            ConsoleCreator.CreateForDotNetFramework().ShowMessage(response);
-        } catch (Exception e) { ConsoleCreator.CreateForDotNetFramework().ShowMessage(e.Message); }
     }
 
     public static void ExecutableFile(ArgumentAction argument)
@@ -53,7 +34,16 @@ public static class FileBrowserHandler
 
         if (!File.Exists(path))
         {
-            ConsoleCreator.CreateForDotNetFramework().ShowMessage("Нет сохраненных видеофайлов");
+            // TODO: Переделать в логер ECS(DI), если будет в ECS
+            var message = "Загружен последний видеофайл";
+
+            var declaringType = MethodBase.GetCurrentMethod()?.DeclaringType;
+
+            if (declaringType != null)
+                Main.Context.debug.CreateEntity()
+                    .AddDebugLog(message, declaringType?.FullName);
+
+            Main.Logger.ShowMessage("Нет сохраненных видеофайлов");
             return;
         }
 
@@ -61,21 +51,45 @@ public static class FileBrowserHandler
         Thread.Sleep(1000);
         if (process != null) { WinAPI.SetForegroundWindow(process.MainWindowHandle); }
     }
+
     public static void ExecutableFile(string programPath, string filePath)
     {
         ConsoleCreator.CreateForDotNetFramework().ShowMessage("programPath -> " + filePath);
 
         if (!File.Exists(programPath) || !File.Exists(filePath))
         {
-            ConsoleCreator.CreateForDotNetFramework().ShowMessage("Нет сохраненных видеофайлов, или неверный путь к сохраненному файлу.");
+            // TODO: Переделать в логер ECS(DI), если будет в ECS
+            Main.Logger.ShowMessage("Нет сохраненных видеофайлов, или неверный путь к сохраненному файлу.");
             return;
         }
 
         var process = Process.Start(programPath, filePath);
         Thread.Sleep(1000);
-        if (process != null)
+        if (process != null) { WinAPI.SetForegroundWindow(process.MainWindowHandle); }
+    }
+
+    private static async Task Connect(string message, string ipAddress = "192.168.1.201", int port = 9090)
+    {
+        // Настраиваем его на IP нашего сервера и тот же порт.
+        try
         {
-            WinAPI.SetForegroundWindow(process.MainWindowHandle);
+            // Создаём TcpClient.
+            var tcpClient = new TcpClient();
+            await tcpClient.ConnectAsync(ipAddress, port); // соединение
+            var networkStream = tcpClient.GetStream();
+            var writer = new StreamWriter(networkStream, Encoding.UTF8);
+            var reader = new StreamReader(networkStream, Encoding.UTF8);
+            writer.AutoFlush = true;
+
+            await writer.WriteLineAsync(message);
+
+            var response = await reader.ReadLineAsync();
+            tcpClient.Close();
+            ConsoleCreator.CreateForDotNetFramework().ShowMessage(response);
+        } catch (Exception e)
+        {
+            // TODO: Переделать в логер ECS(DI), когда будет признак ошибки
+            Main.Logger.ShowError(e);
         }
     }
 }
