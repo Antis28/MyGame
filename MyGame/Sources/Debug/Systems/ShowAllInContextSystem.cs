@@ -1,4 +1,4 @@
-﻿using CrossConsole;
+﻿
 using Entitas;
 
 namespace MyGame.Sources.Systems
@@ -15,7 +15,8 @@ namespace MyGame.Sources.Systems
 
         public void Execute()
         {
-            var console = ConsoleCreator.CreateForDotNetFramework();
+            var console = Main.Logger;
+            //var console = ConsoleCreator.CreateForDotNetFramework();
 
             console.ShowMessage(new string('-', 80));
             console.ShowMessage($"Context = game");

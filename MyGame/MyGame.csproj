@@ -34,7 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Atlantis_CrossConsole">
-      <HintPath>..\..\_MyDLL\CrossConsole\CrossConsole\bin\Debug\Atlantis_CrossConsole.dll</HintPath>
+      <HintPath>..\..\..\..\My_Progi\C#\_MyDLL\CrossConsole\CrossConsole\bin\Debug\Atlantis_CrossConsole.dll</HintPath>
+    </Reference>
+    <Reference Include="Atlantis_CrossConsoleApi">
+      <HintPath>..\..\..\..\My_Progi\C#\_MyDLL\CrossConsole\CrossConsoleApi\bin\Debug\Atlantis_CrossConsoleApi.dll</HintPath>
     </Reference>
     <Reference Include="Atlantis_KeyEmulator">
       <HintPath>..\..\..\..\My_Progi\C#\_MyDLL\KeyEmulator\KeyEmulator\bin\Debug\Atlantis_KeyEmulator.dll</HintPath>

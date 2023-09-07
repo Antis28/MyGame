@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Windows;
-using CrossConsole;
+using ApiCrossConsole;
 using KeyboardEmulator;
 using KeyboardEmulator.ForSendInput;
 using MyGame.Sources.SaveLoad;

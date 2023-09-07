@@ -1,8 +1,7 @@
 ﻿using System.Threading;
 using MyGame.Sources.Services;
 using MyGame.Sources.Systems;
-using CrossConsole;
-using System.IO;
+using ApiCrossConsole;
 
 namespace MyGame.Sources
 {
@@ -10,8 +9,11 @@ namespace MyGame.Sources
     {
         private RootSystem _systems;
 
-        public void Start()
+        public static IConsole Logger { get; set; }
+
+        public void Start(IConsole logger)
         {
+            Logger = logger;    
             var context = Contexts.sharedInstance;
 
             var services = new ServiceRootSystems(context, GetServices());

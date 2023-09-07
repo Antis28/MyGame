@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using CrossConsole;
+using ApiCrossConsole;
 using MyGame.Sources.ServerCore.NotECS;
 using Newtonsoft.Json;
 

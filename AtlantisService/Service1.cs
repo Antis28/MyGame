@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.ServiceProcess;
-using System.Text;
 using System.Threading.Tasks;
+using ApiCrossConsole;
 
 namespace AtlantisService
 {
@@ -20,14 +14,13 @@ namespace AtlantisService
 
         protected async override void OnStart(string[] args)
         {
-            new MyGame.Sources.Main().Start();
+            var logger = ConsoleCreator.CreateForService();
+            new MyGame.Sources.Main().Start(logger);
             while (true)
             {
                 File.AppendAllText(@"C:\Users\Antis\Desktop\File1.txt", "Test ");
                 await Task.Delay(300);
             }
         }
-
-       
     }
 }

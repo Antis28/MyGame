@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using ApiCrossConsole;
 using File = System.IO.File;
 
 namespace ConsoleViewServer
@@ -10,8 +11,10 @@ namespace ConsoleViewServer
     {
         public static void Main(string[] args)
         {
-           // TestJsonSettings();
-            new MyGame.Sources.Main().Start();
+            //var logger = ConsoleCreator.CreateForDotNetFramework();
+            IConsole logger = ConsoleCreator.CreateForService();
+            // TestJsonSettings();
+            new MyGame.Sources.Main().Start(logger);
         }
         private static void TestJsonSettings()
         {
@@ -29,7 +32,7 @@ namespace ConsoleViewServer
             {
                 Formatting = Formatting.Indented,
                 TypeNameHandling = TypeNameHandling.Auto,
-                
+
             });
             using (var sw = new StreamWriter(path))
             {

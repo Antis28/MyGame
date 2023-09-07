@@ -1,4 +1,4 @@
-﻿using CrossConsole;
+﻿using ApiCrossConsole;
 
 namespace MyGame.Sources.Services
 {
