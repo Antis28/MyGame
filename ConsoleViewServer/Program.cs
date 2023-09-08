@@ -11,10 +11,10 @@ namespace ConsoleViewServer
     {
         public static void Main(string[] args)
         {
-            //var logger = ConsoleCreator.CreateForDotNetFramework();
-            var logger = ConsoleCreator.CreateForService();
+            var logger = ConsoleCreator.CreateForDotNetFramework();
+            // var logger = ConsoleCreator.CreateForService();
             // TestJsonSettings();
-            new MyGame.Sources.Main().Start(logger);
+            _ = new MyGame.Sources.Main().Start(logger);
         }
 
         private static void TestJsonSettings()
