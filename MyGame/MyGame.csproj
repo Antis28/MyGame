@@ -42,6 +42,9 @@
     <Reference Include="Atlantis_KeyEmulator">
       <HintPath>..\..\..\..\My_Progi\C#\_MyDLL\KeyEmulator\KeyEmulator\bin\Debug\Atlantis_KeyEmulator.dll</HintPath>
     </Reference>
+    <Reference Include="ClientCoreStandart">
+      <HintPath>..\..\ClientCoreStandart\bin\Debug\netstandard2.0\ClientCoreStandart.dll</HintPath>
+    </Reference>
     <Reference Include="DesperateDevs.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DesperateDevs.Analytics.0.0.0\lib\net35\DesperateDevs.Analytics.dll</HintPath>
     </Reference>
@@ -68,6 +71,10 @@
     </Reference>
     <Reference Include="Entitas.CodeGeneration.Plugins, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Entitas.CodeGeneration.Plugins.1.13.0\lib\net35\Entitas.CodeGeneration.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="MessegeObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ClientCoreStandart\bin\Debug\netstandard2.0\MessegeObjects.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
@@ -239,7 +246,8 @@
     <Compile Include="Sources\ServerCore\NotECS\Navigators\Navigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\PlayerNavigator.cs" />
     <Compile Include="Sources\ServerCore\NotECS\LastMovieRepository.cs" />
-    <Compile Include="Sources\ServerCore\NotECS\SkipOpenning.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\Navigators\AnilibriaPlayer.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\Navigators\YouTubePlayer.cs" />
     <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
     <Compile Include="Sources\ServerCore\NotECS\TimerShutdown.cs" />
     <Compile Include="Sources\ServerCore\NotECS\WinApi.cs" />
@@ -270,6 +278,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -277,12 +288,6 @@
     <Content Include="any\any\icon.png" />
     <Content Include="Jenny.properties" />
     <Content Include="Sources\Services\Descripton Services.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MessegeObjects\MessegeObjects.csproj">
-      <Project>{ce7ce01e-7194-4f4c-ad35-425be691bb93}</Project>
-      <Name>MessegeObjects</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

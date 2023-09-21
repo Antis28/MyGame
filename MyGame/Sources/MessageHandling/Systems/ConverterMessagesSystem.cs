@@ -33,13 +33,13 @@ namespace MyGame.Sources.Systems
                 { "Mute", navigator.MuteClick },
                 {
                     "PageDown",
-                    //navigator.NextClick 
-                    AnilibriaPlayer.NextEpisode
+                    navigator.NextClick 
+                   // AnilibriaPlayer.NextEpisode
                 },
                 {
                     "PageUp",
-                    //navigator.PreviousClick
-                    AnilibriaPlayer.PreviousEpisode
+                    navigator.PreviousClick
+                    //AnilibriaPlayer.PreviousEpisode
                 },
 
                 // навигация упрвления питанием

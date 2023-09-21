@@ -5,7 +5,7 @@ using MyGame.Sources.ServerCore.NotECS.KeyState;
 namespace MyGame.Sources.ServerCore
 {
 
-    class Navigator : IPlayerNavigator
+    public class Navigator : IPlayerNavigator
     {
         private readonly Dictionary<string, IKeyStateCode> _commandSettings;
 
@@ -31,11 +31,13 @@ namespace MyGame.Sources.ServerCore
             KeyEmulatorHandler.EmulateSendKey(command);
         }
 
-        public void MoveLeft10() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["MoveLeft10"]);
-        public void Mute() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Mute"]);
-        public void Next() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Next"]);
-        public void Previous() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Previous"]);
-        public void PausePlay() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["PausePlay"]);
+
+
+        public virtual void MoveLeft10() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["MoveLeft10"]);
+        public virtual void Mute() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Mute"]);
+        public virtual void Next() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Next"]);
+        public virtual void Previous() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["Previous"]);
+        public virtual void PausePlay() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["PausePlay"]);
         public void VolumeDown() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["VolumeDown"]);
         public void VolumeUp() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["VolumeUp"]);
     }

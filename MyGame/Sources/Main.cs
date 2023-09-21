@@ -15,7 +15,7 @@ namespace MyGame.Sources
         public static IConsole Logger { get; set; }
         public static Contexts Context { get; set; }
 
-        public async Task Start(IConsole logger)
+        public  Task Start(IConsole logger)
         {
             Logger = logger;
             Logger.ShowMessage("Logger Up");

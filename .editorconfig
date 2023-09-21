@@ -1,0 +1,4 @@
+﻿[*.{cs,vb}]
+
+# IDE0060: Удалите неиспользуемый параметр
+dotnet_diagnostic.IDE0060.severity = silent

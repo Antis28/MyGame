@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MessageObjects;
+using MyGame.Sources.ServerCore.NotECS.Navigators;
 using Newtonsoft.Json;
 using File = System.IO.File;
 
@@ -19,11 +20,14 @@ namespace MyGame.Sources.ServerCore
 
             _navigatorList = new Dictionary<string, IPlayerNavigator>
             {
-                { "Pot Player", new Navigator(_commandSettings?.CommandList["PotPlayer"]) },
-                { "YouTubePlayer", new Navigator(_commandSettings?.CommandList["YouTubePlayer"]) },
+                { "PotPlayer", new Navigator(_commandSettings?.CommandList["PotPlayer"]) },
+                { "YouTubePlayer", new YouTubePlayer(_commandSettings?.CommandList["YouTubePlayer"]) },
                 { "AnilibriaPlayer", new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"]) },
             };
-            _navigator = _navigatorList["Pot Player"];
+
+            // Начальное значение, меняется из клиента
+            _navigator = _navigatorList["PotPlayer"];
+            
         }
 
         public void MoveRightClick(ArgumentAction argument)
@@ -61,7 +65,7 @@ namespace MyGame.Sources.ServerCore
             _navigator.Mute();
         }
 
-        public void NextClick(ArgumentAction argument)
+        public virtual void NextClick(ArgumentAction argument)
         {
             SelectPlayer(argument.Argument);
             _navigator.Next();
