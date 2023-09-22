@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ApiCrossConsole;
@@ -11,12 +12,13 @@ namespace MyGame.Sources
     public class Main
     {
         private RootSystem _systems;
-
+        
         public static IConsole Logger { get; set; }
         public static Contexts Context { get; set; }
 
         public  Task Start(IConsole logger)
         {
+            
             Logger = logger;
             Logger.ShowMessage("Logger Up");
             Context = Contexts.sharedInstance;
@@ -32,17 +34,25 @@ namespace MyGame.Sources
             // SendAllDiscNames();
 
             // для unity3D поместить в Update 
-            File.AppendAllText(@"C:\Users\Antis\Desktop\File1.txt", "before  while \n");
+          
             while (true)
             {
-                _systems.Execute();
+                try
+                {
+                    _systems.Execute();
+                }
+                catch (Exception e)
+                {
+
+                    logger.ShowMessage(e.Message);
+                }
+               
                
                 //await Task.Delay(500);               
                 
                 Thread.Sleep(500);
             }
-        }
-
+        }        
 
         private static ServicesRegister GetServices()
         {

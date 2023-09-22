@@ -28,7 +28,7 @@ namespace MyGame.Sources.ServerCore
 
             // Начальное значение, меняется из клиента
             _navigator = _navigatorList["PotPlayer"];
-            
+
         }
 
         public void MoveRightClick(ArgumentAction argument)
@@ -126,7 +126,16 @@ namespace MyGame.Sources.ServerCore
 
         private void SelectPlayer(string playerType)
         {
-            _navigator = _navigatorList[playerType];
+
+            if (_navigatorList.ContainsKey(playerType))
+            {
+                _navigator = _navigatorList[playerType];
+            }
+            else
+            {
+
+                Main.Logger.ShowMessage($"ERROR: ключ {{{playerType}}} не существует!");
+            }
         }
 
         private (string playerType, int stepCount) ArgumentParser(string argument)

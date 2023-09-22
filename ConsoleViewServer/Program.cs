@@ -14,7 +14,16 @@ namespace ConsoleViewServer
             var logger = ConsoleCreator.CreateForDotNetFramework();
             // var logger = ConsoleCreator.CreateForService();
             // TestJsonSettings();
-            _ = new MyGame.Sources.Main().Start(logger);
+            try
+            {
+                _ = new MyGame.Sources.Main().Start(logger);
+            }
+            catch (Exception e)
+            {
+
+                logger.ShowError(e);
+            }
+
         }
 
         private static void TestJsonSettings()

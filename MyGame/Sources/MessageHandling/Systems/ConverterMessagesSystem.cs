@@ -20,7 +20,8 @@ namespace MyGame.Sources.Systems
         {
             var navigator = new PlayerNavigator();
             _contexts = contexts;
-            _keyCommands = new Dictionary<string, Action<ArgumentAction>>
+            
+                _keyCommands = new Dictionary<string, Action<ArgumentAction>>
             {
                 // навигация для Player
                 { "Right x 10", navigator.MoveRight10Click },

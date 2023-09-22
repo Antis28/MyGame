@@ -27,6 +27,20 @@ namespace MyGame.Sources.ClientProcessing.Systems
 
         public void Execute()
         {
+            try
+            {
+                ClientQueryHandler();
+            }
+            catch (Exception e)
+            {
+
+                Main.Logger.ShowError(e);
+            }
+            
+        }
+
+        private void ClientQueryHandler()
+        {
             foreach (var entity in _entities)
             {
                 var client = entity.client.value;
@@ -48,7 +62,8 @@ namespace MyGame.Sources.ClientProcessing.Systems
                 var messageEntity = Contexts.sharedInstance.game.CreateEntity();
 
                 CommandMessage deserializedMessage;
-                try { deserializedMessage = JsonConvert.DeserializeObject<CommandMessage>(data); } catch (Exception e)
+                try { deserializedMessage = JsonConvert.DeserializeObject<CommandMessage>(data); }
+                catch (Exception e)
                 {
                     // TODO: Переделать в логер ECS(DI), когда будет признак ошибки
                     var message = e.Message;
