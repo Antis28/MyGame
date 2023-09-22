@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MessageObjects;
+using MyGame.Sources.ServerCore.NotECS;
 using MyGame.Sources.ServerCore.NotECS.Navigators;
 using Newtonsoft.Json;
 using File = System.IO.File;
@@ -22,7 +23,7 @@ namespace MyGame.Sources.ServerCore
             {
                 { "PotPlayer", new Navigator(_commandSettings?.CommandList["PotPlayer"]) },
                 { "YouTubePlayer", new YouTubePlayer(_commandSettings?.CommandList["YouTubePlayer"]) },
-                { "AnilibriaPlayer", new Navigator(_commandSettings?.CommandList["AnilibriaPlayer"]) },
+                { "AnilibriaPlayer", new AnilibriaPlayer(_commandSettings?.CommandList["AnilibriaPlayer"]) },
             };
 
             // Начальное значение, меняется из клиента

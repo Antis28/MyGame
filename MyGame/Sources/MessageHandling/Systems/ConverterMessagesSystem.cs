@@ -33,20 +33,18 @@ namespace MyGame.Sources.Systems
                 { "Mute", navigator.MuteClick },
                 {
                     "PageDown",
-                    navigator.NextClick 
-                   // AnilibriaPlayer.NextEpisode
+                    navigator.NextClick
                 },
                 {
                     "PageUp",
                     navigator.PreviousClick
-                    //AnilibriaPlayer.PreviousEpisode
                 },
 
-                // навигация упрвления питанием
+                // навигация управления питанием
                 //{ "Hibernate", SleepMode.GoHibernateMode },
                 { "StandBy", SleepMode.GoStandbyMode },
 
-                // навигация упрвления браузером файлов
+                // навигация управления браузером файлов
                 { "GetFileSystem", FileBrowserHandler.SendFileSystemInJson },
                 { "ExecutableFile", FileBrowserHandler.ExecutableFile },
 
