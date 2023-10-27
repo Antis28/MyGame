@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using CrossConsole;
 using MessageObjects;
 using Newtonsoft.Json;
@@ -11,19 +12,20 @@ namespace ConsoleViewServer
     {
         public static void Main(string[] args)
         {
+            Task t = null;
             var logger = ConsoleCreator.CreateForDotNetFramework();
             // var logger = ConsoleCreator.CreateForService();
             // TestJsonSettings();
             try
             {
-                _ = new MyGame.Sources.Main().Start(logger);
+                t = new MyGame.Sources.Main().Start(logger);
             }
             catch (Exception e)
             {
 
                 logger.ShowError(e);
             }
-
+            t.Wait();
         }
 
         private static void TestJsonSettings()

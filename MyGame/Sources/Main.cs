@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ApiCrossConsole;
 using DesperateDevs.Logging;
+using MyGame.Sources.ClientProcessing.Systems;
 using MyGame.Sources.Services;
 using MyGame.Sources.Systems;
 
@@ -16,9 +17,10 @@ namespace MyGame.Sources
         public static IConsole Logger { get; set; }
         public static Contexts Context { get; set; }
 
-        public  Task Start(IConsole logger)
+        public async Task Start(IConsole logger)
         {
-            
+
+            //////////////////////////////////////
             Logger = logger;
             Logger.ShowMessage("Logger Up");
             Context = Contexts.sharedInstance;

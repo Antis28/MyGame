@@ -49,9 +49,9 @@ namespace MyGame.Sources.Systems
 
             var MaxThreadsCount = Environment.ProcessorCount * 4;
             // Установим максимальное количество рабочих потоков
-            ThreadPool.SetMaxThreads(MaxThreadsCount, MaxThreadsCount);
+            //ThreadPool.SetMaxThreads(MaxThreadsCount, MaxThreadsCount);
             // Установим минимальное количество рабочих потоков
-            ThreadPool.SetMinThreads(2, 2);
+            //ThreadPool.SetMinThreads(2, 2);
         }
     }
 }
