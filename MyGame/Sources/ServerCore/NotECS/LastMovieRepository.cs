@@ -28,7 +28,7 @@ public static class LastMovieRepository
 
         GoToCopyToClipboard(emulator);
         CloseFileInfo(emulator);
-
+    
         Thread.Sleep(1500);
         var filePath = GetFilePathFromClipData();
 
@@ -106,30 +106,25 @@ public static class LastMovieRepository
     }
 
     /// <summary>
-    ///  Перйти на кнопку скопировать в буфер
+    ///  Перейти на кнопку скопировать в буфер
     /// </summary>
     /// <param name="emulator"></param>
     private static void GoToCopyToClipboard(KeyEmul emulator)
     {
-        emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
-        emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
-        emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
-        emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
+        emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB, 3);
         emulator.SendInput(ScanCodeShort.RETURN);
     }
 
     /// <summary>
-    /// Перйти во вкладку файл
+    /// Перейти во вкладку файл
     /// </summary>
     /// <param name="emulator"></param>
     private static void GoToFileInfo(KeyEmul emulator)
     {
         // открыть информацию о файле
         emulator.SendInput(ScanCodeShort.CONTROL, ScanCodeShort.F1);
-        emulator.SendInput(ScanCodeShort.TAB);
-        emulator.SendInput(ScanCodeShort.TAB);
-        emulator.SendInput(ScanCodeShort.TAB);
-        emulator.SendInput(ScanCodeShort.TAB);
+        emulator.SendInput(ScanCodeShort.TAB, 3);
+        //emulator.SendInput(ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.RETURN);
     }
 
@@ -139,7 +134,7 @@ public static class LastMovieRepository
     /// <param name="emulator"></param>
     private static void CloseFileInfo(KeyEmul emulator)
     {
-        emulator.SendInput(ScanCodeShort.SHIFT, ScanCodeShort.TAB);
+        emulator.SendInput(ScanCodeShort.TAB);
         emulator.SendInput(ScanCodeShort.RETURN);
     }
 
