@@ -249,6 +249,7 @@
     <Compile Include="Sources\ServerCore\NotECS\LastMovieRepository.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\AnilibriaPlayer.cs" />
     <Compile Include="Sources\ServerCore\NotECS\Navigators\YouTubePlayer.cs" />
+    <Compile Include="Sources\ServerCore\NotECS\Navigators\YummyaniPlayer.cs" />
     <Compile Include="Sources\ServerCore\NotECS\SleepMode.cs" />
     <Compile Include="Sources\ServerCore\NotECS\TimerShutdown.cs" />
     <Compile Include="Sources\ServerCore\NotECS\WinApi.cs" />

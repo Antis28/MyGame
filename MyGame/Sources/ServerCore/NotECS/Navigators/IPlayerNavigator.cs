@@ -17,4 +17,6 @@ internal interface IPlayerNavigator
     public void PausePlay();
     public void VolumeDown();
     public void VolumeUp();
+    public void Skip();
+    
 }

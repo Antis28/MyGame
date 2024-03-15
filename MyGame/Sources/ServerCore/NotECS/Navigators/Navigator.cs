@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using KeyEmulator.MouseWorker;
+using KeyEmulator.WindowWorkers;
 using MessageObjects;
 using MyGame.Sources.ServerCore.NotECS.KeyState;
 
@@ -8,6 +11,8 @@ namespace MyGame.Sources.ServerCore
     public class Navigator : IPlayerNavigator
     {
         private readonly Dictionary<string, IKeyStateCode> _commandSettings;
+        static protected RECT rect;
+
 
         public Navigator(Dictionary<string, IKeyStateCode> commandSettings)
         {
@@ -40,5 +45,14 @@ namespace MyGame.Sources.ServerCore
         public virtual void PausePlay() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["PausePlay"]);
         public void VolumeDown() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["VolumeDown"]);
         public void VolumeUp() => KeyEmulatorHandler.EmulateSendKey(_commandSettings["VolumeUp"]);
+
+        public virtual void Skip() { }
+
+        protected void InitRect()
+        {
+            IntPtr hWnd = WorkerWithWindows.GetDesktopWindow();
+            rect = new RECT();
+            WorkerWithWindows.GetWindowRect(hWnd, out rect);
+        }        
     }
 }

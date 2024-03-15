@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using KeyEmulator.MouseWorker;
+using KeyEmulator.WindowWorkers;
 using MessageObjects;
 using MyGame.Sources.ServerCore.NotECS;
 using MyGame.Sources.ServerCore.NotECS.Navigators;
@@ -24,11 +26,11 @@ namespace MyGame.Sources.ServerCore
                 { "PotPlayer", new Navigator(_commandSettings?.CommandList["PotPlayer"]) },
                 { "YouTubePlayer", new YouTubePlayer(_commandSettings?.CommandList["YouTubePlayer"]) },
                 { "AnilibriaPlayer", new AnilibriaPlayer(_commandSettings?.CommandList["AnilibriaPlayer"]) },
+                { "YummyaniPlayer", new YummyaniPlayer(_commandSettings?.CommandList["YummyaniPlayer"]) },
             };
 
             // Начальное значение, меняется из клиента
             _navigator = _navigatorList["PotPlayer"];
-
         }
 
         public void MoveRightClick(ArgumentAction argument)
@@ -80,7 +82,7 @@ namespace MyGame.Sources.ServerCore
 
         public void PausePlayClick(ArgumentAction argument)
         {
-            SelectPlayer(argument.Argument);
+             SelectPlayer(argument.Argument);
             _navigator.PausePlay();
         }
 
@@ -145,6 +147,12 @@ namespace MyGame.Sources.ServerCore
             if (args.Length > 1)
                 int.TryParse(args[1], out count);
             return (args[0], count);
+        }
+
+        public void Skip(ArgumentAction argument)
+        {
+            SelectPlayer(argument.Argument);
+            _navigator.Skip();
         }
     }
 

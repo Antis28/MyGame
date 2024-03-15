@@ -9,8 +9,6 @@ namespace MyGame.Sources.ServerCore.NotECS.Navigators
 {
     internal class YouTubePlayer : Navigator
     {
-        private static RECT rect;
-
         public YouTubePlayer(Dictionary<string, IKeyStateCode> commandSettings) : base(commandSettings)
         {
         }
@@ -44,12 +42,6 @@ namespace MyGame.Sources.ServerCore.NotECS.Navigators
             WorkerWithMouse.MouseClick(MouseButtons.left);
             await Task.Delay(100);
             WorkerWithMouse.MouseMove(500, 500);
-        }
-        private static void InitRect()
-        {
-            IntPtr hWnd = WorkerWithWindows.GetDesktopWindow();
-            rect = new RECT();
-            WorkerWithWindows.GetWindowRect(hWnd, out rect);
-        }
+        }        
     }
 }
