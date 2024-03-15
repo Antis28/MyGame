@@ -1,0 +1,6 @@
+[submodule "MauiClient"]
+	path = MauiClient
+	url = M:\\My_projects\\!_Unity\\MyRemoteControl\\MyGame\\MauiClient
+[submodule "MauiMClient"]
+	path = MauiMClient
+	url = M:\\My_projects\\!_Unity\\MyRemoteControl\\MyGame\\MauiMClient
