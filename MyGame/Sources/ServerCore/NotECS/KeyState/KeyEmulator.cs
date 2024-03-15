@@ -24,7 +24,7 @@ internal static class KeyEmulatorHandler
     }
 
     public static void EmulateSendKey(IKeyStateCode state1)
-    {
+     {
         var emul = new KeyEmul();
 
         for (int i = 0; i < state1.Repeat; i++)

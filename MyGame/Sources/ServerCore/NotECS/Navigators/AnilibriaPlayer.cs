@@ -1,6 +1,7 @@
 ﻿using KeyEmulator.MouseWorker;
 using KeyEmulator.WindowWorkers;
 using MessageObjects;
+using MyGame.Sources.ServerCore.NotECS.Navigators;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,8 +10,6 @@ namespace MyGame.Sources.ServerCore.NotECS
 {
     public class AnilibriaPlayer : Navigator
     {
-        private static RECT rect;
-
         public AnilibriaPlayer(Dictionary<string, IKeyStateCode> commandSettings) : base(commandSettings)
         {
         }
@@ -27,13 +26,15 @@ namespace MyGame.Sources.ServerCore.NotECS
             WorkerWithMouse.MouseClick(MouseButtons.left);           
         }
 
-        public static void Skip(ArgumentAction argument)
+        public override void Skip()
         {
             InitRect();
 
             WorkerWithMouse.MouseMove(rect.right - 170, rect.bottom - 125);
             WorkerWithMouse.MouseClick(MouseButtons.left);
         }
+
+        //------------------------------------------------------------
         public static void NextEpisode(ArgumentAction argument)
         {
             WorkerWithMouse.MouseMove(113,1063);
@@ -44,12 +45,6 @@ namespace MyGame.Sources.ServerCore.NotECS
             WorkerWithMouse.MouseMove(31, 1063);
             WorkerWithMouse.MouseClick(MouseButtons.left);
         }
-
-        private static void InitRect()
-        {
-            IntPtr hWnd = WorkerWithWindows.GetDesktopWindow();
-            rect = new RECT();
-            WorkerWithWindows.GetWindowRect(hWnd, out rect);
-        }
+        //------------------------------------------------------------               
     }
 }

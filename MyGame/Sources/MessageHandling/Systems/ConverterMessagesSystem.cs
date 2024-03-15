@@ -53,7 +53,7 @@ namespace MyGame.Sources.Systems
                 { "SaveName", LastMovieRepository.SaveFilePathFromPotPlayer },
                 { "LoadLastMovie", LastMovieRepository.LoadLastMovie },
                 { "Hibernate", TimerShutdown.test },
-                { "SkipOpenning", AnilibriaPlayer.Skip },
+                { "SkipOpenning",  navigator.Skip },
             };
         }
 
