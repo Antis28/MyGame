@@ -75,9 +75,9 @@ public class CommandSettingsConverter : JsonConverter
     {        
         string value = (string)reader.Value;
         ScanCodeShort scanCodeShort = (ScanCodeShort)Enum.Parse(typeof(ScanCodeShort), value, true);
-        CommandSettings commandsettings = new CommandSettings(1, scanCodeShort);
+        CommandSettings commandSettings = new CommandSettings(1, scanCodeShort);
 
-        return commandsettings;
+        return commandSettings;
     }
 
     public override bool CanConvert(Type objectType)
