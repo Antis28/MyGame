@@ -230,10 +230,10 @@
     <Compile Include="Sources\MessageHandling\Components\MessageComponent.cs" />
     <Compile Include="Sources\MessageHandling\Systems\ClearMessagesSystem.cs" />
     <Compile Include="Sources\MessageHandling\Systems\ConverterMessagesSystem.cs" />
-    <Compile Include="Sources\SaveLoad\LoadSettingsComponent.cs" />
-    <Compile Include="Sources\SaveLoad\LoadSettingsSystem.cs" />
-    <Compile Include="Sources\SaveLoad\SaveSettingsSystem.cs" />
-    <Compile Include="Sources\SaveLoad\SettingsComponent.cs" />
+    <Compile Include="Sources\SaveLoad\OtherSettings\LoadSettingsComponent.cs" />
+    <Compile Include="Sources\SaveLoad\OtherSettings\LoadSettingsSystem.cs" />
+    <Compile Include="Sources\SaveLoad\OtherSettings\SaveSettingsSystem.cs" />
+    <Compile Include="Sources\SaveLoad\OtherSettings\SettingsComponent.cs" />
     <Compile Include="Sources\ServerCore\Components\AddressInfoComponent.cs" />
     <Compile Include="Sources\ServerCore\Components\ServerComponent.cs" />
     <Compile Include="Sources\ServerCore\NotECS\ArgumentAction.cs" />
@@ -290,6 +290,9 @@
     <Content Include="any\any\icon.png" />
     <Content Include="Jenny.properties" />
     <Content Include="Sources\Services\Descripton Services.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sources\SaveLoad\PlayersSettings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
