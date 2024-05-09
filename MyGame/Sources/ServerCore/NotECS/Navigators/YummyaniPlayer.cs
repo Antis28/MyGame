@@ -24,17 +24,31 @@ namespace MyGame.Sources.ServerCore.NotECS.Navigators
 
         public override void Next()
         {
-            var coord = WorkerWithMouse.GetCursorPosition();
-
-            WorkerWithMouse.MouseMove(1894, 1057);            
+            MoveEpisode(true);
+        }  
+        public override void Previous()
+        {
+            MoveEpisode(false);
+        }
+        private void MoveEpisode(bool isNext, int delta = 50)
+        {
+            WorkerWithMouse.MouseMove(1894, 1057);
             WorkerWithMouse.MouseClick(MouseButtons.left);
 
-            Thread.Sleep(100);
+            Thread.Sleep(700);
 
-            lastXCoord += 50;
+            if (isNext)
+            {
+                lastXCoord += delta;
+            }
+            else
+            {
+                lastXCoord -= delta;
+            }
+
             WorkerWithMouse.MouseMove(lastXCoord, 452);
             WorkerWithMouse.MouseClick(MouseButtons.left);
-            Thread.Sleep(500);
+            Thread.Sleep(700);
 
             WorkerWithMouse.MouseMove(1265, 988);
             WorkerWithMouse.MouseClick(MouseButtons.left);
