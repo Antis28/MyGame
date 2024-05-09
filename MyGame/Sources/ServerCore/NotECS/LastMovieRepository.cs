@@ -11,13 +11,13 @@ using Newtonsoft.Json;
 namespace MyGame.Sources.Systems;
 
 /// <summary>
-/// Получает из PotPlayer информацию об адресе проигроваемого файла
+/// Получает из PotPlayer информацию об адресе проигрываемого файла
 /// и сохраняет адрес в файл
 /// </summary>
 public static class LastMovieRepository
 {
     /// <summary>
-    /// Получает из PotPlayer информацию об адресе проигроваемого файла
+    /// Получает из PotPlayer информацию об адресе проигрываемого файла
     /// и сохраняет адрес в файл
     /// </summary>
     public static void SaveFilePathFromPotPlayer(ArgumentAction _)
